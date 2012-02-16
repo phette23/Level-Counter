@@ -34,13 +34,29 @@
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header>
-
+<h1><a href="http://www.worldofmunchkin.com/" title="Munckin: Kill the Monters, Steal the Treasure, Stab your Buddy">Munchkin</a><sup>TM</sup> Counter</h1>
   </header>
   <div role="main">
-
+    <h1 contenteditable title="Click me to edit!">Player Name</h1>
+    <h2>Level</h2>
+    <section>
+            <span onclick="changeValue('level',-1);">-</span>
+            <span id="level">1</span>
+            <span onclick="changeValue('level',1);">+</span>
+    <section>
+    <h2>Bonuses</h2>
+    <section>
+            <span onclick="changeValue('bonuses',-1);">-</span>
+            <span id="bonuses">0</span>
+            <span onclick="changeValue('bonuses',1);">+</span>
+    <section>
+    <h2>Combat Strength</h2>
+    <section>
+            <span id="strength">1</span>
+    <section>
   </div>
   <footer>
-
+    Useful links: <a href="http://www.worldofmunchkin.com/rules/" title="All versions of Munchking rules in PDF format">Rules</a> & <a href="http://www.worldofmunchkin.com/faq/" title="For resolving crazy ass conflicts between cards, rules, & rationality">FAQ</a>
   </footer>
 
 
@@ -57,11 +73,11 @@
 
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
        mathiasbynens.be/notes/async-analytics-snippet -->
-  <script>
+  <!--<script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script>
+  </script>-->
 </body>
 </html>
