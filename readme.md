@@ -2,7 +2,7 @@
 
 Basic Munchkin Counter because we need a cross-platform, web-based counter that's free & easy to customize.
 
-[Munchkin](www.worldofmunchkin.com/game/) is a card game, btw. If you don't know what it is then probably very little of this will make sense.
+[Munchkin](http://www.worldofmunchkin.com/game/) is a card game, btw. If you don't know what it is then probably very little of this will make sense.
 
 ## HTML5 Boilerplate
 
@@ -12,8 +12,8 @@ I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boiler
 
 In rough order of priority.
 
-- Stylize; it's pretty ugly right now. Could use a button style for clickable elements.
-- Better onclick handling; shouldn't need to copy-paste code into each span. Use case for jQuery e.g. $('section span:
+- Stylize; it's pretty ugly right now, could use a button style for clickable elements
+- Better onclick handling; shouldn't need to copy-paste code into each span. Use case for jQuery
 - "Add Race", "Add Class" buttons, list out race/class on page
 - Is a contenteditable polyfill needed? 1 possible use case for Modernizr but basically only older mobile browsers don't support it
 - Speaking of mobile: testing, testing, testing. Does it work?
