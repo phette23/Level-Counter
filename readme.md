@@ -13,6 +13,7 @@ I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boiler
 In rough order of priority.
 
 - Stylize; it's pretty ugly right now, could use a button style for clickable elements
+- Mobile styles: looks decent on iPhone but +, - buttons very much needed, page is just slightly too tall
 - Better onclick handling; shouldn't need to copy-paste code into each span. Use case for jQuery
 - "Add Race", "Add Class" buttons, list out race/class on page
 - Is a contenteditable polyfill needed? 1 possible use case for Modernizr but basically only older mobile browsers don't support it
