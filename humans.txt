@@ -1,21 +1,19 @@
 /* the humans responsible & colophon */
 /* humanstxt.org */
 
-
 /* TEAM */
-  <your title>: <your name>
-  Site:
-  Twitter:
-  Location:
+  Lead Developer: Eric Phetteplace
+  Site: http://phette.net/
+  Twitter: @phette23
+  Location: Maryland, USA
 
 /* THANKS */
-  Names (& URL):
+  Names (& URL): Judith Pond & Brian Duggan, for playing Munchkin with me & beta testing.
 
 /* SITE */
   Standards: HTML5, CSS3
   Components: Modernizr, jQuery
-  Software:
-
+  Software: Text Wrangler, Chrome (Dev Tools), Komodo Edit, Dropbox, git
 
 
                                -o/-
