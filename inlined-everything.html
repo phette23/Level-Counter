@@ -38,7 +38,7 @@
   <script src="js/libs/modernizr-2.5.2.min.js"></script>
 
   <style>
-  /*
+ /*
  * HTML5 Boilerplate
  *
  * What follows is the result of much research on cross-browser styling.
@@ -84,15 +84,6 @@ body { margin: 0;
   font-size: 1em;
   line-height: 1.4;
   }
-
-/*
- * Remove text-shadow in selection highlight: h5bp.com/i
- * These selection declarations have to be separate
- * Also: hot pink! (or customize the background color to match your design)
- */
-
-::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
-::selection { background: #fe57a1; color: #fff; text-shadow: none; }
 
 /* =============================================================================
    Links
@@ -267,6 +258,37 @@ footer {
   margin: 20px;
 }
 
+/* buttons */
+
+.pm-button {
+  width: 37px;
+    -moz-box-shadow:inset 0px 1px 0px 0px #fcf8f2;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #fcf8f2;
+  box-shadow:inset 0px 1px 0px 0px #fcf8f2;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #edb556), color-stop(1, #9e6100) );
+    background:-moz-linear-gradient( center top, #edb556 5%, #9e6100 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#edb556', endColorstr='#9e6100');
+  background-color:#edb556;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+  border-radius:6px;
+  border:1px solid #eeb44f;
+  display:inline-block;
+  color:#ffffff; font-weight:bold; text-decoration:none;
+  text-shadow:1px 1px 0px #cc9f52;
+}
+
+.pm-button:hover, .pm-button:focus {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #9e6100), color-stop(1, #edb556) );
+    background:-moz-linear-gradient( center top, #9e6100 5%, #edb556 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9e6100', endColorstr='#edb556');
+  background-color:#9e6100;
+}
+
+.pm-button:active {
+  position:relative; top:1px;
+}
+
 /* ==|== media queries ======================================================
    EXAMPLE Media Query for Responsive Design.
    This example overrides the primary ('mobile first') styles
@@ -343,15 +365,15 @@ footer {
     <h1 contenteditable title="Click me to edit!">Player Name</h1>
     <h2>Level</h2>
     <section>
-            <span onclick="changeValue('level',-1);">-</span>
-            <span id="level">1</span>
-            <span onclick="changeValue('level',1);">+</span>
+            <span class="pm-button" onclick="changeValue('level',-1);">-</span>&nbsp;
+            <span id="level">1</span>&nbsp;
+            <span class="pm-button" onclick="changeValue('level',1);">+</span>
     </section>
     <h2>Bonuses</h2>
     <section>
-            <span onclick="changeValue('bonuses',-1);">-</span>
-            <span id="bonuses">0</span>
-            <span onclick="changeValue('bonuses',1);">+</span>
+            <span class="pm-button" onclick="changeValue('bonuses',-1);">-</span>&nbsp;
+            <span id="bonuses">0</span>&nbsp;
+            <span class="pm-button" onclick="changeValue('bonuses',1);">+</span>
     </section>
     <h2>Combat Strength</h2>
     <section>
