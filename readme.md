@@ -12,11 +12,9 @@ I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boiler
 
 In rough order of priority.
 
-- Stylize; it's pretty ugly right now, could use a button style for clickable elements
-- Mobile styles: looks decent on iPhone but +, - buttons very much needed, page is just slightly too tall
 - Better onclick handling; shouldn't need to copy-paste code into each span. Use case for jQuery
 - "Add Race", "Add Class" buttons, list out race/class on page
 - Is a contenteditable polyfill needed? 1 possible use case for Modernizr but basically only older mobile browsers don't support it
-- Speaking of mobile: testing, testing, testing. Does it work?
+- Speaking of mobile: testing, testing, testing. Does it work? Looks slightly too tall right now, need to remove some padding
 - Combat page for 1-time bonuses, strength vs. monster
 - Multiple players on one HTML page, use left/right-arrow to switch between them, load content into/out of DOM using JavaScript
