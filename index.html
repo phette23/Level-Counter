@@ -52,20 +52,20 @@
   <div role="main">
     <h1 contenteditable title="Click me to edit!">Player Name</h1>
     <h2>Level</h2>
-    <section>
-            <span class="pm-button" onclick="changeValue('level',-1);">-</span>&nbsp;
-            <span id="level">1</span>&nbsp;
-            <span class="pm-button" onclick="changeValue('level',1);">+</span>
+    <section id="level">
+            <span class="pm-button">-</span>&nbsp;
+            <span class="display">1</span>&nbsp;
+            <span class="pm-button">+</span>
     </section>
     <h2>Bonuses</h2>
-    <section>
-            <span class="pm-button" onclick="changeValue('bonuses',-1);">-</span>&nbsp;
-            <span id="bonuses">0</span>&nbsp;
-            <span class="pm-button" onclick="changeValue('bonuses',1);">+</span>
+    <section id="bonuses">
+            <span class="pm-button">-</span>&nbsp;
+            <span class="display">0</span>&nbsp;
+            <span class="pm-button">+</span>
     </section>
     <h2>Combat Strength</h2>
-    <section>
-            <span id="strength">1</span>
+    <section id="strength">
+            <span class="display">1</span>
     </section>
   </div>
 
@@ -76,7 +76,7 @@
   <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
   <!-- scripts concatenated and minified via build script -->

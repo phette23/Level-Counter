@@ -13,10 +13,6 @@ also - I know jQuery is in HTML5BP but I don't know if I'll really need it
 so I'm writing this in pure JS first, if it becomes obvious that jQ is needed
 I'll switch */
 
-var $ = function(id) {
-    return document.getElementById(id);
-};
-
 //initial player stats
 var player = {
     level : 1,
@@ -26,7 +22,7 @@ var player = {
 };
 
 var refreshStrength = function() {
-    $('strength').innerHTML=(player.level+player.bonuses);
+    $('#strength').find('.display').html(player.level + player.bonuses);
 };
 
 var changeValue = function(valueType, quantity) {
@@ -38,7 +34,7 @@ var changeValue = function(valueType, quantity) {
         //Question: is it worth testing to see if a decrement would drop
         //player.level below 1? Are there cards that allow this?
         player[valueType] += quantity;
-        $(valueType).innerHTML = player[valueType];
+        $('#' + valueType).find('.display').html(player[valueType]);
     }
     else {
         console.log("Error: not a valid quantity. Try using a number, genuis.");
@@ -47,11 +43,26 @@ var changeValue = function(valueType, quantity) {
     refreshStrength();
 };
 
+//jQuery click handlers for -/+ buttons
+//this section totally fails DRY...
+$('#level').find('.pm-button').first().click( function(e) {
+	changeValue('level', -1);
+});
+$('#level').find('.pm-button').last().click( function(e) {
+	changeValue('level', 1);
+});
+$('#bonuses').find('.pm-button').first().click( function(e) {
+	changeValue('bonuses', -1);
+});
+$('#bonuses').find('.pm-button').last().click( function(e) {
+	changeValue('bonuses', 1);
+});
+
 //annoying but necessary?
-window.onbeforeunload = function() {
+//window.onbeforeunload = function() {
     //only annoy the user if in fact there is data stored
-    if (!(player.level === 1 && player.bonuses === 0
-        && player.races.length === 0 && player.classes.length === 0)) {
-    return "All game data will be lost. Are you sure you want to navigate away from the page?";
-    }
-};
+//    if (!(player.level === 1 && player.bonuses === 0
+//        && player.races.length === 0 && player.classes.length === 0)) {
+//    return "All game data will be lost. Are you sure you want to navigate away from the page?";
+//    }
+//};
