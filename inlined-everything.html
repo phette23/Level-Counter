@@ -232,6 +232,12 @@ td { vertical-align: top; }
 .chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
 
 /* ==|== primary styles ===================================================== */
+
+/* hide 2nd race & class initially */
+#race2, #class2, label[for="race2"], label[for="class2"] {
+  display: none;
+}
+
 body {
   margin: 10px;
   background-color: #F6F1DF;
@@ -254,8 +260,12 @@ h2 {
   margin: 18px;
 }
 
+select, input {
+  margin-right: 1em;
+}
+
 footer {
-  margin: 20px;
+  margin: 15px;
 }
 
 /* buttons */
@@ -326,8 +336,6 @@ footer {
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
 
-
-
 /* ==|== print styles =======================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r
@@ -364,20 +372,57 @@ footer {
   <div role="main">
     <h1 contenteditable title="Click me to edit!">Player Name</h1>
     <h2>Level</h2>
-    <section>
-            <span class="pm-button" onclick="changeValue('level',-1);">-</span>&nbsp;
-            <span id="level">1</span>&nbsp;
-            <span class="pm-button" onclick="changeValue('level',1);">+</span>
+    <section id="level">
+            <span class="pm-button">-</span>&nbsp;
+            <span class="display">1</span>&nbsp;
+            <span class="pm-button">+</span>
     </section>
     <h2>Bonuses</h2>
-    <section>
-            <span class="pm-button" onclick="changeValue('bonuses',-1);">-</span>&nbsp;
-            <span id="bonuses">0</span>&nbsp;
-            <span class="pm-button" onclick="changeValue('bonuses',1);">+</span>
+    <section id="bonuses">
+            <span class="pm-button">-</span>&nbsp;
+            <span class="display">0</span>&nbsp;
+            <span class="pm-button">+</span>
     </section>
     <h2>Combat Strength</h2>
-    <section>
-            <span id="strength">1</span>
+    <section id="strength">
+            <span class="display">1</span>
+    </section>
+    <h2>Race & Class</h2>
+    <section id="race-class">
+    	<label for="race1">Race:</label>
+    	<select name="race1" id="race1">
+    		<option>Human</option>
+    		<option>Dwarf</option>
+    		<option>Elf</option>
+    		<option>Halfling</option>
+    	</select>
+        <label for="race2">2nd Race:</label>
+    	<select name="race2" id="race2">
+    		<option>Human</option>
+    		<option>Dwarf</option>
+    		<option>Elf</option>
+    		<option>Halfling</option>
+    	</select>
+    	<label for="class1">Class:</label>
+    	<select name="class1" id="class1">
+    		<option>None</option>
+    		<option>Cleric</option>
+    		<option>Thief</option>
+    		<option>Warrior</option>
+    		<option>Wizard</option>
+    	</select>
+        <label for="class2">2nd Class:</label>
+    	<select name="class2" id="class2">
+    		<option></option>
+    		<option>Cleric</option>
+    		<option>Thief</option>
+    		<option>Warrior</option>
+    		<option>Wizard</option>
+    	</select><br>
+    	<label for="half-breed">Half-Breed</label>
+    	<input type="checkbox" name="half-breed">
+    	<label for="super-munchkin">Super Munchkin</label>
+    	<input type="checkbox" name="super-munchkin">
     </section>
   </div>
 
@@ -402,7 +447,7 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 (function(){try{console.log();return window.console;}catch(a){return (window.console={});}}());
 
 // place any jQuery/helper plugins in here, instead of separate, slower script files.
-    /*eventually it'll make sense to refactor for multiple players on 1 page
+ /* eventually it'll make sense to refactor for multiple players on 1 page
 I bet something like
 function Player() {
     this.level = 1;
@@ -411,26 +456,20 @@ function Player() {
         return level + bonuses;}
 }
 can serve as a constructor
-but for now I just want to get a single player working at a time
-you can have multiple tabs/windows open for multiple players
-also - I know jQuery is in HTML5BP but I don't know if I'll really need it
-so I'm writing this in pure JS first, if it becomes obvious that jQ is needed
-I'll switch */
-
-var $ = function(id) {
-    return document.getElementById(id);
-};
+but for now I just want to get a single player working */
 
 //initial player stats
 var player = {
     level : 1,
     bonuses : 0,
-    races : [], //currently unused, for future features
-    classes : [] //ditto
+    races : ['Human'],
+    classes : ['None'],
+    "super-munchkin" : false,
+    "half-breed" : false
 };
 
 var refreshStrength = function() {
-    $('strength').innerHTML=(player.level+player.bonuses);
+    $('#strength').find('.display').html(player.level + player.bonuses);
 };
 
 var changeValue = function(valueType, quantity) {
@@ -442,7 +481,7 @@ var changeValue = function(valueType, quantity) {
         //Question: is it worth testing to see if a decrement would drop
         //player.level below 1? Are there cards that allow this?
         player[valueType] += quantity;
-        $(valueType).innerHTML = player[valueType];
+        $('#' + valueType).find('.display').html(player[valueType]);
     }
     else {
         console.log("Error: not a valid quantity. Try using a number, genuis.");
@@ -451,14 +490,73 @@ var changeValue = function(valueType, quantity) {
     refreshStrength();
 };
 
-//annoying but necessary?
-window.onbeforeunload = function() {
-    //only annoy the user if in fact there is data stored
-    if (!(player.level === 1 && player.bonuses === 0
-        && player.races.length === 0 && player.classes.length === 0)) {
-    return "All game data will be lost. Are you sure you want to navigate away from the page?";
+//jQuery click handlers for -/+ buttons
+//this section totally fails DRY...
+$('#level').find('.pm-button').first().click( function(e) {
+	changeValue('level', -1);
+});
+$('#level').find('.pm-button').last().click( function(e) {
+	changeValue('level', 1);
+});
+$('#bonuses').find('.pm-button').first().click( function(e) {
+	changeValue('bonuses', -1);
+});
+$('#bonuses').find('.pm-button').last().click( function(e) {
+	changeValue('bonuses', 1);
+});
+
+//change handlers for select inputs
+//races
+$('#race1').change( function() {
+    player.races[0] = $(this).attr('value');
+});
+$('#race2').change( function() {
+    player.races[1] = $(this).attr('value');
+});
+//classes
+$('#class1').change( function() {
+    player.classes[0] = $(this).attr('value');
+});
+$('#class2').change( function() {
+    player.classes[1] = $(this).attr('value');
+});
+
+//1st input is half-breed
+$('input').first().change( function() {
+    player['half-breed'] = !(player['half-breed']); //invert h-b state
+    if (player['half-breed']) { //player becomes h-b
+        $('label[for="race2"]').fadeIn('slow');
+        $('#race2').fadeIn('slow');
     }
-};
+    else { //player is going from h-b to not h-b
+        $('label[for="race2"]').hide();
+        $('#race2').attr('value','Human').hide();
+        delete player.races[1];
+    }
+});
+
+//2nd input is super-munchkin
+$('input').last().change( function() {
+    player['super-munchkin'] = !(player['super-munchkin']);
+    if (player['super-munchkin']) {
+        $('#class2').fadeIn('slow');
+        $('label[for="class2"]').fadeIn('slow');
+    }
+    else {
+        $('#class2').attr('value','').hide();
+        $('label[for="class2"]').hide();
+        delete player.classes[1];
+    }
+});
+
+//annoying but necessary?
+//window.onbeforeunload = function() {
+    //only annoy the user if in fact there is data stored
+//    if (!(player.level === 1 && player.bonuses === 0
+//        && player.races.length === 0 && player.classes.length === 0)) {
+//    return "All game data will be lost. Are you sure you want to navigate away from the page?";
+//    }
+//};
   </script>
   <!-- end scripts -->
 
