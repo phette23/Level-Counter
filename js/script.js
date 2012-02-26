@@ -1,4 +1,4 @@
-/*eventually it'll make sense to refactor for multiple players on 1 page
+/* eventually it'll make sense to refactor for multiple players on 1 page
 I bet something like
 function Player() {
     this.level = 1;
@@ -7,18 +7,16 @@ function Player() {
         return level + bonuses;}
 }
 can serve as a constructor
-but for now I just want to get a single player working at a time
-you can have multiple tabs/windows open for multiple players
-also - I know jQuery is in HTML5BP but I don't know if I'll really need it
-so I'm writing this in pure JS first, if it becomes obvious that jQ is needed
-I'll switch */
+but for now I just want to get a single player working */
 
 //initial player stats
 var player = {
     level : 1,
     bonuses : 0,
-    races : [], //currently unused, for future features
-    classes : [] //ditto
+    races : ['Human'],
+    classes : ['None'],
+    "super-munchkin" : false,
+    "half-breed" : false
 };
 
 var refreshStrength = function() {
@@ -56,6 +54,50 @@ $('#bonuses').find('.pm-button').first().click( function(e) {
 });
 $('#bonuses').find('.pm-button').last().click( function(e) {
 	changeValue('bonuses', 1);
+});
+
+//change handlers for select inputs
+//races
+$('#race1').change( function() {
+    player.races[0] = $(this).attr('value');
+});
+$('#race2').change( function() {
+    player.races[1] = $(this).attr('value');
+});
+//classes
+$('#class1').change( function() {
+    player.classes[0] = $(this).attr('value');
+});
+$('#class2').change( function() {
+    player.classes[1] = $(this).attr('value');
+});
+
+//1st input is half-breed
+$('input').first().change( function() {
+    player['half-breed'] = !(player['half-breed']); //invert h-b state
+    if (player['half-breed']) { //player becomes h-b
+        $('label[for="race2"]').fadeIn('slow');
+        $('#race2').fadeIn('slow');
+    }
+    else { //player is going from h-b to not h-b
+        $('label[for="race2"]').hide();
+        $('#race2').attr('value','Human').hide();
+        delete player.races[1];
+    }
+});
+
+//2nd input is super-munchkin
+$('input').last().change( function() {
+    player['super-munchkin'] = !(player['super-munchkin']);
+    if (player['super-munchkin']) {
+        $('#class2').fadeIn('slow');
+        $('label[for="class2"]').fadeIn('slow');
+    }
+    else {
+        $('#class2').attr('value','').hide();
+        $('label[for="class2"]').hide();
+        delete player.classes[1];
+    }
 });
 
 //annoying but necessary?

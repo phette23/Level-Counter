@@ -69,16 +69,31 @@
     </section>
     <h2>Race & Class</h2>
     <section id="race-class">
-    	<label for="race">Race:</label>
-    	<select name="race">
+    	<label for="race1">Race:</label>
+    	<select name="race1" id="race1">
     		<option>Human</option>
     		<option>Dwarf</option>
     		<option>Elf</option>
     		<option>Halfling</option>
     	</select>
-    	<label for="class">Class:</label>
-    	<select name="class">
+        <label for="race2">2nd Race:</label>
+    	<select name="race2" id="race2">
     		<option>Human</option>
+    		<option>Dwarf</option>
+    		<option>Elf</option>
+    		<option>Halfling</option>
+    	</select>
+    	<label for="class1">Class:</label>
+    	<select name="class1" id="class1">
+    		<option>None</option>
+    		<option>Cleric</option>
+    		<option>Thief</option>
+    		<option>Warrior</option>
+    		<option>Wizard</option>
+    	</select>
+        <label for="class2">2nd Class:</label>
+    	<select name="class2" id="class2">
+    		<option></option>
     		<option>Cleric</option>
     		<option>Thief</option>
     		<option>Warrior</option>
@@ -97,7 +112,7 @@
 
   <!-- JavaScript at the bottom for fast page loading -->
 
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <!-- Grab Google CDN's jQuery, fall back to local if offline -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
