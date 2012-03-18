@@ -14,7 +14,6 @@ I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boiler
 
 In rough order of priority.
 
-- Is a contenteditable polyfill needed? 1 possible use case for Modernizr but basically only older mobile browsers don't support it
-- Speaking of mobile: testing, testing, testing. Does it work? Looks slightly too tall right now, need to remove some padding
+- Mobile testing. Does it work? Looks slightly too tall right now, need to remove some padding
 - Combat page for 1-time bonuses, strength vs. monster
 - Multiple players on one HTML page? Might not be worth the trouble.
