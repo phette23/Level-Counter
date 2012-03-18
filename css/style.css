@@ -201,7 +201,8 @@ td { vertical-align: top; }
 body {
   margin: 10px;
   background-color: #F6F1DF;
-  text-align: center; color: #2C1200; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  text-align: center; color: #2C1200; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 header h1 {
   font-size: 55%;
@@ -209,8 +210,9 @@ header h1 {
 }
 
 /* spans over in/decrement elements */
-section span:first-child, section span:nth-child(3) {
-  cursor: pointer; }
+section span:first-child, section span:nth-child(3), h1[contenteditable] {
+  cursor: pointer;
+}
 
 section {
   font-size: 130%;
@@ -268,8 +270,6 @@ footer {
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
 }
-
-
 
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.

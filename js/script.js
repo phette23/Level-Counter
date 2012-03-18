@@ -100,6 +100,14 @@ $('input').last().change( function() {
     }
 });
 
+//contenteditable polyfill
+if (!window.Modernizr.contenteditable) {
+    $('h1[contenteditable]').click(function(e){
+        var newName = prompt("What's your name?");
+        $('h1[contenteditable]').html(newName);
+        });
+}
+
 //annoying but necessary?
 //window.onbeforeunload = function() {
     //only annoy the user if in fact there is data stored
