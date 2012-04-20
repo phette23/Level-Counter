@@ -15,5 +15,8 @@ I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boiler
 In rough order of priority.
 
 - Mobile testing. Does it work? Looks slightly too tall right now, need to remove some padding
+- Store game details in DOM storage, offer to restore previous game if there's content in storage
 - Combat page for 1-time bonuses, strength vs. monster
-- Multiple players on one HTML page? Might not be worth the trouble.
+- Real icons rather than the HTML5BP defaults
+- Better handling of classes & races, possibly including a choice at the beginning of the game wherein you select which decks you're using & the options are presented accordingly
+- Finish game: when you hit level 10, do something congratulatory
