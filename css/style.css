@@ -267,6 +267,30 @@ footer {
   position:relative; top:1px;
 }
 
+/* stealing this from Remy Sharp
+http://jsbin.com/owavu3 */
+
+[contenteditable]:hover:after {
+  content: ' click to edit';
+  font-style: italic;
+  font-size: 50%;
+  font-family: sans-serif;
+  color: #696969;
+  .text-stroke(0);
+}
+
+[contenteditable]:hover, [contenteditable]:focus {
+  background: #E8FA43;
+}
+
+[contenteditable]:focus {
+  padding: 5px;
+}
+
+[contenteditable]:focus:after {
+  content: '';
+}
+
 /* ==|== media queries ======================================================
    EXAMPLE Media Query for Responsive Design.
    This example overrides the primary ('mobile first') styles
