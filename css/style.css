@@ -206,7 +206,12 @@ body {
 
 header h1 {
   font-size: 55%;
-  position: absolute; top: 10px; left: 10px;
+  margin: 0;
+  position: absolute; top: 5px; left: 5px;
+}
+
+#main h1 {
+  font-size: 100%;
 }
 
 /* spans over in/decrement elements */
@@ -218,8 +223,9 @@ section {
   font-size: 130%;
 }
 
-h2 {
+section h2 {
   margin: 18px;
+  font-size: 100%;
 }
 
 select, input {
