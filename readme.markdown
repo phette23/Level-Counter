@@ -14,7 +14,7 @@ I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boiler
 
 In rough order of priority.
 
-- Mobile testing. Does it work? Looks slightly too tall right now, need to remove some padding
+- Mobile first CSS, redo the layout.
 - Store game details in DOM storage, offer to restore previous game if there's content in storage
 - Combat page for 1-time bonuses, strength vs. monster
 - Real icons rather than the HTML5BP defaults
