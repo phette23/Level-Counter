@@ -2,8 +2,10 @@
 //just in case some script in the User Agent, e.g. browser extension, is doing something stupid
 //run code on document load using jQuery's shorthand for that
 (function($) {
-    $(
-        //initial player stats
+    $( function() {
+        //Consider keeping player's name in a variable
+        //then using Remy Sharp's "save contentEditable" script: http://jsbin.com/owavu3
+        //Initial player stats
         var player = {
             level : 1,
             bonuses : 0,
@@ -13,12 +15,21 @@
             "half-breed" : false
         };
 
+        //when something in player changes, store it in localStorage
+        var updatePlayerStore = function() {
+            var strPlayer = JSON.stringify( player );
+            localStorage.setItem( "p" , strPlayer );
+        }
+
+        //each time combat strength changes, update the DOM
         var refreshStrength = function() {
             $( '#strength' ).find( '.display' ).html( player.level + player.bonuses );
+            updatePlayerStore();
         };
 
+        //when level or bonus changes, update player object & call refreshStrength
         var changeValue = function( valueType, quantity ) {
-            if ( !player.hasOwnProperty(valueType) ) {
+            if ( !player.hasOwnProperty( valueType ) ) {
                 console.log( "Error: not a valid value. Use either level or bonuses." );
                 return false;
             };
@@ -33,6 +44,7 @@
                 return false;
             };
             refreshStrength();
+            //no need to call updatePlayerStore - refreshStrength does
         };
 
         //jQuery click handlers for -/+ buttons
@@ -40,67 +52,88 @@
         $( '#level' ).find( '.pm-button' ).first().click(
             function(e) {
             	changeValue( 'level', -1 );
-            });
+            }
+        );
+
         $( '#level' ).find( '.pm-button' ).last().click(
             function(e) {
             	changeValue( 'level' , 1 );
-            });
+            }
+        );
+
         $( '#bonuses' ).find( '.pm-button' ).first().click(
             function(e) {
             	changeValue( 'bonuses' , -1 );
-            });
+            }
+        );
+
         $( '#bonuses' ).find( '.pm-button' ).last().click(
             function(e) {
             	changeValue( 'bonuses', 1 );
-            });
+            }
+        );
 
         //change handlers for select inputs
         //races
         $( '#race1' ).change( function() {
             player.races[0] = $(this).val();
+            updatePlayerStore();
         });
         $( '#race2' ).change( function() {
             player.races[1] = $(this).val();
+            updatePlayerStore();
         });
 
         //classes
         $( '#class1' ).change( function() {
             player.classes[0] = $(this).val();
+            updatePlayerStore();
         });
         $( '#class2' ).change( function() {
             player.classes[1] = $(this).val();
+            updatePlayerStore();
         });
 
         //1st input is half-breed
         $('input').first().change(
             function() {
+
                 player['half-breed'] = !( player['half-breed'] ); //invert h-b state
+
                 if (player['half-breed']) { //player becomes h-b
                     $( 'label[for="race2"]' ).fadeIn( 'slow' );
                     $( '#race2' ).fadeIn( 'slow' );
                 }
 
-                else { //player is going from h-b to not h-b
+                else { //player has lost h-b
                     $('label[for="race2"]').hide();
                     $('#race2').attr('value','Human').hide();
                     delete player.races[1];
                 }
+
+                //either way, updatePlayerStore
+                updatePlayerStore();
+
             });
 
         //2nd input is super-munchkin
         $( 'input' ).last().change(
                 function() {
-                player['super-munchkin'] = !( player['super-munchkin'] );
+
+                player['super-munchkin'] = !( player['super-munchkin'] ); //invert s-m state
                 if ( player['super-munchkin'] ) {
-                    $( '#class2' ).fadeIn( 'slow' );
+                    $( '#class2' ).fadeIn( 'slow' ); //player becomes s-m
                     $( 'label[for="class2"]' ).fadeIn( 'slow' );
                 }
 
-                else {
+                else { //player has lost s-m
                     $( '#class2' ).attr( 'value', '' ).hide();
                     $( 'label[for="class2"]' ).hide();
                     delete player.classes[1];
                 }
+
+                //either way, updatePlayerStore
+                updatePlayerStore();
 
             });
 
@@ -122,6 +155,6 @@
         //    }
         //};
 
-    ); //run on document load
+    }); //run on document load
 
 } (jQuery));
