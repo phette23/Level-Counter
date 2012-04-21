@@ -47,6 +47,28 @@
             //no need to call updatePlayerStore - refreshStrength does
         };
 
+        //cache the localStorage lookup
+        var prevPlayer = localStorage.getItem( "p" );
+
+        var restorePlayer = function() {
+            player = prevPlayer;
+            //wow these next two lines feel silly...either rename function or find out why it's ridiculous
+            //maybe refactor refreshStrength to take 2 parameters (level, bonus) & then handle all .html() updates
+            changeValue( 'strength', 0);
+            changeValue( 'level', 0);
+            refreshStrength();
+            //need to make HTML reflect the new player object (e.g. in races/classes/super-munchkin/half-breed)
+        };
+
+        //if there's player information, offer to load it
+        if ( prevPlayer !== null ) {
+            //place "restore" & "delete" elements somewhere
+            //restore.click => restorePlayer()
+            //delete element.click => localStorage.removeItem( "p" )
+            //localStorage.getItem( "p" ) will be overwritten if actions happen
+            //but prevPlayer will still hold the previous player so restorePlayer is still valid
+        }
+
         //jQuery click handlers for -/+ buttons
         //this section totally fails DRY...
         $( '#level' ).find( '.pm-button' ).first().click(
