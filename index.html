@@ -6,116 +6,130 @@
 <!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
+	<meta charset="utf-8">
 
-  <title>Munchkin Counter</title>
-  <meta name="description" content="An open source Munchkin Counter in HTML">
+	<title>Munchkin Counter</title>
+	<meta name="description" content="An open source Munchkin Counter in HTML">
 
-  <!-- Mobile viewport optimized: h5bp.com/viewport -->
-  <meta name="viewport" content="width=device-width">
+	<!-- Mobile viewport optimized: h5bp.com/viewport -->
+	<meta name="viewport" content="width=device-width">
+	<!-- Web app capable: http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
 
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-  <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 
-  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+	<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
-  <!-- for IE9 pinned sites
-  http://html5boilerplate.com/docs/head-Tips/#ie9-pinned-sites -->
-  <meta name="application-name" content="Munchkin Counter" />
-  <meta name="msapplication-tooltip" content="Keep track of your level & bonuses!" />
-  <meta name="msapplication-navbutton-color" content="#F6F1DF" />
+	<!-- for IE9 pinned sites
+	http://html5boilerplate.com/docs/head-Tips/#ie9-pinned-sites -->
+	<meta name="application-name" content="Munchkin Counter" />
+	<meta name="msapplication-tooltip" content="Keep track of your level & bonuses!" />
+	<meta name="msapplication-navbutton-color" content="#F6F1DF" />
 
-  <link rel="author" href="/humans.txt" />
+	<link rel="author" href="/humans.txt" />
 
-  <!-- All JavaScript at the bottom, except this Modernizr build -->
-  <script src="js/libs/modernizr-contenteditable.js"></script>
+	<!-- All JavaScript at the bottom, except this Modernizr build -->
+	<script src="js/libs/modernizr-contenteditable.js"></script>
 </head>
 
 <body>
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-       chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+			 chromium.org/developers/how-tos/chrome-frame-getting-started -->
+	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-  <header>
-  <h1>
-    <a href="http://www.worldofmunchkin.com/" title="Kill the Monsters, Steal the Treasure, Stab your Buddy">Munchkin</a><sup>TM</sup> Counter
-  </h1>
-  </header>
+	<header>
+	<h1>
+		<a href="http://www.worldofmunchkin.com/" title="Kill the Monsters, Steal the Treasure, Stab your Buddy">Munchkin</a><sup>TM</sup> Counter
+	</h1>
+	</header>
 
-  <div role="main">
-    <h1 contenteditable title="Click me to edit!">Player Name</h1>
-    <h2>Level</h2>
-    <section id="level">
-            <span class="pm-button">-</span>&nbsp;<span class="display">1</span>&nbsp;<span class="pm-button">+</span>
-    </section>
-    <h2>Bonuses</h2>
-    <section id="bonuses">
-            <span class="pm-button">-</span>&nbsp;<span class="display">0</span>&nbsp;<span class="pm-button">+</span>
-    </section>
-    <h2>Combat Strength</h2>
-    <section id="strength">
-            <span class="display">1</span>
-    </section>
-    <h2>Race & Class</h2>
-    <section id="race-class">
-    	<label for="race1">Race:</label>
-    	<select name="race1" id="race1">
-    		<option>Human</option>
-    		<option>Dwarf</option>
-    		<option>Elf</option>
-    		<option>Halfling</option>
-        <option>Gnome</option>
-        <option>Orc</option>
-    	</select>
-        <label for="race2">2nd Race:</label>
-    	<select name="race2" id="race2">
-    		<option>Human</option>
-    		<option>Dwarf</option>
-    		<option>Elf</option>
-    		<option>Halfling</option>
-        <option>Gnome</option>
-        <option>Orc</option>
-    	</select>
-    	<label for="class1">Class:</label>
-    	<select name="class1" id="class1">
-    		<option>None</option>
-        <option>Bard</option>
-    		<option>Cleric</option>
-    		<option>Thief</option>
-    		<option>Warrior</option>
-    		<option>Wizard</option>
-    	</select>
-        <label for="class2">2nd Class:</label>
-    	<select name="class2" id="class2">
-    		<option></option>
-        <option>Bard</option>
-    		<option>Cleric</option>
-    		<option>Thief</option>
-    		<option>Warrior</option>
-    		<option>Wizard</option>
-    	</select><br>
-    	<label for="half-breed">Half-Breed</label>
-    	<input type="checkbox" name="half-breed">
-    	<label for="super-munchkin">Super Munchkin</label>
-    	<input type="checkbox" name="super-munchkin">
-    </section>
-  </div>
+	<div role="main">
+		<h1 contenteditable title="Click me to edit!">Player Name</h1>
 
-  <footer>
-    <a href="http://www.worldofmunchkin.com/rules/" title="All versions of Munchking rules in PDF format">Rules</a> & <a href="http://www.worldofmunchkin.com/faq/" title="For resolving crazy ass conflicts between cards, rules, & rationality">FAQ</a>
-  </footer>
+		<section id="level">
+			<h2>Level</h2>
+			<span class="pm-button">-</span>&nbsp;<span class="display">1</span>&nbsp;<span class="pm-button">+</span>
+		</section>
 
-  <!-- JavaScript at the bottom for fast page loading -->
 
-  <!-- Grab Google CDN's jQuery, fall back to local if offline -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+		<section id="bonuses">
+			<h2>Bonuses</h2>
+			<span class="pm-button">-</span>&nbsp;<span class="display">0</span>&nbsp;<span class="pm-button">+</span>
+		</section>
 
-  <!-- scripts concatenated and minified via build script -->
-  <script src="js/plugins.js"></script>
-  <script src="js/script.js"></script>
-  <!-- end scripts -->
+		<section id="strength">
+			<h2>Combat Strength</h2>
+			<span class="display">1</span>
+		</section>
+
+		<section id="race-class">
+			<h2>Race & Class</h2>
+
+			<label for="race1">Race:</label>
+			<select name="race1" id="race1">
+				<option>Human</option>
+				<option>Dwarf</option>
+				<option>Elf</option>
+				<option>Halfling</option>
+				<option>Gnome</option>
+				<option>Orc</option>
+			</select>
+
+				<label for="race2">2nd Race:</label>
+			<select name="race2" id="race2">
+				<option>Human</option>
+				<option>Dwarf</option>
+				<option>Elf</option>
+				<option>Halfling</option>
+				<option>Gnome</option>
+				<option>Orc</option>
+			</select>
+
+			<label for="class1">Class:</label>
+			<select name="class1" id="class1">
+				<option>None</option>
+				<option>Bard</option>
+				<option>Cleric</option>
+				<option>Thief</option>
+				<option>Warrior</option>
+				<option>Wizard</option>
+			</select>
+
+				<label for="class2">2nd Class:</label>
+			<select name="class2" id="class2">
+				<option></option>
+				<option>Bard</option>
+				<option>Cleric</option>
+				<option>Thief</option>
+				<option>Warrior</option>
+				<option>Wizard</option>
+			</select><br>
+
+			<label for="half-breed">Half-Breed</label>
+			<input type="checkbox" name="half-breed">
+
+			<label for="super-munchkin">Super Munchkin</label>
+			<input type="checkbox" name="super-munchkin">
+
+		</section>
+	</div>
+
+	<footer>
+		<a href="http://www.worldofmunchkin.com/rules/" title="All versions of Munchking rules in PDF format">Rules</a> & <a href="http://www.worldofmunchkin.com/faq/" title="For resolving crazy ass conflicts between cards, rules, & rationality">FAQ</a>
+	</footer>
+
+	<!-- JavaScript at the bottom for fast page loading -->
+
+	<!-- Grab Google CDN's jQuery, fall back to local if offline -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+	<!-- scripts concatenated and minified via build script -->
+	<script src="js/plugins.js"></script>
+	<script src="js/script.js"></script>
+	<!-- end scripts -->
 
 </body>
 </html>
