@@ -214,8 +214,8 @@ header h1 {
   font-size: 100%;
 }
 
-/* spans over in/decrement elements */
-section span:first-child, section span:nth-child(3), h1[contenteditable] {
+/* all clickable elements should have pointer */
+.pm-button, h1[contenteditable], select, input {
   cursor: pointer;
 }
 
@@ -282,10 +282,12 @@ footer {
   transform: rotate(180deg);
 }
 
-/* stealing this from Remy Sharp
-http://jsbin.com/owavu3 */
+/* contenteditable
+stealing this from Remy Sharp
+http://jsbin.com/owavu3
+put h1 in front to avoid implicit universal selector */
 
-[contenteditable]:hover:after {
+h1[contenteditable]:hover:after {
   content: ' click to edit';
   font-style: italic;
   font-size: 50%;
@@ -294,16 +296,22 @@ http://jsbin.com/owavu3 */
   .text-stroke(0);
 }
 
-[contenteditable]:hover, [contenteditable]:focus {
+h1[contenteditable]:hover, [contenteditable]:focus {
   background: #E8FA43;
 }
 
-[contenteditable]:focus {
+h1[contenteditable]:focus {
   padding: 5px;
 }
 
-[contenteditable]:focus:after {
+h1[contenteditable]:focus:after {
   content: '';
+}
+
+/* both links in the footer are "help" links
+revisit this rule if that changes later */
+footer a {
+  cursor: help;
 }
 
 /* ==|== media queries ======================================================
