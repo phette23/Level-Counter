@@ -215,8 +215,12 @@ header h1 {
 }
 
 /* all clickable elements should have pointer */
-.pm-button, h1[contenteditable], select, input {
+.pm-button, select, input {
   cursor: pointer;
+}
+
+h1[contenteditable] {
+  cursor: text;
 }
 
 section {
