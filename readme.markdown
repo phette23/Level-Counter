@@ -8,7 +8,7 @@ There's a [live, usable version](http://bit.ly/munch-count) on the web.
 
 ## HTML5 Boilerplate
 
-I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boilerplate. Once there's a working project with sufficient functionality then I will strip out unused features but for now I'm leaving them in. So there's a link to [Modernizr](http://www.modernizr.com/) even though I'm not using it right now.
+I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boilerplate. Once there's a working project with sufficient functionality then I will strip out unused features but for now I'm leaving them in.
 
 ## To Do
 
