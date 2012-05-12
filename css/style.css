@@ -157,7 +157,7 @@ button[disabled], input[disabled] { cursor: default; }
  * Consistent box sizing and appearance
  */
 
-input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; *width: 13px; *height: 13px; }
+input[type="checkbox"], input[type="radio"] { padding: 0; *width: 13px; *height: 13px; }
 input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
 input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
 
@@ -192,6 +192,14 @@ td { vertical-align: top; }
 .chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
 
 /* ==|== primary styles ===================================================== */
+
+/* media query layout adjustments */
+
+/* implicit media query: mobile default */
+
+.rc {
+  margin-bottom: 10px;
+}
 
 /* hide 2nd race & class initially */
 #race2, #class2, label[for="race2"], label[for="class2"] {
