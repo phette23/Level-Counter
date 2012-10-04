@@ -23,25 +23,9 @@ nbproject
 *.sublime-project
 *.sublime-workspace
 
-# Dreamweaver added files
-_notes
-dwsync.xml
-
-# Komodo
-*.komodoproject
-.komodotools
-
-# Folders to ignore
-.hg
-.svn
-.CVS
-intermediate
-publish
-.idea
-
-# build script local files
-build/buildinfo.properties
-build/config/buildinfo.properties
+# Yeoman temp & build folders
+temp
+dist
 
 # my specific files to ignore
 inlined-everything.html
