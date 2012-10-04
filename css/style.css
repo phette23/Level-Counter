@@ -207,18 +207,18 @@ td { vertical-align: top; }
 }
 
 body {
-  margin: 10px;
+  margin: 2%;
   background-color: #F6F1DF;
   text-align: center; color: #2C1200; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.4em;
 }
 
 header h1 {
   font-size: 55%;
   margin: 0;
-  position: absolute; top: 5px; left: 5px;
 }
 
-#main h1 {
+header h2 {
   font-size: 100%;
 }
 
@@ -227,7 +227,7 @@ header h1 {
   cursor: pointer;
 }
 
-h1[contenteditable] {
+h2[contenteditable] {
   cursor: text;
 }
 
@@ -264,8 +264,7 @@ footer {
   border-radius:6px;
   border:1px solid #eeb44f;
   display:inline-block;
-  color:#ffffff; font-weight:bold; text-decoration:none;
-  text-shadow:1px 1px 0px #cc9f52;
+  color:#fff; font-weight:bold;
 }
 
 .pm-button:hover, .pm-button:focus {
@@ -297,26 +296,25 @@ footer {
 /* contenteditable
 stealing this from Remy Sharp
 http://jsbin.com/owavu3
-put h1 in front to avoid implicit universal selector */
+put h2 in front to avoid implicit universal selector */
 
-h1[contenteditable]:hover:after {
+h2[contenteditable]:hover:after {
   content: ' click to edit';
   font-style: italic;
   font-size: 50%;
   font-family: sans-serif;
-  color: #696969;
   .text-stroke(0);
 }
 
-h1[contenteditable]:hover, [contenteditable]:focus {
+h2[contenteditable]:hover, [contenteditable]:focus {
   background: #E8FA43;
 }
 
-h1[contenteditable]:focus {
+h2[contenteditable]:focus {
   padding: 5px;
 }
 
-h1[contenteditable]:focus:after {
+h2[contenteditable]:focus:after {
   content: '';
 }
 
@@ -334,6 +332,29 @@ footer a {
 
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
+  #level {
+    float: left;
+  }
+  #bonuses {
+    float: right;
+  }
+  #strength:before {
+    clear: both;
+    content: "";
+    display: block;
+  }
+  /* .clearfix: after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  }
+  .clearfix {
+    zoom: 1;
+    clear: both
+  } */
+
 }
 
 /* ==|== non-semantic helper classes ========================================
