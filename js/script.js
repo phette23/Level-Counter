@@ -20,7 +20,7 @@
         var updatePlayerStore = function() {
             var strPlayer = JSON.stringify( player );
             localStorage.setItem( "p" , strPlayer );
-        }
+        };
 
         //each time combat strength changes, update the DOM
         var refreshStrength = function() {
@@ -33,7 +33,7 @@
             if ( !player.hasOwnProperty( valueType ) ) {
                 console.log( "Error: not a valid value. Use either level or bonuses." );
                 return false;
-            };
+            }
             if ( typeof quantity === "number" ) {
                 //Question: is it worth testing to see if a decrement would drop
                 //player.level below 1? Are there cards that allow this?
@@ -43,7 +43,7 @@
             else {
                 console.log( "Error: not a valid quantity. Try using a number, genius." );
                 return false;
-            };
+            }
             refreshStrength();
             //no need to call updatePlayerStore b/c refreshStrength does
         };
@@ -74,25 +74,25 @@
         //this section totally fails DRY...
         $( '#level' ).find( '.pm-button' ).first().click(
             function() {
-            	changeValue( 'level', -1 );
+                changeValue( 'level', -1 );
             }
         );
 
         $( '#level' ).find( '.pm-button' ).last().click(
             function() {
-            	changeValue( 'level' , 1 );
+                changeValue( 'level' , 1 );
             }
         );
 
         $( '#bonuses' ).find( '.pm-button' ).first().click(
             function() {
-            	changeValue( 'bonuses' , -1 );
+                changeValue( 'bonuses' , -1 );
             }
         );
 
         $( '#bonuses' ).find( '.pm-button' ).last().click(
             function() {
-            	changeValue( 'bonuses', 1 );
+                changeValue( 'bonuses', 1 );
             }
         );
 
@@ -178,7 +178,7 @@
                 $( '#combat-dialog .player .display' ).html( player.level + player.bonuses );
 
                 //TO DO: check to make sure typeof monsterStrength == 'number'?
-                var monsterStrength = prompt("What is the monster's combat strength?");
+                var monsterStrength = prompt( "What is the monster's combat strength?" );
                 $( '#combat-dialog .monster .display' ).html( monsterStrength );
 
                 //hide the combat section if Done button is clicked
@@ -229,7 +229,7 @@
             //if combat.html isn't already loaded in the DOM, get it via AJAX
             if ( $( '#combat-dialog' ).length === 0) {
                 $.get( 'combat.html' , function(r) {
-                    $(r).appendTo( '#main' );
+                    $( r ).appendTo( '#main' );
                     setupCombat();
                 });
             }
