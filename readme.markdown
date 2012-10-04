@@ -2,7 +2,7 @@
 
 Basic Munchkin Counter because we need a cross-platform, web-based counter that's free & easy to customize.
 
-[Munchkin](http://www.worldofmunchkin.com/game/) is a card game, btw. If you don't know what it is then probably very little of this will make sense.
+[Munchkin](http://www.worldofmunchkin.com/game/) is a card game, by the way. If you don't know what it is then probably very little of this will make sense.
 
 There's a [live, usable version](http://phette.net/munchkin-counter/) on the web.
 
@@ -14,9 +14,10 @@ I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boiler
 
 In rough order of priority.
 
-- Store game details in DOM storage, offer to restore previous game if there's content in storage
-- Combat page: "add monster" & "add player" buttons
+- Convert to a Yeoman project
 - Better layout, use space better on larger screens
-- Better handling of classes & races, possibly including a choice at the beginning of the game wherein you select which decks you're using & the options are presented accordingly
-- Finish game: when you hit level 10, do something congratulatory
-- Add an application cache
+- Combat page: "add monster" & "add player" buttons
+- Offer to restore previous game if there's content in storage
+- Record game progress, offer to chart later (?)
+
+I originally intended to have select options for race & class characteristics but that quickly proved to be too burdensome given the numerous Munchkin expansion packs. If you're interested, there is a "race-class" branch of this repo that contains my initial code. It works fine but does not cover most expansions (e.g. Star Munchkin, Axe Cop Munchkin).
