@@ -14,7 +14,6 @@ I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boiler
 
 In rough order of priority.
 
-- Convert to a Yeoman project
 - Better layout, use space better on larger screens
 - Combat page: "add monster" & "add player" buttons
 - Offer to restore previous game if there's content in storage
