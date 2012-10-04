@@ -9,11 +9,7 @@
         //Initial player stats
         var player = {
             level : 1,
-            bonuses : 0,
-            races : ['Human'],
-            classes : ['None'],
-            "super-munchkin" : false,
-            "half-breed" : false
+            bonuses : 0
         };
 
         //when something in player changes, store it in localStorage
@@ -58,7 +54,6 @@
             changeValue( 'strength', 0);
             changeValue( 'level', 0);
             refreshStrength();
-            //need to make HTML reflect the new player object (e.g. in races/classes/super-munchkin/half-breed)
         };
 
         //if there's player information, offer to load it
@@ -95,70 +90,6 @@
                 changeValue( 'bonuses', 1 );
             }
         );
-
-        //change handlers for select inputs
-        //races
-        $( '#race1' ).change( function() {
-            player.races[0] = $(this).val();
-            updatePlayerStore();
-        });
-        $( '#race2' ).change( function() {
-            player.races[1] = $(this).val();
-            updatePlayerStore();
-        });
-
-        //classes
-        $( '#class1' ).change( function() {
-            player.classes[0] = $(this).val();
-            updatePlayerStore();
-        });
-        $( '#class2' ).change( function() {
-            player.classes[1] = $(this).val();
-            updatePlayerStore();
-        });
-
-        //1st input is half-breed
-        $('input').first().change(
-            function() {
-
-                player['half-breed'] = !( player['half-breed'] ); //invert h-b state
-
-                if (player['half-breed']) { //player becomes h-b
-                    $( 'label[for="race2"]' ).fadeIn( 'slow' );
-                    $( '#race2' ).fadeIn( 'slow' );
-                }
-
-                else { //player has lost h-b
-                    $( 'label[for="race2"]' ).hide();
-                    $( '#race2' ).attr( 'value', 'Human' ).hide();
-                    delete player.races[1];
-                }
-
-                //either way, updatePlayerStore
-                updatePlayerStore();
-
-            });
-
-        //2nd input is super-munchkin
-        $( 'input' ).last().change(
-                function() {
-
-                player[ 'super-munchkin' ] = !( player[ 'super-munchkin' ] ); //invert s-m state
-                if ( player[ 'super-munchkin' ] ) {
-                    $( '#class2' ).fadeIn( 'slow' ); //player becomes s-m
-                    $( 'label[for="class2"]' ).fadeIn( 'slow' );
-                }
-
-                else { //player has lost s-m
-                    $( '#class2' ).attr( 'value', '' ).hide();
-                    $( 'label[for="class2"]' ).hide();
-                    delete player.classes[1];
-                }
-
-                //either way, updatePlayerStore
-                updatePlayerStore();
-
-            });
 
         //contenteditable polyfill
         if ( !window.Modernizr.contenteditable ) {
