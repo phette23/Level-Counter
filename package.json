@@ -1,0 +1,16 @@
+{
+  "author": "Eric Phetteplace",
+  "name": "Munchkin Counter",
+  "description": "Web app for keeping track of your level & bonuses in Munchkin.",
+  "version": "0.1.2",
+  "homepage": "http://phette.net/munchkin-counter/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/phette23/munchkin-counter.git"
+  },
+  "bugs": {
+    "url" : "http://github.com/phette23/munchkin-counter/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
