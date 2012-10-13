@@ -12,10 +12,11 @@
 
 	<!-- Mobile viewport optimized: h5bp.com/viewport -->
 	<meta name="viewport" content="width=device-width">
-	<!-- Web app capable: http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html -->
+	<!-- Web app capable: developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons#comment-2 -->
+	<link rel="icon" type="image/png" href="img/logo.png">
 	<!-- 320x460 for iPhone 3GS -->
 	<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and not (-webkit-min-device-pixel-ratio: 2)" href="startup-iphone.png">
 	<!-- 640x920 for retina display -->
@@ -29,12 +30,23 @@
 	<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
 	<!-- for IE9 pinned sites
-	http://html5boilerplate.com/docs/head-Tips/#ie9-pinned-sites -->
+	html5boilerplate.com/docs/head-Tips/#ie9-pinned-sites -->
 	<meta name="application-name" content="Munchkin Counter" />
 	<meta name="msapplication-tooltip" content="Keep track of your level & bonuses!" />
 	<meta name="msapplication-navbutton-color" content="#F6F1DF" />
 
-	<link rel="author" href="/humans.txt" />
+	<!-- for Twitter Cards
+	dev.twitter.com/docs/cards -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:creator" content="@phette23">
+	<meta name="twitter:url" content="http://phette.net/munchkin-counter/">
+	<meta name="twitter:title" content="Munchkin Counter">
+	<meta name="twitter:description" content="An open source, web-based Munchkin counter. Keep track of your levels & bonuses, plus open a combat dialog to keep track of monsters & modifiers.">
+	<meta name="twitter:image" content="http://www.worldofmunchkin.com/game/img/cover_lg.jpg">
+	<meta name="twitter:image:width" content="444">
+	<meta name="twitter:image:height" content="657">
+
+	<link rel="author" href="humans.txt" />
 
 	<!-- All JavaScript at the bottom, except this Modernizr build -->
 	<script src="js/libs/modernizr-contenteditable.js"></script>
