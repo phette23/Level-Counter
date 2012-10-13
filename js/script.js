@@ -67,25 +67,25 @@
 
         //click handlers for -/+ buttons
         //this section totally fails DRY...
-        $( '#level' ).find( '.pm-button' ).first().click(
+        $( '#level' ).find( 'button' ).first().click(
             function() {
                 changeValue( 'level', -1 );
             }
         );
 
-        $( '#level' ).find( '.pm-button' ).last().click(
+        $( '#level' ).find( 'button' ).last().click(
             function() {
                 changeValue( 'level' , 1 );
             }
         );
 
-        $( '#bonuses' ).find( '.pm-button' ).first().click(
+        $( '#bonuses' ).find( 'button' ).first().click(
             function() {
                 changeValue( 'bonuses' , -1 );
             }
         );
 
-        $( '#bonuses' ).find( '.pm-button' ).last().click(
+        $( '#bonuses' ).find( 'button' ).last().click(
             function() {
                 changeValue( 'bonuses', 1 );
             }
@@ -104,12 +104,14 @@
 
         var openCombatDialog = function() {
 
-            //fills in combat strengths, sets up in/decrement functions, adds click handler to Done button
+            //fills in combat strengths, sets up in/decrement functions, adds click handler to +, -, & Done buttons
             var setupCombat = function() {
                 $( '#combat-dialog .player .display' ).html( player.level + player.bonuses );
 
-                //TO DO: check to make sure typeof monsterStrength == 'number'?
-                var monsterStrength = prompt( "What is the monster's combat strength?" );
+                var monsterStrength = prompt( "What is the monster's level?" );
+                if ( isNaN( parseInt( monsterStrength, 10 ) ) ) {
+                    monsterStrength = prompt( "Enter an integer for the monster's level, please." );
+                }
                 $( '#combat-dialog .monster .display' ).html( monsterStrength );
 
                 //hide the combat section if Done button is clicked
@@ -120,7 +122,7 @@
                 //setting up +/- buttons again but for monster & player
                 //once again, this fails DRY horribly
                 //also will present difficulties w/ multiple monsters xor players
-                $( '.monster' ).find( '.pm-button' ).first().click(
+                $( '.monster' ).find( 'button' ).first().click(
                     function() {
                         $disp = $( '.monster' ).find( '.display' );
                         $disp.html(
@@ -129,7 +131,7 @@
                     }
                 );
 
-                $( '.monster' ).find( '.pm-button' ).last().click(
+                $( '.monster' ).find( 'button' ).last().click(
                     function() {
                         $disp = $( '.monster' ).find( '.display' );
                         $disp.html(
@@ -138,7 +140,7 @@
                     }
                 );
 
-                $( '.player' ).find( '.pm-button' ).first().click(
+                $( '.player' ).find( 'button' ).first().click(
                     function() {
                         $disp = $( '.player' ).find( '.display' );
                         $disp.html(
@@ -147,7 +149,7 @@
                     }
                 );
 
-                $( '.player' ).find( '.pm-button' ).last().click(
+                $( '.player' ).find( 'button' ).last().click(
                     function() {
                         $disp = $( '.player' ).find( '.display' );
                         $disp.html(

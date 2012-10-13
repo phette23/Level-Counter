@@ -1,21 +1,21 @@
 <div id="combat-dialog">
 
-	<section class="player">
+	<section class="combat player">
 		<h2>Player Strength</h2>
-		<span class="pm-button">-</span>&nbsp;<span class="display" contenteditable title="click to edit">X</span>&nbsp;<span class="pm-button">+</span>
+		<button>-</button>&nbsp;<span class="display" contenteditable title="click to edit">X</span>&nbsp;<button>+</button>
 	</section>
 
-	<section class="monster">
+	<section class="combat monster">
 		<h2>Monster Strength</h2>
-		<span class="pm-button">-</span>&nbsp;<span class="display" contenteditable title="click to edit">X</span>&nbsp;<span class="pm-button">+</span>
+		<button>-</button>&nbsp;<span class="display" contenteditable title="click to edit">X</span>&nbsp;<button>+</button>
 	</section>
 
-	<div>
+	<div class="combat controls">
 		<!-- TO DO: make buttons for adding helping player & wandering monster(s)
-		<button class="pm-button" id="add-player">Add Player</button>
-		<button class="pm-button" id="add-monster">Add Monster</button>
+		<button id="add-player">Add Player</button>
+		<button id="add-monster">Add Monster</button>
 		-->
-		<button class="pm-button" id="combat-done">Done</button>
+		<button id="combat-done">Done</button>
 	</div>
 
 	<style scoped>
@@ -33,13 +33,15 @@
 	  		 	-webkit-box-shadow: 6px 6px 15px #4a464a;
 	        box-shadow: 6px 6px 15px #4a464a;
 		}
-		#combat-dialog button {
-			margin-top: 18px;
+
+		.combat.controls {
+			margin-top: .8em;
 		}
 
 		/* override pm-button fixed width */
 		#add-player, #add-monster, #combat-done {
 			width: auto;
+			padding: .3em;
 		}
 	</style>
 
