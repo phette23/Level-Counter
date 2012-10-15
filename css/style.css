@@ -279,7 +279,8 @@ button:active {
   font-family: "Old English Text MT", "Times New Roman", Times;
     -moz-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
+    /* weird Opera bug: 180deg transform moves character from its usual place & keeps it in 0deg rotation, any quantity other than a multiple of 180 doesn't do this so put in a value arbitrarily close */
+    -o-transform: rotate(179.9999999deg);
     -ms-transform: rotate(180deg);
     /* thank YOU Microsoft for having a totally succinct & rationale syntax
     oh yeah & 2 = 180º here. But you already knew that because it's so obvious, right? */
