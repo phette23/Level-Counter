@@ -1,8 +1,8 @@
 //ensure use of the $ in jQuery
 //just in case some script in the User Agent, e.g. browser extension, is doing something stupid
 //run code on document load using jQuery's shorthand for that
-(function($) {
-    $( function() {
+(function ($) {
+    $( function () {
         //Consider keeping player's name in a variable
         //then using Remy Sharp's "save contentEditable" script: http://jsbin.com/owavu3
 
@@ -13,19 +13,19 @@
         };
 
         //when something in player changes, store it in localStorage
-        var updatePlayerStore = function() {
+        var updatePlayerStore = function () {
             var strPlayer = JSON.stringify( player );
             localStorage.setItem( "p" , strPlayer );
         };
 
         //each time combat strength changes, update the DOM
-        var refreshStrength = function() {
+        var refreshStrength = function () {
             $( '#strength' ).find( '.display' ).html( player.level + player.bonuses );
             updatePlayerStore();
         };
 
         //when level or bonus changes, update player object & call refreshStrength
-        var changeValue = function( valueType, quantity ) {
+        var changeValue = function ( valueType, quantity ) {
             if ( !player.hasOwnProperty( valueType ) ) {
                 console.log( "Error: not a valid value. Use either level or bonuses." );
                 return false;
@@ -47,7 +47,7 @@
         //cache the localStorage lookup
         var prevPlayer = localStorage.getItem( "p" );
 
-        var restorePlayer = function() {
+        var restorePlayer = function () {
             player = prevPlayer;
             //wow these next two lines feel silly...either rename function or find out why it's ridiculous
             //maybe refactor refreshStrength to take 2 parameters (level, bonus) & then handle all .html() updates
@@ -68,25 +68,25 @@
         //click handlers for -/+ buttons
         //this section totally fails DRY...
         $( '#level' ).find( 'button' ).first().click(
-            function() {
+            function () {
                 changeValue( 'level', -1 );
             }
         );
 
         $( '#level' ).find( 'button' ).last().click(
-            function() {
+            function () {
                 changeValue( 'level' , 1 );
             }
         );
 
         $( '#bonuses' ).find( 'button' ).first().click(
-            function() {
+            function () {
                 changeValue( 'bonuses' , -1 );
             }
         );
 
         $( '#bonuses' ).find( 'button' ).last().click(
-            function() {
+            function () {
                 changeValue( 'bonuses', 1 );
             }
         );
@@ -94,7 +94,7 @@
         //contenteditable polyfill
         if ( !window.Modernizr.contenteditable ) {
             $( 'h1[contenteditable]' ).click(
-                function(e){
+                function (e){
                     var newName = prompt( "What's your name?" );
                     $( 'h1[contenteditable]' ).html( newName) ;
                     });
@@ -102,10 +102,10 @@
 
         //combat section
 
-        var openCombatDialog = function() {
+        var openCombatDialog = function () {
 
             //fills in combat strengths, sets up in/decrement functions, adds click handler to +, -, & Done buttons
-            var setupCombat = function() {
+            var setupCombat = function () {
                 $( '#combat-dialog .player .display' ).html( player.level + player.bonuses );
 
                 var monsterStrength = prompt( "What is the monster's level?" );
@@ -115,7 +115,7 @@
                 $( '#combat-dialog .monster .display' ).html( monsterStrength );
 
                 //hide the combat section if Done button is clicked
-                $( "#combat-done" ).click( function() {
+                $( "#combat-done" ).click( function () {
                     $( '#combat-dialog' ).hide( 'slow' );
                 });
 
@@ -123,7 +123,7 @@
                 //once again, this fails DRY horribly
                 //also will present difficulties w/ multiple monsters xor players
                 $( '.monster' ).find( 'button' ).first().click(
-                    function() {
+                    function () {
                         $disp = $( '.monster' ).find( '.display' );
                         $disp.html(
                             parseInt( $disp.text(), 10) - 1
@@ -132,7 +132,7 @@
                 );
 
                 $( '.monster' ).find( 'button' ).last().click(
-                    function() {
+                    function () {
                         $disp = $( '.monster' ).find( '.display' );
                         $disp.html(
                             parseInt( $disp.text(), 10) + 1
@@ -141,7 +141,7 @@
                 );
 
                 $( '.player' ).find( 'button' ).first().click(
-                    function() {
+                    function () {
                         $disp = $( '.player' ).find( '.display' );
                         $disp.html(
                             parseInt( $disp.text(), 10) - 1
@@ -150,7 +150,7 @@
                 );
 
                 $( '.player' ).find( 'button' ).last().click(
-                    function() {
+                    function () {
                         $disp = $( '.player' ).find( '.display' );
                         $disp.html(
                             parseInt( $disp.text(), 10) + 1
@@ -161,7 +161,7 @@
 
             //if combat.html isn't already loaded in the DOM, get it via AJAX
             if ( $( '#combat-dialog' ).length === 0) {
-                $.get( 'combat.html' , function(r) {
+                $.get( 'combat.html' , function (r) {
                     $( r ).appendTo( '#main' );
                     setupCombat();
                 });
