@@ -38,8 +38,6 @@ html { font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
 
-html, button, input, select, textarea { font-family: sans-serif; color: #222; }
-
 body { margin: 0;
   font-size: 1em;
   line-height: 1.4;
@@ -225,7 +223,7 @@ header h2 {
   cursor: pointer;
 }
 
-h2[contenteditable] {
+h2.pname {
   cursor: text;
 }
 
@@ -293,23 +291,22 @@ stealing this from Remy Sharp
 http://jsbin.com/owavu3
 put h2 in front to avoid implicit universal selector */
 
-h2[contenteditable]:hover:after {
+.pname:hover:after {
   content: ' click to edit';
   font-style: italic;
   font-size: 50%;
-  font-family: sans-serif;
   .text-stroke(0);
 }
 
-h2[contenteditable]:hover, [contenteditable]:focus {
+.pname:hover, .pname:focus {
   background: #E8FA43;
 }
 
-h2[contenteditable]:focus {
+.pname:focus {
   padding: 5px;
 }
 
-h2[contenteditable]:focus:after {
+.pname:focus:after {
   content: '';
 }
 
