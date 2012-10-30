@@ -1,180 +1,205 @@
-//ensure use of the $ in jQuery
-//just in case some script in the User Agent, e.g. browser extension, is doing something stupid
-//run code on document load using jQuery's shorthand for that
+// ensure $ = jQuery
+// run on document load using jQuery's shorthand
 (function ($) {
     $( function () {
-        //Consider keeping player's name in a variable
-        //then using Remy Sharp's "save contentEditable" script: http://jsbin.com/owavu3
-
-        //Initial player stats
+        // Initial player stats
         var player = {
             level : 1,
-            bonuses : 0
-        };
+            bonuses : 0,
+            name : "Player"
+        },
 
-        //when something in player changes, store it in localStorage
-        var updatePlayerStore = function () {
-            var strPlayer = JSON.stringify( player );
-            localStorage.setItem( "p" , strPlayer );
-        };
+        // shorthand for parseInt
+        pI = function ( string ) {
+            return parseInt( string, 10 );
+        },
 
-        //each time combat strength changes, update the DOM
-        var refreshStrength = function () {
+        // with any change, update DOM, player object, & storage
+        updatePlayer = function () {
+            // update displays & name
+            player.level = pI( $( '#level .display' ).text() );
+            player.bonuses = pI( $( '#bonuses .display' ).text() );
+            player.name = $( 'h2.pname' ).text();
             $( '#strength' ).find( '.display' ).html( player.level + player.bonuses );
-            updatePlayerStore();
-        };
+            // update storage
+            localStorage.p = JSON.stringify( player );
+        },
 
-        //when level or bonus changes, update player object & call refreshStrength
-        var changeValue = function ( valueType, quantity ) {
-            if ( !player.hasOwnProperty( valueType ) ) {
-                console.log( "Error: not a valid value. Use either level or bonuses." );
-                return false;
+        // given a jQuery Object, makes first child button increment & last button decrement
+        // the .display element inside the selector
+        // calls refreshPlayer to update strength display & player object
+        plusMinusBtns = function ( $obj ) {
+            // cache DOM lookups
+            var $target = $obj, $disp = $target.find( '.display' );
+            // minus button
+            $target.find( 'button' ).first().click(
+                function () {
+                    $disp.text(
+                        pI( $disp.text() ) - 1
+                    );
+                    updatePlayer();
+                }
+            );
+            // plus button
+            $target.find( 'button' ).last().click(
+                function () {
+                    $disp.text(
+                        pI( $disp.text() ) + 1
+                    );
+                    updatePlayer();
+                }
+            );
+        },
+
+        restorePlayer = function () {
+            player = JSON.parse( localStorage.p );
+            $( '#level .display' ).text( player.level );
+            $( '#bonuses .display' ).text( player.bonuses );
+            refreshStrength();
+        },
+
+        // if there's player information, offer to load it
+        // if ( localStorage.p !== null ) {
+        //     place "restore" & "delete" elements somewhere
+        //     restore.click => restorePlayer()
+        //     delete element.click => localStorage.removeItem( "p" )
+        //     localStorage.getItem( "p" ) will be overwritten if actions happen
+        //     but prevPlayer will still hold the previous player so restorePlayer is still valid
+        // }
+
+        // combat section
+        openCombatDialog = function () {
+            // these vars are shared by the 2 sub-functions below
+            var monsterPrompt = "What is the monster's level?",
+                needInt = "Please enter an integer.",
+
+            // handles 1st time setup: handlers on +monster, +player, done
+                initialSetup = function () {
+                    var $combPlayer = $( '#combat-dialog .player' ),
+                        $combMonster = $( '#combat-dialog .monster' );
+
+                    // set up +/- buttons for monster & player
+                    plusMinusBtns( $combMonster );
+                    plusMinusBtns( $combPlayer );
+
+                    // set up add monster/player buttons
+                    $( '#add-monster' ).click(
+                        function () {
+                            $combMonster = $( '#combat-dialog .monster' );
+                            monsterStrength = prompt( monsterPrompt );
+                            while ( isNaN( pI( monsterStrength ) ) ) {
+                                monsterStrength = prompt( needInt );
+                            }
+                            var monsterIndex = $combMonster.length,
+                                // copy & insert 1st monster HTML but not +/- handlers
+                                monsterDOM = $combMonster.first().clone( false );
+                            // fill in new Monster level & apply new +/- handlers
+                            $combMonster.eq( monsterIndex - 1 ).after( monsterDOM );
+                            var $newMonster = $( '#combat-dialog .monster' ).eq( monsterIndex );
+                            $newMonster.find( '.display' ).html(
+                                pI( monsterStrength )
+                            );
+                            plusMinusBtns( $newMonster );
+                        }
+                    );
+
+                    $( '#add-player' ).click(
+                        function () {
+                            var helperStrength = prompt( "What is the player's combat strength?" );
+                            while ( isNaN( pI( helperStrength ) ) ) {
+                                helperStrength = prompt( needInt );
+                            }
+                            // copy & insert first player HTML but not +/- handlers
+                            var playerDOM = $combPlayer.first().clone( false );
+                            // fill in helper strength & apply new +/- handlers
+                            $combPlayer.after( playerDOM );
+                            var $newPlayer = $( '.player' ).eq( 1 );
+                            $newPlayer.find( '.display' ).html(
+                                pI( helperStrength )
+                            );
+                            $newPlayer.find( 'h2' ).text( "Helper" );
+                            plusMinusBtns( $newPlayer );
+                            // can't have more than 2 helpers so hide +player
+                            $( '#add-player' ).hide();
+                        }
+                    );
+
+                    // shut down if Done is hit
+                    $( "#combat-done" ).click(
+                        function () {
+                            // hide dialog
+                            $( '#combat-dialog' ).hide( 'slow',
+                                // when it's hidden, reset everything to standard
+                                function() {
+                                    var numMonsters = $( '.monster' ).length;
+                                    // remove helper, show +player again
+                                    $( '#combat-dialog .player' ).eq( 1 ).remove();
+                                    $( '#add-player' ).show();
+                                    // remove extra monsters
+                                    for ( var i = 1; i < numMonsters ; i++ ) {
+                                        $( '.monster' ).eq( i - 1 ).remove();
+                                    }
+                                }
+                            );
+                            // scroll to top, combat dialog has chance to be longer than page
+                            window.scrollTo( window.scrollX, 0 );
+                        }
+                    );
+
+                    // after we're set up, still need to runCombat
+                    runCombat();
+                },
+
+                // fills in combat strengths, runs after initialCombat()
+                runCombat = function () {
+                    var monsterStrength = prompt( monsterPrompt ),
+                        $combPlayer = $( '#combat-dialog .player' ),
+                        $combMonster = $( '#combat-dialog .monster' );
+
+                    while ( isNaN( pI( monsterStrength ) ) ) {
+                        monsterStrength = prompt( needInt );
+                    }
+                    $combMonster.find( '.display' ).html( monsterStrength );
+
+                    // fill in player's attributes
+                    $combPlayer.find( '.display' ).html( player.level + player.bonuses );
+                    $combPlayer.find( 'h2' ).text( player.name );
+
+                    // at the end of runCombat, reveal the dialog
+                    $( '#combat-dialog' ).show( 'slow' );
+                };
+
+            // combat dialog isn't in the DOM, load it via AJAX then do initialSetup()
+            if ( $( '#combat-dialog' ).length === 0 ) {
+                $.get( 'combat.html' , function ( response ) {
+                    $( response ).appendTo( '#main' );
+                    initialSetup();
+                    }
+                );
             }
-            if ( typeof quantity === "number" ) {
-                //Question: is it worth testing to see if a decrement would drop
-                //player.level below 1? Are there cards that allow this?
-                player[valueType] += quantity;
-                $( '#' + valueType ).find( '.display' ).html(player[valueType]);
-            }
+
+            // we grabbed combat.html earlier, runCombat()
             else {
-                console.log( "Error: not a valid quantity. Try using a number, genius." );
-                return false;
+                runCombat();
             }
-            refreshStrength();
-            //no need to call updatePlayerStore b/c refreshStrength does
         };
 
-        //cache the localStorage lookup
-        var prevPlayer = localStorage.getItem( "p" );
+        // handlers for player -/+ buttons
+        plusMinusBtns( $( '#level' ) );
+        plusMinusBtns( $( '#bonuses' ) );
 
-        var restorePlayer = function () {
-            player = prevPlayer;
-            //wow these next two lines feel silly...either rename function or find out why it's ridiculous
-            //maybe refactor refreshStrength to take 2 parameters (level, bonus) & then handle all .html() updates
-            changeValue( 'strength', 0);
-            changeValue( 'level', 0);
-            refreshStrength();
-        };
-
-        //if there's player information, offer to load it
-        if ( prevPlayer !== null ) {
-            //place "restore" & "delete" elements somewhere
-            //restore.click => restorePlayer()
-            //delete element.click => localStorage.removeItem( "p" )
-            //localStorage.getItem( "p" ) will be overwritten if actions happen
-            //but prevPlayer will still hold the previous player so restorePlayer is still valid
-        }
-
-        //click handlers for -/+ buttons
-        //this section totally fails DRY...
-        $( '#level' ).find( 'button' ).first().click(
-            function () {
-                changeValue( 'level', -1 );
-            }
-        );
-
-        $( '#level' ).find( 'button' ).last().click(
-            function () {
-                changeValue( 'level' , 1 );
-            }
-        );
-
-        $( '#bonuses' ).find( 'button' ).first().click(
-            function () {
-                changeValue( 'bonuses' , -1 );
-            }
-        );
-
-        $( '#bonuses' ).find( 'button' ).last().click(
-            function () {
-                changeValue( 'bonuses', 1 );
-            }
-        );
-
-        //contenteditable polyfill
+        // contenteditable polyfill
         if ( !window.Modernizr.contenteditable ) {
             $( 'h1[contenteditable]' ).click(
-                function (e){
-                    var newName = prompt( "What's your name?" );
-                    $( 'h1[contenteditable]' ).html( newName) ;
-                    });
-        }
-
-        //combat section
-
-        var openCombatDialog = function () {
-
-            //fills in combat strengths, sets up in/decrement functions, adds click handler to +, -, & Done buttons
-            var setupCombat = function () {
-                $( '#combat-dialog .player .display' ).html( player.level + player.bonuses );
-
-                var monsterStrength = prompt( "What is the monster's level?" );
-                if ( isNaN( parseInt( monsterStrength, 10 ) ) ) {
-                    monsterStrength = prompt( "Enter an integer for the monster's level, please." );
+                function (){
+                    player.name = prompt( "What's your name?" );
+                    $( 'h1[contenteditable]' ).html( player.name );
                 }
-                $( '#combat-dialog .monster .display' ).html( monsterStrength );
-
-                //hide the combat section if Done button is clicked
-                $( "#combat-done" ).click( function () {
-                    $( '#combat-dialog' ).hide( 'slow' );
-                });
-
-                //setting up +/- buttons again but for monster & player
-                //once again, this fails DRY horribly
-                //also will present difficulties w/ multiple monsters xor players
-                $( '.monster' ).find( 'button' ).first().click(
-                    function () {
-                        $disp = $( '.monster' ).find( '.display' );
-                        $disp.html(
-                            parseInt( $disp.text(), 10) - 1
-                        );
-                    }
-                );
-
-                $( '.monster' ).find( 'button' ).last().click(
-                    function () {
-                        $disp = $( '.monster' ).find( '.display' );
-                        $disp.html(
-                            parseInt( $disp.text(), 10) + 1
-                        );
-                    }
-                );
-
-                $( '.player' ).find( 'button' ).first().click(
-                    function () {
-                        $disp = $( '.player' ).find( '.display' );
-                        $disp.html(
-                            parseInt( $disp.text(), 10) - 1
-                        );
-                    }
-                );
-
-                $( '.player' ).find( 'button' ).last().click(
-                    function () {
-                        $disp = $( '.player' ).find( '.display' );
-                        $disp.html(
-                            parseInt( $disp.text(), 10) + 1
-                        );
-                    }
-                );
-            };
-
-            //if combat.html isn't already loaded in the DOM, get it via AJAX
-            if ( $( '#combat-dialog' ).length === 0) {
-                $.get( 'combat.html' , function (r) {
-                    $( r ).appendTo( '#main' );
-                    setupCombat();
-                });
-            }
-
-            //if we already grabbed combat.html earlier, let's just setupCombat
-            else {
-                $( '#combat-dialog' ).show( 'slow', setupCombat );
-            }
-        };
+            );
+        }
 
         $( '#dagger' ).click( openCombatDialog );
 
-    }); //run on document load
+    }); // run on document load
 
-} (jQuery));
+} ( jQuery ));
