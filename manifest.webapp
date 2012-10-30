@@ -1,0 +1,16 @@
+{
+  "name": "Munchkin Counter",
+  "description": "Keep track of your level & bonuses in Munchkin.",
+  "launch_path": "/",
+  "icons": {
+    "128": "/img/moz-app-logo.png"
+  },
+  "type": "web",
+  "developer": {
+    "name": "Eric Phetteplace",
+    "url": "http://phette.net"
+  },
+  "default_locale": "en",
+  "installs_allowed_from": ["*"],
+  "fullscreen": "true"
+}
