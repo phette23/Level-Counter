@@ -22,7 +22,6 @@ Unfortunately, the r.js component of Yeoman's build tool requires a certain dire
 
 In rough order of priority.
 
-- Combat page: "add monster" & "add player" buttons
 - Make into [Mozilla](https://developer.mozilla.org/en-US/docs/Apps/Manifest) & [Chrome](https://developers.google.com/chrome/apps/docs/developers_guide) web app (?)
 - Offer to restore previous game if there's content in storage
 - Record game progress, offer to chart later (?)
