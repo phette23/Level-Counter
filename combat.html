@@ -3,21 +3,22 @@
 	<div class="player-col clearfix">
 		<section class="combat player">
 			<h2>Player</h2>
-			<button>-</button>&nbsp;<span class="display" title="Player's combat strength">X</span>&nbsp;<button>+</button>
+			<button title="decrease player's strength">-</button>&nbsp;<span class="display" title="Player's combat strength">X</span>&nbsp;<button title="increase player's strength">+</button>
 		</section>
 	</div>
 
 	<div class="monster-col clearfix">
 		<section class="combat monster">
 			<h2>Monster</h2>
-			<button>-</button>&nbsp;<span class="display" title="Monster's level">X</span>&nbsp;<button>+</button>
+			<button title="decrease monster's level">-</button>&nbsp;<span class="display" title="Monster's level">X</span>&nbsp;<button title="increase monster's level">+</button>
 		</section>
 	</div>
 
 	<div class="combat controls clearfix">
-		<button id="add-monster">+Monster</button><button id="add-player">+Player</button>
+		<button id="add-monster" title="add a wandering monster">+Monster</button>
+		<button id="add-player" title="add a helping player">+Player</button>
 		<br>
-		<button id="combat-done">Done</button>
+		<button id="combat-done" title="finish combat">Done</button>
 	</div>
 
 	<style scoped>
