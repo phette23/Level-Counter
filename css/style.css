@@ -45,6 +45,8 @@ body { margin: 0;
    Links
    ========================================================================== */
 
+/* TODO: these defaults affect links in header, footer
+should relink coloring rather than stick with poor defaults */
 a { color: #00e; }
 a:visited { color: #551a8b; }
 a:hover { color: #06e; }
@@ -125,7 +127,7 @@ button::-moz-focus-inner { border: 0; padding: 0; }
 
 body {
   margin: 2%;
-  background-color: #F6F1DF;
+  background: #F6F1DF;
   text-align: center; color: #2C1200; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.4em;
 }
@@ -138,16 +140,50 @@ body {
 /* "Munchkin Counter" */
 header h1 {
   font-size: 55%;
-  margin: 0;
 }
 
 /* Player Name */
 header h2 {
   font-size: 100%;
+  margin: 0 1.5em;
+}
+
+/* menu button */
+nav {
+  /* upper right corner */
+  position: absolute; top: .4em; right: .4em;
+  padding: 0 .25em;
+  background: #2C1200; color: #F6F1DF;
+  border: 1px solid #8A6119;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+  border-radius: 4px;
+    -moz-box-shadow:inset 0px 1px 0px 0px #8B7553;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #8B7553;
+  box-shadow:inset 0px 1px 0px 0px #8B7553;
+  vertical-align: middle;
+}
+
+nav a {
+  color: #F6F1DF;
+}
+
+/* button press action */
+nav:active {
+  top: .45em; right: .35em;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #F6F1DF;
+}
+
+.extra-text {
+  display: none;
 }
 
 /* all clickable elements should have pointer */
-.pm-button {
+.pm-button, nav {
   cursor: pointer;
 }
 
@@ -195,7 +231,7 @@ button:hover, button:focus {
 }
 
 button:active {
-  position:relative; top:1px;
+  position:relative; top:2px; left:2px;
 }
 
 #dagger {
@@ -276,6 +312,18 @@ footer a {
     display: block;
   }
 
+  .extra-text {
+    display: inherit;
+  }
+
+  nav {
+    top: .6em; right: .6em;
+  }
+
+  nav:active {
+    top: .65em; right: .55em;
+  }
+
 }
 
 @media only screen and (min-width: 54em) {
@@ -287,6 +335,14 @@ footer a {
 
   #level {
     margin-right: 2em;
+  }
+
+  nav {
+    top: 1em; right: 1em;
+  }
+
+  nav:active {
+    top: 1.05em; right: .95em;
   }
 
 }
