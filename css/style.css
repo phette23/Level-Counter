@@ -158,9 +158,9 @@ nav {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
   border-radius: 4px;
-    -moz-box-shadow:inset 0px 1px 0px 0px #8B7553;
-    -webkit-box-shadow:inset 0px 1px 0px 0px #8B7553;
-  box-shadow:inset 0px 1px 0px 0px #8B7553;
+    -moz-box-shadow: inset 0px 1px 0px 0px #8B7553;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #8B7553;
+  box-shadow: inset 0px 1px 0px 0px #8B7553;
   vertical-align: middle;
 }
 
@@ -209,29 +209,29 @@ footer {
 
 button {
   width: 1.5em;
-    -moz-box-shadow:inset 0px 1px 0px 0px #fcf8f2;
-    -webkit-box-shadow:inset 0px 1px 0px 0px #fcf8f2;
-  box-shadow:inset 0px 1px 0px 0px #fcf8f2;
-  background-color:#edb556;
-    -moz-border-radius:8px;
-    -webkit-border-radius:8px;
-  border-radius:8px;
-  border:1px solid #eeb44f;
-  display:inline-block;
-  color:#fff; font-weight:bold;
+    -moz-box-shadow: inset 0px 1px 0px 0px #fcf8f2;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #fcf8f2;
+  box-shadow: inset 0px 1px 0px 0px #fcf8f2;
+  background-color: #edb556;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border: 1px solid #eeb44f;
+  display: inline-block;
+  color: #fff; font-weight: bold;
   vertical-align: middle;
 }
 
 button:hover, button:focus {
-  background-color:#9e6100;
-    -moz-box-shadow:inset 0px 1px 0px 0px #ae8600;
-    -webkit-box-shadow:inset 0px 1px 0px 0px #ae8600;
-  box-shadow:inset 0px 1px 0px 0px #ae8600;
+  background-color: #9e6100;
+    -moz-box-shadow: inset 0px 1px 0px 0px #ae8600;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ae8600;
+  box-shadow: inset 0px 1px 0px 0px #ae8600;
   border-color: #ae8600;
 }
 
 button:active {
-  position:relative; top:2px; left:2px;
+  position: relative; top: 2px; left: 2px;
 }
 
 #dagger {
