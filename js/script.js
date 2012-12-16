@@ -23,6 +23,10 @@
             $( '#strength' ).find( '.display' ).html( player.level + player.bonuses );
             // update storage
             localStorage.p = JSON.stringify( player );
+            // if "clear" link was hit & restore link hidden
+            if ( $( '#restore:hidden' )[0] ) {
+                $( '#restore' ).show();
+            }
         },
 
         // given a jQuery Object, makes first child button increment & last button decrement
@@ -50,22 +54,6 @@
                 }
             );
         },
-
-        restorePlayer = function () {
-            player = JSON.parse( localStorage.p );
-            $( '#level .display' ).text( player.level );
-            $( '#bonuses .display' ).text( player.bonuses );
-            refreshStrength();
-        },
-
-        // if there's player information, offer to load it
-        // if ( localStorage.p !== null ) {
-        //     place "restore" & "delete" elements somewhere
-        //     restore.click => restorePlayer()
-        //     delete element.click => localStorage.removeItem( "p" )
-        //     localStorage.getItem( "p" ) will be overwritten if actions happen
-        //     but prevPlayer will still hold the previous player so restorePlayer is still valid
-        // }
 
         // combat section
         openCombatDialog = function () {
@@ -157,6 +145,10 @@
                         $combMonster = $( '#combat-dialog .monster' );
 
                     while ( isNaN( pI( monsterStrength ) ) ) {
+                        if ( !monsterStrength ) {
+                            // user hit cancel, or entered nothing
+                            return;
+                        }
                         monsterStrength = prompt( needInt );
                     }
                     $combMonster.find( '.display' ).html( monsterStrength );
@@ -182,11 +174,61 @@
             else {
                 runCombat();
             }
+        },
+
+        // open nav menu
+        toggleMenu = function () {
+            $( 'nav .start-hid' ).toggle( 'slow' );
         };
+
+        // if there's player information, offer to load it
+        // if ( localStorage.p !== null ) {
+        //     place "restore" & "delete" elements somewhere
+        //     restore.click => restorePlayer()
+        //     delete element.click => localStorage.removeItem( "p" )
+        //     localStorage.getItem( "p" ) will be overwritten if actions happen
+        //     but prevPlayer will still hold the previous player so restorePlayer is still valid
+        // }
+
+        // expose restore/clear functionality only if localStorage is available
+        if ( localStorage ) {
+            // set player object to data in localStorage
+            restorePlayer = function () {
+                if ( localStorage.p === null ) {
+                    alert( 'No data to restore!' );
+                    toggleMenu();
+                    $( '#restore' ).hide();
+                }
+                player = JSON.parse( localStorage.p );
+                $( '#level .display' ).text( player.level );
+                $( '#bonuses .display' ).text( player.bonuses );
+                $( '#strength' ).find( '.display' ).html( player.level + player.bonuses );
+                $( 'h2.pname' ).text( player.name );
+                toggleMenu();
+            },
+
+            // delete player data from localStorage
+            clearData = function () {
+                localStorage.removeItem( 'p' );
+                toggleMenu();
+                $( '#restore' ).hide();
+            };
+
+            if ( localStorage.p === null ) {
+                localStorage.p = JSON.stringify( player );
+            }
+
+            $( '#restore' ).removeClass( 'start-hid' );
+            $( '#clear' ).removeClass( 'start-hid' );
+            $( '#restore' ).click( restorePlayer );
+            $( '#clear' ).click( clearData );
+        }
 
         // handlers for player -/+ buttons
         plusMinusBtns( $( '#level' ) );
         plusMinusBtns( $( '#bonuses' ) );
+        // open/close the menu
+        $( 'nav a:first, #close-menu' ).click( toggleMenu );
 
         // contenteditable polyfill
         if ( !window.Modernizr.contenteditable ) {
