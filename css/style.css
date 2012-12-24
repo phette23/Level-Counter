@@ -152,7 +152,6 @@ button::-moz-focus-inner {
   padding: 0.2em 0; }
 
 /* ==|== primary styles ===================================================== */
-/* media query layout adjustments */
 /* implicit media query: mobile default */
 body {
   margin: 2%;
@@ -288,7 +287,7 @@ button:active {
 #dagger {
   /* important to have a serif font for the dagger
   sans-serif will look like a cross
-  see: http://en.wikipedia.org/wiki/File:Daggers.svg */
+  en.wikipedia.org/wiki/File:Daggers.svg */
   font-family: "Old English Text MT", "Times New Roman", Times;
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
