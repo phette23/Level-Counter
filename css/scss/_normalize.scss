@@ -1,0 +1,114 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ *
+ * Detailed information about this CSS: h5bp.com/css
+ *
+ * ==|== normalize ==========================================================
+ */
+
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+article, aside, footer, header, hgroup, nav, section { display: block; }
+[hidden] { display: none; }
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+/*
+ * 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
+ * 2. Prevent iOS text size adjust on device orientation change, without disabling user zoom: h5bp.com/g
+ */
+
+/* http://paulirish.com/2012/box-sizing-border-box-ftw/ */
+* { -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html { font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+body { margin: 0;
+  font-size: 1em;
+  line-height: 1.4;
+  }
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+/* TODO: these defaults affect links in header, footer
+should relink coloring rather than stick with poor defaults */
+a { color: #00e; }
+a:visited { color: #551a8b; }
+a:hover { color: #06e; }
+a:focus { outline: thin dotted; }
+
+/* Improve readability when focused and hovered in all browsers: h5bp.com/h */
+a:hover, a:active { outline: 0; }
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+b, strong { font-weight: bold; }
+
+small { font-size: 85%; }
+
+/* Position subscript and superscript content without affecting line-height: h5bp.com/k */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+/*
+ * 1. Improve image quality when scaled in IE7: h5bp.com/d
+ * 2. Remove the gap between images and borders on image containers: h5bp.com/i/440
+ */
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+button { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+
+/*
+ * 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
+ */
+
+button { line-height: normal; }
+
+/*
+ * 1. Display hand cursor for clickable form elements
+ * 2. Allow styling of clickable form elements in iOS
+ * 3. Correct inner spacing displayed oddly in IE7 (doesn't effect IE6)
+ */
+
+button { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+
+/*
+ * Re-set default cursor for disabled elements
+ */
+
+button[disabled] { cursor: default; }
+
+/*
+ * Remove inner padding and border in FF3/4: h5bp.com/l
+ */
+
+button::-moz-focus-inner { border: 0; padding: 0; }

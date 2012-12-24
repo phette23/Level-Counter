@@ -1,0 +1,330 @@
+@import '_vars.scss';
+@import '_normalize.scss';
+
+/* =============================================================================
+   Chrome Frame Prompt
+   ========================================================================== */
+
+.chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
+
+/* ==|== primary styles ===================================================== */
+
+/* media query layout adjustments */
+
+/* implicit media query: mobile default */
+
+body {
+  margin: 2%;
+  background: $light-brown;
+  text-align: center; color: $dark-brown; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.4em;
+}
+
+/* center level, bonuses, strength sections */
+#main {
+  margin: 0 auto;
+}
+
+/* "Munchkin Counter" */
+header h1 {
+  font-size: 55%;
+}
+
+/* Player Name */
+header h2 {
+  font-size: 100%;
+  margin: 0 1.5em;
+}
+
+/* menu styles */
+nav {
+  /* upper right corner */
+  position: absolute; top: .4em; right: .4em;
+  padding: 0 .25em;
+  background: $dark-brown; color: $light-brown;
+  border: 1px solid #8A6119;
+    -webkit-border-radius: 4px;
+  border-radius: 4px;
+    -moz-box-shadow: inset 0px 1px 0px 0px #8B7553;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #8B7553;
+  box-shadow: inset 0px 1px 0px 0px #8B7553;
+}
+
+.menu-title {
+  text-align: right; color: $light-brown;
+  display: inline-block;
+  width: 100%;
+}
+
+/* don't match background color on hover/focus */
+a.menu-title:hover,
+a.menu-title:focus {
+  color: $light-brown;
+}
+
+.menu-items a {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  font-size: 80%;
+  padding: 0 .2em;
+  border: solid #8B7553;
+    -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: $light-brown;
+  color: $dark-brown;
+}
+
+nav a {
+  color: $dark-brown;
+  text-decoration: none;
+}
+
+/* button press action */
+nav:active {
+  top: .45em; right: .35em;
+}
+
+nav a:hover,
+nav a:focus {
+  color: $dark-brown;
+}
+
+nav a:visited {
+  color: $dark-brown;
+}
+
+.menu-items a:last-child {
+  margin-bottom: .5em;
+}
+
+.extra-text {
+  display: none;
+}
+
+/* all clickable elements should have pointer */
+.pm-button, nav {
+  cursor: pointer;
+}
+
+h2.pname {
+  cursor: text;
+}
+
+section {
+  font-size: 130%;
+}
+
+section h2 {
+  margin: .38em;
+  font-size: 100%;
+}
+
+footer {
+  margin: .8em;
+  font-size: 55%;
+}
+
+/* buttons */
+
+button {
+  width: 1.5em;
+    -moz-box-shadow: inset 0px 1px 0px 0px #fcf8f2;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #fcf8f2;
+  box-shadow: inset 0px 1px 0px 0px #fcf8f2;
+  background-color: #edb556;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border: 1px solid #eeb44f;
+  display: inline-block;
+  color: #fff; font-weight: bold;
+  vertical-align: middle;
+}
+
+button:hover, button:focus {
+  background-color: #9e6100;
+    -moz-box-shadow: inset 0px 1px 0px 0px #ae8600;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ae8600;
+  box-shadow: inset 0px 1px 0px 0px #ae8600;
+  border-color: #ae8600;
+}
+
+button:active {
+  position: relative; top: 2px; left: 2px;
+}
+
+.start-hid {
+  display: none;
+}
+
+#dagger {
+  /* important to have a serif font for the dagger
+  sans-serif will look like a cross
+  see: http://en.wikipedia.org/wiki/File:Daggers.svg */
+  font-family: "Old English Text MT", "Times New Roman", Times;
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    /* weird Opera bug: 180deg transform moves character from its usual place & keeps it in 0deg rotation, any quantity other than a multiple of 180 doesn't do this so put in a value arbitrarily close */
+    -o-transform: rotate(179.999deg);
+    -ms-transform: rotate(180deg);
+    /* thank YOU Microsoft for having a totally succinct & rationale syntax
+    oh yeah & 2 = 180º here. But you already knew that because it's so obvious, right? */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  transform: rotate(180deg);
+}
+
+/* contenteditable
+stealing this from Remy Sharp
+http://jsbin.com/owavu3
+put h2 in front to avoid implicit universal selector */
+
+.pname:hover:after {
+  content: ' click to edit';
+  font-style: italic;
+  font-size: 50%;
+    -webkit-text-stroke: 0;
+  text-stroke: 0;
+}
+
+.pname:hover, .pname:focus {
+  background: #E8FA43;
+}
+
+.pname:focus {
+  padding: 5px;
+}
+
+.pname:focus:after {
+  content: '';
+}
+
+/* both links in the footer are "help" links
+revisit this rule if that changes later */
+footer a {
+  cursor: help;
+}
+
+/* ==|== media queries ======================================================
+   Overrides the primary ('mobile first') styles
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+  body {
+    line-height: 1.3;
+  }
+
+  header h2 {
+    font-size: 135%;
+  }
+
+  #level {
+    margin-right: 1em;
+  }
+
+  #level, #bonuses {
+    display: inline-block;
+  }
+
+  #level, #bonuses, #strength {
+    font-size: 175%;
+  }
+
+  #strength:before {
+    clear: both;
+    content: "";
+    display: block;
+  }
+
+  .extra-text {
+    display: inherit;
+  }
+
+  nav {
+    top: .6em; right: .6em;
+  }
+
+  nav:active {
+    top: .65em; right: .55em;
+  }
+
+  nav section {
+    padding: .5em;
+  }
+
+  .menu-items a {
+    margin-bottom: .5em;
+  }
+
+}
+
+@media only screen and (min-width: 54em) {
+
+  /* headers are plenty big but increase buttons & #s */
+  button, .display {
+    font-size: 150%;
+  }
+
+  #level {
+    margin-right: 2em;
+  }
+
+  nav {
+    top: 1em; right: 1em;
+  }
+
+  nav:active {
+    top: 1.05em; right: .95em;
+  }
+
+  nav section {
+    padding: .75em;
+  }
+
+  .menu-items a {
+    margin-bottom: .75em;
+  }
+
+}
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+/* ==|== print styles =======================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  img { page-break-inside: avoid; max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
