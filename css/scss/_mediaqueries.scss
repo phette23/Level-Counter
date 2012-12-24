@@ -1,0 +1,82 @@
+/* ==|== media queries ======================================================
+   Overrides the primary ('mobile first') styles
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+  body {
+    line-height: 1.3;
+  }
+
+  header h2 {
+    font-size: 135%;
+  }
+
+  #level {
+    margin-right: 1em;
+  }
+
+  #level, #bonuses {
+    display: inline-block;
+  }
+
+  #level, #bonuses, #strength {
+    font-size: 175%;
+  }
+
+  #strength:before {
+    clear: both;
+    content: "";
+    display: block;
+  }
+
+  .extra-text {
+    display: inherit;
+  }
+
+  nav {
+    top: .6em; right: .6em;
+  }
+
+  nav:active {
+    top: .65em; right: .55em;
+  }
+
+  nav section {
+    padding: .5em;
+  }
+
+  .menu-items a {
+    margin-bottom: .5em;
+  }
+
+}
+
+@media only screen and (min-width: 54em) {
+
+  /* headers are plenty big but increase buttons & #s */
+  button, .display {
+    font-size: 150%;
+  }
+
+  #level {
+    margin-right: 2em;
+  }
+
+  nav {
+    top: 1em; right: 1em;
+  }
+
+  nav:active {
+    top: 1.05em; right: .95em;
+  }
+
+  nav section {
+    padding: .75em;
+  }
+
+  .menu-items a {
+    margin-bottom: .75em;
+  }
+
+}
