@@ -1,3 +1,4 @@
+
 // ensure $ = jQuery
 // run on document load using jQuery's shorthand
 (function ($) {
@@ -178,7 +179,7 @@
 
         // open nav menu
         toggleMenu = function () {
-            $( 'nav .start-hid' ).toggle( 'slow' );
+            $( 'nav .menu-items' ).toggle( 'slow' );
         };
 
         // if there's player information, offer to load it
