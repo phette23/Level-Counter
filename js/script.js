@@ -250,9 +250,11 @@
         if ( !Modernizr.contenteditable ) {
             $( 'h1[contenteditable]' ).click(
                 function () {
+                    var oldName = player.name;
                     player.name = prompt( "What's your name?" );
                     if ( player.name === null ) {
                         // user entered nothing or hit cancel
+                        player.name = oldName;
                         return;
                     }
                     $( this ).html( player.name );
