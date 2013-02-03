@@ -202,7 +202,7 @@
         // }
 
         // expose restore/clear functionality only if localStorage is available
-        if ( localStorage ) {
+        if ( Modernizr.localstorage ) {
             // set player object to data in localStorage
             restorePlayer = function () {
                 if ( localStorage.p === null ) {
@@ -210,7 +210,11 @@
                     toggleMenu();
                     $restoreBtn.hide();
                 }
-                // REM: need to polyfill lack of JSON support
+                // if no JSON, load a polyfill
+                Modernizr.load( {
+                    test: Modernizr.json,
+                    nope: "js/libs/json3.js"
+                } );
                 player = JSON.parse( localStorage.p );
                 $levelDisplay.text( player.level );
                 $bonusesDisplay.text( player.bonuses );
