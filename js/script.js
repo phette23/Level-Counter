@@ -10,6 +10,15 @@
             name : "Player"
         },
 
+        // cache common DOM lookups
+        $levelDisplay = $( '#level .display' ),
+        $bonusesDisplay = $( '#bonuses .display' ),
+        $playerName = $( 'h2.pname' ),
+        $strengthDisplay = $( '#strength' ).find( '.display' ),
+        $menu = $( 'nav .menu-items' ),
+        $restoreBtn = $( '#restore' ),
+        $clearBtn = $( '#clear' ),
+
         // shorthand for parseInt
         pI = function ( string ) {
             return parseInt( string, 10 );
@@ -18,15 +27,15 @@
         // with any change, update DOM, player object, & storage
         updatePlayer = function () {
             // update displays & name
-            player.level = pI( $( '#level .display' ).text() );
-            player.bonuses = pI( $( '#bonuses .display' ).text() );
-            player.name = $( 'h2.pname' ).text();
-            $( '#strength' ).find( '.display' ).html( player.level + player.bonuses );
+            player.level = pI( $levelDisplay.text() );
+            player.bonuses = pI( $bonusesDisplay.text() );
+            player.name = $playerName.text();
+            $strengthDisplay.html( player.level + player.bonuses );
             // update storage
             localStorage.p = JSON.stringify( player );
             // if "clear" link was hit & restore link hidden
-            if ( $( '#restore:hidden' )[0] ) {
-                $( '#restore' ).show();
+            if ( $restoreBtn.is( ':hidden' ) ) {
+                $restoreBtn.show();
             }
         },
 
@@ -61,12 +70,13 @@
             // these vars are shared by the 2 sub-functions below
             var monsterPrompt = "What is the monster's level?",
                 needInt = "Please enter an integer.",
+                numMonsters = 1;
 
             // handles 1st time setup: handlers on +monster, +player, done
                 initialSetup = function () {
                     var $combPlayer = $( '#combat-dialog .player' ),
-                        $combMonster = $( '#combat-dialog .monster' );
-
+                        $combMonster = $( '#combat-dialog .monster' ),
+                        $addPlayerBtn = $( '#add-player' );
                     // set up +/- buttons for monster & player
                     plusMinusBtns( $combMonster );
                     plusMinusBtns( $combPlayer );
@@ -74,25 +84,24 @@
                     // set up add monster/player buttons
                     $( '#add-monster' ).click(
                         function () {
-                            $combMonster = $( '#combat-dialog .monster' );
-                            monsterStrength = prompt( monsterPrompt );
-                            while ( isNaN( pI( monsterStrength ) ) ) {
-                                monsterStrength = prompt( needInt );
+                            var newMonsterStrength = prompt( monsterPrompt );
+                            while ( isNaN( pI( newMonsterStrength ) ) ) {
+                                newMonsterStrength = prompt( needInt );
                             }
-                            var monsterIndex = $combMonster.length,
-                                // copy & insert 1st monster HTML but not +/- handlers
-                                monsterDOM = $combMonster.first().clone( false );
+                            // copy & insert 1st monster HTML but not +/- handlers
+                            var monsterDOM = $combMonster.clone( false );
                             // fill in new Monster level & apply new +/- handlers
-                            $combMonster.eq( monsterIndex - 1 ).after( monsterDOM );
-                            var $newMonster = $( '#combat-dialog .monster' ).eq( monsterIndex );
+                            $( '#combat-dialog .monster').eq( numMonsters - 1 ).after( monsterDOM );
+                            var $newMonster = $( '#combat-dialog .monster').eq( numMonsters );
+                            numMonsters++;
                             $newMonster.find( '.display' ).html(
-                                pI( monsterStrength )
+                                pI( newMonsterStrength )
                             );
                             plusMinusBtns( $newMonster );
                         }
                     );
 
-                    $( '#add-player' ).click(
+                    $addPlayerBtn.click(
                         function () {
                             var helperStrength = prompt( "What is the player's combat strength?" );
                             while ( isNaN( pI( helperStrength ) ) ) {
@@ -109,25 +118,26 @@
                             $newPlayer.find( 'h2' ).text( "Helper" );
                             plusMinusBtns( $newPlayer );
                             // can't have more than 2 helpers so hide +player
-                            $( '#add-player' ).hide();
+                            $addPlayerBtn.hide();
                         }
                     );
 
                     // shut down if Done is hit
-                    $( "#combat-done" ).click(
+                    $( '#combat-done' ).click(
                         function () {
                             // hide dialog
                             $( '#combat-dialog' ).hide( 'slow',
                                 // when it's hidden, reset everything to standard
-                                function() {
+                                function () {
                                     var numMonsters = $( '.monster' ).length;
                                     // remove helper, show +player again
                                     $( '#combat-dialog .player' ).eq( 1 ).remove();
-                                    $( '#add-player' ).show();
+                                    $addPlayerBtn.show();
                                     // remove extra monsters
                                     for ( var i = 1; i < numMonsters ; i++ ) {
-                                        $( '.monster' ).eq( i - 1 ).remove();
+                                        $( '#combat-dialog .monster' ).eq( i - 1 ).remove();
                                     }
+                                    numMonsters = 1;
                                 }
                             );
                             // scroll to top, combat dialog has chance to be longer than page
@@ -139,7 +149,7 @@
                     runCombat();
                 },
 
-                // fills in combat strengths, runs after initialCombat()
+                // fills in combat strengths, runs after initialSetup()
                 runCombat = function () {
                     var monsterStrength = prompt( monsterPrompt ),
                         $combPlayer = $( '#combat-dialog .player' ),
@@ -166,7 +176,7 @@
             if ( $( '#combat-dialog' ).length === 0 ) {
                 $.get( 'combat.html' , function ( response ) {
                     $( response ).appendTo( '#main' );
-                    initialSetup();
+                        initialSetup();
                     }
                 );
             }
@@ -179,7 +189,7 @@
 
         // open nav menu
         toggleMenu = function () {
-            $( 'nav .menu-items' ).toggle( 'slow' );
+            $menu.toggle( 'slow' );
         };
 
         // if there's player information, offer to load it
@@ -198,13 +208,14 @@
                 if ( localStorage.p === null ) {
                     alert( 'No data to restore!' );
                     toggleMenu();
-                    $( '#restore' ).hide();
+                    $restoreBtn.hide();
                 }
+                // REM: need to polyfill lack of JSON support
                 player = JSON.parse( localStorage.p );
-                $( '#level .display' ).text( player.level );
-                $( '#bonuses .display' ).text( player.bonuses );
-                $( '#strength' ).find( '.display' ).html( player.level + player.bonuses );
-                $( 'h2.pname' ).text( player.name );
+                $levelDisplay.text( player.level );
+                $bonusesDisplay.text( player.bonuses );
+                $strengthDisplay.html( player.level + player.bonuses );
+                $playerName.text( player.name );
                 toggleMenu();
             },
 
@@ -212,17 +223,17 @@
             clearData = function () {
                 localStorage.removeItem( 'p' );
                 toggleMenu();
-                $( '#restore' ).hide();
+                $restoreBtn.hide();
             };
 
             if ( localStorage.p === null ) {
                 localStorage.p = JSON.stringify( player );
             }
 
-            $( '#restore' ).removeClass( 'start-hid' );
-            $( '#clear' ).removeClass( 'start-hid' );
-            $( '#restore' ).click( restorePlayer );
-            $( '#clear' ).click( clearData );
+            $restoreBtn.removeClass( 'start-hid' );
+            $clearBtn.removeClass( 'start-hid' );
+            $restoreBtn.click( restorePlayer );
+            $clearBtn.click( clearData );
         }
 
         // handlers for player -/+ buttons
@@ -232,11 +243,15 @@
         $( 'nav a:first, #close-menu' ).click( toggleMenu );
 
         // contenteditable polyfill
-        if ( !window.Modernizr.contenteditable ) {
+        if ( !Modernizr.contenteditable ) {
             $( 'h1[contenteditable]' ).click(
-                function (){
+                function () {
                     player.name = prompt( "What's your name?" );
-                    $( 'h1[contenteditable]' ).html( player.name );
+                    if ( player.name === null ) {
+                        // user entered nothing or hit cancel
+                        return;
+                    }
+                    $( this ).html( player.name );
                 }
             );
         }
