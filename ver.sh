@@ -5,7 +5,7 @@
 function usage() {
     echo -e "Usage: \t./ver.sh -p\t\t(print version number)"
     echo -e "\t./ver.sh -v\t\t(validate version across branches)"
-    echo -e "\t./ver.sh -u \$NEW\t(update version to $NEW)"
+    echo -e "\t./ver.sh -u \$NEW\t(update version to \$NEW)"
 }
 
 # no parameters
