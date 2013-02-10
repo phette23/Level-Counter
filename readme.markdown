@@ -6,10 +6,6 @@ Basic Munchkin Counter because we need a cross-platform, web-based counter that'
 
 There's a [live, usable version](http://phette.net/munchkin-counter/) on the web.
 
-## HTML5 Boilerplate
-
-I'm using [the HTML5 boilerplate](http://html5boilerplate.com/) as a, um, boilerplate. Once there's a working project with sufficient functionality then I will strip out unused features but for now I'm leaving them in.
-
 ## Yeoman
 
 If you have [Yeoman](http://yeoman.io/) installed, you can build an optimized version with the following command (run inside the project's root):
@@ -24,7 +20,4 @@ In rough order of priority.
 
 - Implement a basic CSS grid using classes like 1-of-2
 - Make into [Mozilla](https://developer.mozilla.org/en-US/docs/Apps/Manifest) & [Chrome](https://developers.google.com/chrome/apps/docs/developers_guide) web app (?)
-- Offer to restore previous game if there's content in storage
 - Record game progress, offer to chart later (?)
-
-I originally intended to have select options for race & class characteristics but that quickly proved to be too burdensome given the numerous Munchkin expansion packs. If you're interested, there is a "race-class" branch of this repo that contains my initial code. It works fine but does not cover most expansions (e.g. Star Munchkin, Axe Cop Munchkin). I'm also probably not going to backport improvements made in the master branch to the race-class branch.
