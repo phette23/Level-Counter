@@ -205,7 +205,10 @@ var MunchkinCounter = (function ($) {
         // set player object to data in localStorage
         restorePlayer = function () {
             if ( localStorage.p === null ) {
-                alert( 'No data to restore!' );
+                // alerts are illegal in Chrome apps
+                if ( chrome.app.getDetails() !== null ) {
+                    alert( 'No data to restore!' );
+                }
                 toggleMenu();
                 $restoreBtn.hide();
             }
