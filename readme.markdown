@@ -19,5 +19,4 @@ Unfortunately, the r.js component of Yeoman's build tool requires a certain dire
 In rough order of priority.
 
 - Implement a basic CSS grid using classes like 1-of-2
-- Make into [Mozilla](https://developer.mozilla.org/en-US/docs/Apps/Manifest) & [Chrome](https://developers.google.com/chrome/apps/docs/developers_guide) web app (?)
 - Record game progress, offer to chart later (?)
