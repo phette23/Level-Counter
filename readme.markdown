@@ -19,4 +19,5 @@ Unfortunately, the r.js component of Yeoman's build tool requires a certain dire
 In rough order of priority.
 
 - Implement a basic CSS grid using classes like 1-of-2
+- Make native HTML/CSS pop-ups instead of using JS prompt, alert
 - Record game progress, offer to chart later (?)
