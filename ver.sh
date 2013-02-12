@@ -53,7 +53,19 @@ while getopts :pvu:h opt; do
         exit;;
     u)
         # update all versions to $OPTARG
-        echo "update versions - not yet implemented"
+        # store current branch, return to it at end
+        CURRENTBRANCH=$(git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
+        git stash -q
+        # go to master, update Mozilla version
+        git checkout -q master
+        node version.js package.json $OPTARG
+        # go to chrome-app, update Mozilla & Chrome versions
+        git checkout -q chrome-app
+        node version.js package.json $OPTARG
+        node version.js manifest.json $OPTARG
+        # return to current branch
+        git checkout -q $CURRENTBRANCH
+        git stash pop -q
         exit;;
     h)
         usage
