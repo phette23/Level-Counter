@@ -1,17 +1,17 @@
 {
-    "name": "Munchkin",
-    "description": "Keep track of your level & bonuses in Munchkin.",
-    "version": "0.2.0",
-    "manifest_version": 2,
-    "icons": {
-        "16": "favicon.ico",
-        "48": "img/chrome-app-48.png",
-        "128": "img/moz-app-logo.png"
-    },
-    "app": {
-        "launch": {
-            "local_path": "index.html"
-        }
-    },
-    "offline_enabled": true
+	"name": "Munchkin",
+	"description": "Keep track of your level & bonuses in Munchkin.",
+	"version": "1.0.0",
+	"manifest_version": 2,
+	"icons": {
+		"16": "favicon.ico",
+		"48": "img/chrome-app-48.png",
+		"128": "img/moz-app-logo.png"
+	},
+	"app": {
+		"launch": {
+			"local_path": "index.html"
+		}
+	},
+	"offline_enabled": true
 }
