@@ -1,5 +1,5 @@
 {
-  "name": "Munchkin Counter",
+  "name": "Level Counter",
   "description": "Keep track of your level & bonuses in Munchkin.",
   "launch_path": "/index.html",
   "icons": {
