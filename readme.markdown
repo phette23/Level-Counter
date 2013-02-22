@@ -1,10 +1,8 @@
 # Intro
 
-Basic Munchkin Counter because we need a cross-platform, web-based counter that's free & easy to customize.
+Basic Level Counter for [NAME REDACTED] card game because we need a cross-platform, web-based counter that's free & easy to customize.
 
-[Munchkin](http://www.worldofmunchkin.com/game/) is a card game, by the way. If you don't know what it is then probably very little of this will make sense.
-
-There's a [live, usable version](http://phette.net/munchkin-counter/) on the web.
+There's a [live, usable version](http://phette.net/level-counter/) on the web.
 
 ## Yeoman
 
