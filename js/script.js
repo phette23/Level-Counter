@@ -68,7 +68,7 @@ var MunchkinCounter = (function ($) {
     // combat section
     openCombatDialog = function () {
         // these vars are shared by the 2 sub-functions below
-        var monsterPrompt = 'What is the monster's level?',
+        var monsterPrompt = 'What is the monster\'s level?',
             needInt = 'Please enter an integer.',
             numMonsters = 1;
 
@@ -103,7 +103,7 @@ var MunchkinCounter = (function ($) {
 
                 $addPlayerBtn.click(
                     function () {
-                        var helperStrength = prompt( 'What is the player's combat strength?' );
+                        var helperStrength = prompt( 'What is the player\'s combat strength?' );
                         while ( isNaN( pI( helperStrength ) ) ) {
                             helperStrength = prompt( needInt );
                         }
@@ -251,7 +251,7 @@ var MunchkinCounter = (function ($) {
         $( 'h1[contenteditable]' ).click(
             function () {
                 var oldName = player.name;
-                player.name = prompt( 'What's your name?' );
+                player.name = prompt( 'What\'s your name?' );
                 if ( player.name === null ) {
                     // user entered nothing or hit cancel
                     player.name = oldName;
