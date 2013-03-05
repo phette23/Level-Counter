@@ -1,4 +1,5 @@
-
+/*jshint strict:false, white:false */
+/*global jQuery Modernizr */
 // ensure $ = jQuery
 // run on document load using jQuery's shorthand
 var MunchkinCounter = (function ($) {
@@ -6,7 +7,7 @@ var MunchkinCounter = (function ($) {
     var player = {
         level : 1,
         bonuses : 0,
-        name : "Player"
+        name : 'Player'
     },
 
     // cache common DOM lookups
@@ -32,7 +33,7 @@ var MunchkinCounter = (function ($) {
         $strengthDisplay.html( player.level + player.bonuses );
         // update storage
         localStorage.p = JSON.stringify( player );
-        // if "clear" link was hit & restore link hidden
+        // if 'clear' link was hit & restore link hidden
         if ( $restoreBtn.is( ':hidden' ) ) {
             $restoreBtn.show();
         }
@@ -67,8 +68,8 @@ var MunchkinCounter = (function ($) {
     // combat section
     openCombatDialog = function () {
         // these vars are shared by the 2 sub-functions below
-        var monsterPrompt = "What is the monster's level?",
-            needInt = "Please enter an integer.",
+        var monsterPrompt = 'What is the monster's level?',
+            needInt = 'Please enter an integer.',
             numMonsters = 1;
 
         // handles 1st time setup: handlers on +monster, +player, done
@@ -102,7 +103,7 @@ var MunchkinCounter = (function ($) {
 
                 $addPlayerBtn.click(
                     function () {
-                        var helperStrength = prompt( "What is the player's combat strength?" );
+                        var helperStrength = prompt( 'What is the player's combat strength?' );
                         while ( isNaN( pI( helperStrength ) ) ) {
                             helperStrength = prompt( needInt );
                         }
@@ -114,7 +115,7 @@ var MunchkinCounter = (function ($) {
                         $newPlayer.find( '.display' ).html(
                             pI( helperStrength )
                         );
-                        $newPlayer.find( 'h2' ).text( "Helper" );
+                        $newPlayer.find( 'h2' ).text( 'Helper' );
                         plusMinusBtns( $newPlayer );
                         // can't have more than 2 helpers so hide +player
                         $addPlayerBtn.hide();
@@ -193,10 +194,10 @@ var MunchkinCounter = (function ($) {
 
     // if there's player information, offer to load it
     // if ( localStorage.p !== null ) {
-    //     place "restore" & "delete" elements somewhere
+    //     place 'restore' & 'delete' elements somewhere
     //     restore.click => restorePlayer()
-    //     delete element.click => localStorage.removeItem( "p" )
-    //     localStorage.getItem( "p" ) will be overwritten if actions happen
+    //     delete element.click => localStorage.removeItem( 'p' )
+    //     localStorage.getItem( 'p' ) will be overwritten if actions happen
     //     but prevPlayer will still hold the previous player so restorePlayer is still valid
     // }
 
@@ -205,17 +206,14 @@ var MunchkinCounter = (function ($) {
         // set player object to data in localStorage
         restorePlayer = function () {
             if ( localStorage.p === null ) {
-                // alerts are illegal in Chrome apps
-                if ( chrome.app.getDetails() !== null ) {
-                    alert( 'No data to restore!' );
-                }
+                alert( 'No data to restore!' );
                 toggleMenu();
                 $restoreBtn.hide();
             }
             // if no JSON, load a polyfill
             Modernizr.load( {
                 test: Modernizr.json,
-                nope: "js/libs/json3.js"
+                nope: 'js/libs/json3.js'
             } );
             player = JSON.parse( localStorage.p );
             $levelDisplay.text( player.level );
@@ -253,7 +251,7 @@ var MunchkinCounter = (function ($) {
         $( 'h1[contenteditable]' ).click(
             function () {
                 var oldName = player.name;
-                player.name = prompt( "What's your name?" );
+                player.name = prompt( 'What's your name?' );
                 if ( player.name === null ) {
                     // user entered nothing or hit cancel
                     player.name = oldName;
