@@ -2,7 +2,7 @@
 /*global jQuery Modernizr */
 // ensure $ = jQuery
 // run on document load using jQuery's shorthand
-var MunchkinCounter = (function ($) {
+var LevelCounter = (function ($) {
     // Initial player stats
     var player = {
         level : 1,
