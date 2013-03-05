@@ -1,4 +1,5 @@
-
+/*jshint strict:false, white:false */
+/*global jQuery Modernizr */
 // ensure $ = jQuery
 // run on document load using jQuery's shorthand
 var MunchkinCounter = (function ($) {
