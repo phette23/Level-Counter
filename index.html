@@ -102,6 +102,31 @@
 		by <a href="http://twitter.com/phette23">phette23</a>
 	</footer>
 
+	<div id="combat-dialog">
+
+		<div class="player-col clearfix">
+			<section class="combat player">
+				<h2>Player</h2>
+				<button title="decrease player's strength">-</button>&nbsp;<span class="display" title="Player's combat strength">X</span>&nbsp;<button title="increase player's strength">+</button>
+			</section>
+		</div>
+
+		<div class="monster-col clearfix">
+			<section class="combat monster">
+				<h2>Monster</h2>
+				<button title="decrease monster's level">-</button>&nbsp;<span class="display" title="Monster's level">X</span>&nbsp;<button title="increase monster's level">+</button>
+			</section>
+		</div>
+
+		<div class="combat controls clearfix">
+			<button id="add-monster" title="add a wandering monster">+Monster</button>
+			<button id="add-player" title="add a helping player">+Player</button>
+			<br>
+			<button id="combat-done" title="finish combat">Done</button>
+		</div>
+
+	</div>
+
 	<!-- Grab Google CDN's jQuery, fall back to local if offline -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
