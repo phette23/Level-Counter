@@ -26,6 +26,3 @@ nbproject
 # Yeoman temp & build folders
 temp
 dist
-
-# my specific files to ignore
-inlined-everything.html

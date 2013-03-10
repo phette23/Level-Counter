@@ -1,6 +1,6 @@
 {
   "name": "Level Counter",
-  "description": "Keep track of your level & bonuses in Munchkin.",
+  "description": "Keep track of your level & bonuses in [NAME REDACTED] card game.",
   "launch_path": "/index.html",
   "icons": {
     "128": "/img/moz-app-logo.png"

@@ -60,13 +60,12 @@ while getopts :pvu:h opt; do
         git checkout -q master
         node version.js package.json $OPTARG
         git commit -am "vjs - version bump to $OPTARG"
-        git tag $OPTARG
+        git tag v$OPTARG
         # go to chrome-app, update Mozilla & Chrome versions
         git checkout -q chrome-app
         node version.js package.json $OPTARG
         node version.js manifest.json $OPTARG
         git commit -am "vjs - version bump to $OPTARG"
-        git tag $OPTARG
         # return to current branch
         git checkout -q $CURRENTBRANCH
         git stash pop -q

@@ -1,0 +1,44 @@
+#combat-dialog {
+    position: absolute;
+    top: 3%; right: 3%; left: 3%;
+    z-index: 500;
+    background: #2C1200;
+    color: #F6F1DF;
+        -webkit-border-radius: 12px;
+    border-radius: 12px;
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+        -webkit-box-shadow: 6px 6px 15px #4a464a;
+    box-shadow: 6px 6px 15px #4a464a;
+    /* start hidden, let script handle revealing */
+    display: none;
+    margin-bottom: 1em;
+}
+
+.combat.controls {
+    clear: both;
+    margin-bottom: 1em;
+    button {
+        margin-top: .8em;
+        width: 7em;
+        padding: .3em;
+    }
+}
+
+/* space between +player & +monster buttons */
+#add-player {
+    margin-left: 1em;
+}
+
+/* 2 column display when screen is large enough */
+@media only screen and (min-width: 35em) {
+    .player-col {
+        float: left;
+        width: 50%;
+    }
+    .monster-col {
+        float: right;
+        width: 50%;
+    }
+}
