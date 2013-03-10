@@ -30,7 +30,7 @@ var LevelCounter = (function ($) {
         player.level = pI( $levelDisplay.text() );
         player.bonuses = pI( $bonusesDisplay.text() );
         player.name = $playerName.text();
-        $strengthDisplay.html( player.level + player.bonuses );
+        $strengthDisplay.text( player.level + player.bonuses );
         // update storage
         localStorage.p = JSON.stringify( player );
         // if 'clear' link was hit & restore link hidden
@@ -172,7 +172,7 @@ var LevelCounter = (function ($) {
 
         // at the end, reveal the dialog
         $( '#combat-dialog' ).show( 'slow' );
-    },
+    };
 
     // if there's player information, offer to load it
     // if ( localStorage.p !== null ) {
@@ -200,7 +200,7 @@ var LevelCounter = (function ($) {
             player = JSON.parse( localStorage.p );
             $levelDisplay.text( player.level );
             $bonusesDisplay.text( player.bonuses );
-            $strengthDisplay.html( player.level + player.bonuses );
+            $strengthDisplay.text( player.level + player.bonuses );
             $playerName.text( player.name );
             toggleMenu();
         },
@@ -239,7 +239,7 @@ var LevelCounter = (function ($) {
                     player.name = oldName;
                     return;
                 }
-                $( this ).html( player.name );
+                $( this ).text( player.name );
             }
         );
     }
