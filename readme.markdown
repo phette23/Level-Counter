@@ -1,16 +1,12 @@
 # Intro
 
-Basic Level Counter for [NAME REDACTED] card game because we need a cross-platform, web-based counter that's free & easy to customize.
+Basic Level Counter to keep track of your levels, bonuses, and combat scenarios because we need a cross-platform, web-based counter that's free & easy to customize.
 
-There's a [live, usable version](http://phette.net/level-counter/) on the web.
+There's a [live, usable version](http://phette.net/level-counter/) on my website.
 
-## Yeoman
+## Build Script
 
-If you have [Yeoman](http://yeoman.io/) installed, you can build an optimized version with the following command (run inside the project's root):
-
-    yeoman build:minify --force
-
-Unfortunately, the r.js component of Yeoman's build tool requires a certain directory structure (an app/index.html to be precise) that this project doesn't conform to, thus the --force flag.
+This project used to use [Yeoman](http://yeoman.io/) to build an optimized version (if you have the old Yeoman project, `yeoman build:minify --force` should still work), but that project has gone in a different direction, leaving the build process to [Grunt](http://gruntjs.com/). Currently, `grunt build` is just going to error out if you run it. Eventually, I'll update the Gruntfile and get the project working, but for now it's not possible to optimize the app automatically with any current tools.
 
 ## To Do
 
@@ -18,4 +14,5 @@ In rough order of priority.
 
 - Implement a basic CSS grid using classes like 1-of-2
 - Make native HTML/CSS pop-ups instead of using JS prompt, alert
+- Get a working build process with Grunt
 - Record game progress, offer to chart later (?)
