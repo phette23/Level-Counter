@@ -1,5 +1,5 @@
 /*jshint strict:false, white:false */
-/*global jQuery Modernizr */
+/*global jQuery, Modernizr */
 // ensure $ = jQuery
 // run on document load using jQuery's shorthand
 var LevelCounter = (function ($) {
