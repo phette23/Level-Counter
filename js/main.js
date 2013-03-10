@@ -65,6 +65,11 @@ var LevelCounter = (function ($) {
         );
     },
 
+    // open nav menu
+    toggleMenu = function () {
+        $menu.toggle( 'slow' );
+    },
+
     // combat section
     combat = {
         // all the combat DOM lookups
@@ -168,11 +173,6 @@ var LevelCounter = (function ($) {
         // at the end, reveal the dialog
         $( '#combat-dialog' ).show( 'slow' );
     },
-
-    // open nav menu
-    toggleMenu = function () {
-        $menu.toggle( 'slow' );
-    };
 
     // if there's player information, offer to load it
     // if ( localStorage.p !== null ) {
