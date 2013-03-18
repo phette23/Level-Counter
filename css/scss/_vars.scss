@@ -5,3 +5,11 @@
 
 $light-brown: #F6F1DF;
 $dark-brown: #2C1200;
+// for all border-radius values, to keep consistent
+$roundedness: 4px;
+
+@mixin inset-box-shadow {
+    -moz-box-shadow: inset 0px 1px 0px 0px #8B7553;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #8B7553;
+  box-shadow: inset 0px 1px 0px 0px #8B7553;
+}

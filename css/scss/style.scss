@@ -36,11 +36,9 @@ nav {
   padding: 0 .25em;
   background: $dark-brown; color: $light-brown;
   border: 1px solid #8A6119;
-    -webkit-border-radius: 4px;
-  border-radius: 4px;
-    -moz-box-shadow: inset 0px 1px 0px 0px #8B7553;
-    -webkit-box-shadow: inset 0px 1px 0px 0px #8B7553;
-  box-shadow: inset 0px 1px 0px 0px #8B7553;
+    -webkit-border-radius: $roundedness;
+  border-radius: $roundedness;
+  @include inset-box-shadow;
 }
 
 .menu-title {
@@ -198,6 +196,7 @@ footer a {
   cursor: help;
 }
 
+@import '_prompt.scss';
 @import '_combat.scss';
 @import '_mediaqueries.scss';
 @import '_utilities.scss';
