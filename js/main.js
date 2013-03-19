@@ -75,9 +75,9 @@ var LevelCounter = (function ($) {
     },
 
     prompt = {
-        $dialog: $( '#prompt' ),
-        needInt: 'Please enter an integer.',
-        open: function ( msg ) {
+        $dialog : $( '#prompt' ),
+        needInt : 'Please enter an integer.',
+        open : function ( msg ) {
             this.$header.text( msg );
             this.$dialog.toggle( 'slow' );
             this.$input.focus();
@@ -303,11 +303,11 @@ var LevelCounter = (function ($) {
 
     // expose public items
     var Module = {
-        'player': player,
-        'updatePlayer': updatePlayer,
-        'toggleMenu': toggleMenu,
-        'prompt': prompt,
-        'combat': combat
+        'player' : player,
+        'updatePlayer' : updatePlayer,
+        'toggleMenu' : toggleMenu,
+        'prompt' : prompt,
+        'combat' : combat
     };
     return Module;
 } ( jQuery ));
