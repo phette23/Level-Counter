@@ -1,5 +1,5 @@
 #prompt {
-    background-color: $dark-brown;
+    background-color: #fff;
     border-radius: $roundedness;
     @include inset-box-shadow;
     // hide prompt initially, revealed by script
@@ -10,7 +10,7 @@
     z-index: 700;
 
     h2 {
-        color: $light-brown;
+        color: $dark-brown;
         text-align: center;
         // kill UA defaults, cause too much padding
         margin: 0;
