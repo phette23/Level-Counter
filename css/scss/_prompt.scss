@@ -6,6 +6,8 @@
     display: none;
     padding: 1em;
     position: absolute; left: 1em; right: 1em; top: 1em;
+    // must be >500 which is z-index of #combat-dialog
+    z-index: 700;
 
     h2 {
         color: $light-brown;
