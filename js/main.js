@@ -24,6 +24,10 @@ var LevelCounter = (function ($) {
         return parseInt( string, 10 );
     },
 
+    scrollToTop = function () {
+        window.scrollTo( window.scrollX, 0 );
+    },
+
     // with any change, update DOM, player object, & storage
     updatePlayer = function () {
         // update displays & name
@@ -70,6 +74,32 @@ var LevelCounter = (function ($) {
         $menu.toggle( 'slow' );
     },
 
+    prompt = {
+        $dialog: $( '#prompt' ),
+        needInt: 'Please enter an integer.',
+        open: function ( msg ) {
+            this.$header.text( msg );
+            this.$dialog.toggle( 'slow' );
+            this.$input.focus();
+            scrollToTop();
+        },
+        forceInt: function( str ) {
+            if ( isNaN( pI( str ) ) ) {
+                this.$header.text( this.needInt );
+                this.$input.val( '' );
+                return false;
+            }
+        }
+    };
+
+    // build on previous properties
+    prompt.$header = prompt.$dialog.find( 'h2' );
+    prompt.$input = prompt.$dialog.find( 'input' );
+    prompt.val = function () {
+        return pI( prompt.$input.val() );
+    };
+    prompt.$form = prompt.$dialog.find( 'form' );
+
     // combat section
     combat = {
         // all the combat DOM lookups
@@ -79,7 +109,6 @@ var LevelCounter = (function ($) {
         $doneBtn : $( '#combat-done' ),
         // handy strings & info
         monsterPrompt : 'What is the monster\'s level?',
-        needInt : 'Please enter an integer.',
         numMonsters : 1
     };
 
@@ -98,33 +127,15 @@ var LevelCounter = (function ($) {
         // set up add monster/player buttons
         this.$addMonsterBtn.click(
             function () {
-                var newMonsterStrength = prompt( combat.monsterPrompt );
-                while ( isNaN( pI( newMonsterStrength ) ) ) {
-                    newMonsterStrength = prompt( combat.needInt );
-                }
-                // fill in new Monster level & apply new +/- handlers
-                $( '#combat-dialog .monster' ).eq( combat.numMonsters - 1 ).after( combat.monsterDOM );
-                var $newMonster = $( '#combat-dialog .monster' ).eq( combat.numMonsters );
-                $newMonster.find( '.display' ).text( newMonsterStrength );
-                plusMinusBtns( $newMonster );
-                combat.numMonsters++;
+                prompt.open( combat.monsterPrompt );
+                prompt.$form.on( 'submit', combat.addMonster );
             }
         );
 
         this.$addPlayerBtn.click(
             function () {
-                var helperStrength = prompt( 'What is the player\'s combat strength?' );
-                while ( isNaN( pI( helperStrength ) ) ) {
-                    helperStrength = prompt( combat.needInt );
-                }
-                // fill in helper strength & apply new +/- handlers
-                combat.$firstPlayer.after( combat.playerDOM );
-                var $newPlayer = $( '#combat-dialog .player' ).eq( 1 );
-                $newPlayer.find( '.display' ).text( helperStrength );
-                $newPlayer.find( 'h2' ).text( 'Helper' );
-                plusMinusBtns( $newPlayer );
-                // can't have more than 2 helpers so hide +player
-                combat.$addPlayerBtn.hide();
+                prompt.open( 'What is the player\'s combat strength?' );
+                prompt.$form.on( 'submit', combat.addPlayer );
             }
         );
 
@@ -147,31 +158,66 @@ var LevelCounter = (function ($) {
                     }
                 );
                 // scroll to top, combat dialog has chance to be longer than page
-                window.scrollTo( window.scrollX, 0 );
+                scrollToTop();
             }
         );
     };
 
     combat.openDialog = function () {
-        // these vars are shared by the 2 sub-functions below
-        var monsterStrength = prompt( combat.monsterPrompt );
+        prompt.open( combat.monsterPrompt );
+        prompt.$form.on( 'submit', combat.fillInCombat );
+    };
 
-        while ( isNaN( pI( monsterStrength ) ) ) {
-            if ( !monsterStrength ) {
-                // user hit cancel, or entered nothing
-                return;
-            } else {
-                monsterStrength = prompt( combat.needInt );
-            }
-        }
+    combat.fillInCombat = function ( event ) {
+        event.preventDefault();
+        // remove event handlers
+        prompt.$form.off( 'submit' );
+
+        var monsterStrength = prompt.val();
+
         combat.$firstMonster.find( '.display' ).text( monsterStrength );
 
         // fill in player's attributes
         combat.$firstPlayer.find( '.display' ).text( player.level + player.bonuses );
         combat.$firstPlayer.find( 'h2' ).text( player.name );
 
-        // at the end, reveal the dialog
-        $( '#combat-dialog' ).show( 'slow' );
+        // at the end, hide prompt & reveal combat dialog
+        prompt.$dialog.fadeOut( 'slow', function () {
+            $( '#combat-dialog' ).show( 'slow' );
+            prompt.$input.val( '' );
+        });
+    };
+
+    combat.addMonster = function ( event ) {
+        event.preventDefault();
+        prompt.$form.off( 'submit' );
+        var newMonsterStrength = prompt.val();
+        // fill in new Monster level & apply new +/- handlers
+        $( '#combat-dialog .monster' ).eq( combat.numMonsters - 1 ).after( combat.monsterDOM );
+        var $newMonster = $( '#combat-dialog .monster' ).eq( combat.numMonsters );
+        $newMonster.find( '.display' ).text( newMonsterStrength );
+        plusMinusBtns( $newMonster );
+        combat.numMonsters++;
+        prompt.$dialog.fadeOut( 'slow', function () {
+            prompt.$input.val( '' );
+        });
+    };
+
+    combat.addPlayer = function ( event ) {
+        event.preventDefault();
+        prompt.$form.off( 'submit' );
+        var helperStrength = prompt.val();
+        // fill in helper strength & apply new +/- handlers
+        combat.$firstPlayer.after( combat.playerDOM );
+        var $newPlayer = $( '#combat-dialog .player' ).eq( 1 );
+        $newPlayer.find( '.display' ).text( helperStrength );
+        $newPlayer.find( 'h2' ).text( 'Helper' );
+        plusMinusBtns( $newPlayer );
+        // can't have more than 2 helpers so hide +player
+        combat.$addPlayerBtn.hide();
+        prompt.$dialog.fadeOut( 'slow', function () {
+            prompt.$input.val( '' );
+        });
     };
 
     // if there's player information, offer to load it
@@ -233,7 +279,7 @@ var LevelCounter = (function ($) {
         $( 'h1[contenteditable]' ).click(
             function () {
                 var oldName = player.name;
-                player.name = prompt( 'What\'s your name?' );
+                player.name = prompt.open( 'What\'s your name?' );
                 if ( player.name === null ) {
                     // user entered nothing or hit cancel
                     player.name = oldName;
@@ -244,14 +290,16 @@ var LevelCounter = (function ($) {
         );
     }
 
-    // basic combat event listeners
+    // combat event listeners
     $( '#dagger' ).click( combat.openDialog );
     combat.initialize();
 
     // expose public items
     var Module = {
-        player: player,
-        updatePlayer: updatePlayer,
+        'player': player,
+        'updatePlayer': updatePlayer,
+        'toggleMenu': toggleMenu,
+        'prompt': prompt,
         'combat': combat
     };
     return Module;
