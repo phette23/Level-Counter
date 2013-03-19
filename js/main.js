@@ -101,7 +101,7 @@ var LevelCounter = (function ($) {
     prompt.$form = prompt.$dialog.find( 'form' );
 
     // combat section
-    combat = {
+    var combat = {
         // all the combat DOM lookups
         $dialog : $( '#combat-dialog' ),
         $addPlayerBtn : $( '#add-player' ),
@@ -234,7 +234,7 @@ var LevelCounter = (function ($) {
     // expose restore/clear functionality only if localStorage is available
     if ( Modernizr.localstorage ) {
         // set player object to data in localStorage
-        restorePlayer = function () {
+        var restorePlayer = function () {
             if ( localStorage.p === null ) {
                 alert( 'No data to restore!' );
                 toggleMenu();
