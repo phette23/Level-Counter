@@ -82,13 +82,6 @@ var LevelCounter = (function ($) {
             this.$dialog.toggle( 'slow' );
             this.$input.focus();
             scrollToTop();
-        },
-        forceInt: function( str ) {
-            if ( isNaN( pI( str ) ) ) {
-                this.$header.text( this.needInt );
-                this.$input.val( '' );
-                return false;
-            }
         }
     };
 
@@ -172,6 +165,10 @@ var LevelCounter = (function ($) {
 
     combat.fillInCombat = function ( event ) {
         event.preventDefault();
+        if ( isNaN( prompt.val() ) ) {
+            prompt.$header.text( prompt.needInt );
+            return;
+        }
         // remove event handlers
         prompt.$form.off( 'submit' );
 
@@ -192,6 +189,10 @@ var LevelCounter = (function ($) {
 
     combat.addMonster = function ( event ) {
         event.preventDefault();
+        if ( isNaN( prompt.val() ) ) {
+            prompt.$header.text( prompt.needInt );
+            return;
+        }
         prompt.$form.off( 'submit' );
         var newMonsterStrength = prompt.val();
         // fill in new Monster level & apply new +/- handlers
@@ -207,6 +208,10 @@ var LevelCounter = (function ($) {
 
     combat.addPlayer = function ( event ) {
         event.preventDefault();
+        if ( isNaN( prompt.val() ) ) {
+            prompt.$header.text( prompt.needInt );
+            return;
+        }
         prompt.$form.off( 'submit' );
         var helperStrength = prompt.val();
         // fill in helper strength & apply new +/- handlers
