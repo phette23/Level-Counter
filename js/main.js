@@ -128,6 +128,7 @@ var LevelCounter = (function ($) {
         this.$addMonsterBtn.click(
             function () {
                 prompt.open( combat.monsterPrompt );
+                prompt.$input.focus();
                 prompt.$form.on( 'submit', combat.addMonster );
             }
         );
@@ -135,6 +136,7 @@ var LevelCounter = (function ($) {
         this.$addPlayerBtn.click(
             function () {
                 prompt.open( 'What is the player\'s combat strength?' );
+                prompt.$input.focus();
                 prompt.$form.on( 'submit', combat.addPlayer );
             }
         );
