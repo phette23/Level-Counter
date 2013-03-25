@@ -55,7 +55,7 @@ while getopts :pvu:h opt; do
         # update all versions to $OPTARG
         # store current branch, return to it at end
         CURRENTBRANCH=$(git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
-        git stash -q 2>&1 > /dev/null
+        git stash -q >/dev/null 2>&1
         # go to master, update Mozilla version
         git checkout -q master
         node version.js package.json $OPTARG
@@ -68,7 +68,7 @@ while getopts :pvu:h opt; do
         git commit -am "vjs - version bump to $OPTARG"
         # return to current branch
         git checkout -q $CURRENTBRANCH
-        git stash pop -q 2>&1 > /dev/null
+        git stash pop -q >/dev/null 2>&1
         exit;;
     h)
         usage
