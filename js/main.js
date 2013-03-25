@@ -264,15 +264,6 @@ var LevelCounter = (function ($) {
         scrollToTop();
     };
 
-    // if there's player information, offer to load it
-    // if ( localStorage.p !== null ) {
-    //     place 'restore' & 'delete' elements somewhere
-    //     restore.click => restorePlayer()
-    //     delete element.click => localStorage.removeItem( 'p' )
-    //     localStorage.getItem( 'p' ) will be overwritten if actions happen
-    //     but prevPlayer will still hold the previous player so restorePlayer is still valid
-    // }
-
     // expose restore/clear functionality only if localStorage is available
     if ( Modernizr.localstorage ) {
         // set player object to data in localStorage
