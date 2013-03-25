@@ -10,25 +10,6 @@ var LevelCounter = (function ($) {
         name : 'Player'
     },
 
-    // cache common DOM lookups
-    $levelDisplay = $( '#level .display' ),
-    $bonusesDisplay = $( '#bonuses .display' ),
-    $playerName = $( 'h2.pname' ),
-    $strengthDisplay = $( '#strength' ).find( '.display' ),
-    $menu = $( 'nav .menu-items' ),
-    $restoreBtn = $( '#restore' ),
-    $clearBtn = $( '#clear' ),
-    $doc = $( document ),
-
-    // shorthand for parseInt
-    pI = function ( string ) {
-        return parseInt( string, 10 );
-    },
-
-    scrollToTop = function () {
-        window.scrollTo( window.scrollX, 0 );
-    },
-
     // with any change, update DOM, player object, & storage
     updatePlayer = function () {
         // update displays & name
@@ -68,40 +49,62 @@ var LevelCounter = (function ($) {
                 updatePlayer();
             }
         );
-    },
-
-    // open nav menu
-    toggleMenu = function () {
-        $menu.toggle( 'slow' );
-    },
-
-    prompt = {
-        $dialog : $( '#prompt' ),
-        needInt : 'Please enter an integer. Hit ESC to cancel.',
-        open : function ( msg ) {
-            this.$header.text( msg );
-            this.$dialog.show( 'slow' );
-            this.$input.focus();
-            scrollToTop();
-            $doc.keyup( function ( ev ) {
-                // ESC pressed
-                if ( ev.which == 27 ) {
-                    prompt.close();
-                }
-            });
-        },
-        close : function () {
-            // use "prompt" instead of this
-            // because it's likely to be called inside an event handler
-            prompt.$dialog.hide( 'slow', function () {
-                scrollToTop();
-                // remove form & keypress event handlers
-                prompt.$form.off( 'submit' );
-                $doc.off( 'keyup' );
-                prompt.$input.val( '' );
-            } );
-        }
     };
+
+    // handlers for player -/+ buttons
+    plusMinusBtns( $( '#level' ) );
+    plusMinusBtns( $( '#bonuses' ) );
+
+    // cache common DOM lookups
+    var $levelDisplay = $( '#level .display' ),
+        $bonusesDisplay = $( '#bonuses .display' ),
+        $playerName = $( 'h2.pname' ),
+        $strengthDisplay = $( '#strength' ).find( '.display' ),
+        $menu = $( 'nav .menu-items' ),
+        $restoreBtn = $( '#restore' ),
+        $clearBtn = $( '#clear' ),
+        $doc = $( document ),
+
+        // shorthand for parseInt
+        pI = function ( string ) {
+            return parseInt( string, 10 );
+        },
+
+        scrollToTop = function () {
+            window.scrollTo( window.scrollX, 0 );
+        },
+
+        toggleMenu = function () {
+            $menu.toggle( 'slow' );
+        },
+
+        prompt = {
+            $dialog : $( '#prompt' ),
+            needInt : 'Please enter an integer. Hit ESC to cancel.',
+            open : function ( msg ) {
+                this.$header.text( msg );
+                this.$dialog.show( 'slow' );
+                this.$input.focus();
+                scrollToTop();
+                $doc.keyup( function ( ev ) {
+                    // ESC pressed
+                    if ( ev.which == 27 ) {
+                        prompt.close();
+                    }
+                });
+            },
+            close : function () {
+                // use "prompt" instead of this
+                // because it's likely to be called inside an event handler
+                prompt.$dialog.hide( 'slow', function () {
+                    scrollToTop();
+                    // remove form & keypress event handlers
+                    prompt.$form.off( 'submit' );
+                    $doc.off( 'keyup' );
+                    prompt.$input.val( '' );
+                } );
+            }
+        };
 
     // build on previous properties
     prompt.$header = prompt.$dialog.find( 'h2' );
@@ -303,9 +306,6 @@ var LevelCounter = (function ($) {
         $clearBtn.click( clearData );
     }
 
-    // handlers for player -/+ buttons
-    plusMinusBtns( $( '#level' ) );
-    plusMinusBtns( $( '#bonuses' ) );
     // open/close the menu
     $( 'nav a:first, #close-menu' ).click( toggleMenu );
 
