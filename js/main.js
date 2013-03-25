@@ -270,7 +270,10 @@ var LevelCounter = (function ($) {
         // set player object to data in localStorage
         var restorePlayer = function () {
             if ( localStorage.p === null ) {
-                alert( 'No data to restore!' );
+                // don't call alert() if we're in a Chrome app
+                if ( !chrome.app.getDetails() ) {
+                    alert( 'No data to restore!' );
+                }
                 toggleMenu();
                 $restoreBtn.hide();
             }
