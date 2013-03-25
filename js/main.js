@@ -137,23 +137,7 @@ var LevelCounter = (function ($) {
         // shut down if Done is hit
         this.$doneBtn.click(
             function () {
-                // hide dialog
-                $( '#combat-dialog' ).hide( 'slow',
-                    // when it's hidden, reset everything to standard
-                    function () {
-                        var numMonsters = $( '.monster' ).length;
-                        // remove helper, show +player again
-                        $( '#combat-dialog .player' ).eq( 1 ).remove();
-                        combat.$addPlayerBtn.show();
-                        // remove extra monsters
-                        for ( var i = 1; i < numMonsters ; i++ ) {
-                            $( '#combat-dialog .monster' ).eq( i - 1 ).remove();
-                        }
-                        numMonsters = 1;
-                    }
-                );
-                // scroll to top, combat dialog has chance to be longer than page
-                scrollToTop();
+                combat.resetDialog();
             }
         );
     };
@@ -225,6 +209,26 @@ var LevelCounter = (function ($) {
         prompt.$dialog.fadeOut( 'slow', function () {
             prompt.$input.val( '' );
         });
+    };
+
+    combat.resetDialog = function () {
+        // hide dialog
+        $( '#combat-dialog' ).hide( 'slow',
+            // when it's hidden, reset everything to standard
+            function () {
+                var numMonsters = $( '.monster' ).length;
+                // remove helper, show +player again
+                $( '#combat-dialog .player' ).eq( 1 ).remove();
+                combat.$addPlayerBtn.show();
+                // remove extra monsters
+                for ( var i = 1; i < numMonsters ; i++ ) {
+                    $( '#combat-dialog .monster' ).eq( i - 1 ).remove();
+                }
+                numMonsters = 1;
+            }
+        );
+        // scroll to top, combat dialog has chance to be longer than page
+        scrollToTop();
     };
 
     // if there's player information, offer to load it
