@@ -63,6 +63,7 @@ var LevelCounter = (function ($) {
         $menu = $( 'nav .menu-items' ),
         $restoreBtn = $( '#restore' ),
         $clearBtn = $( '#clear' ),
+        $menuItems = $( '.menu-items' ),
         $doc = $( document ),
 
         // shorthand for parseInt
@@ -86,21 +87,14 @@ var LevelCounter = (function ($) {
                 this.$dialog.show( 'slow' );
                 this.$input.focus();
                 scrollToTop();
-                $doc.keyup( function ( ev ) {
-                    // ESC pressed
-                    if ( ev.which == 27 ) {
-                        prompt.close();
-                    }
-                });
             },
             close : function () {
                 // use "prompt" instead of this
                 // because it's likely to be called inside an event handler
                 prompt.$dialog.hide( 'slow', function () {
                     scrollToTop();
-                    // remove form & keypress event handlers
+                    // remove form event handlers
                     prompt.$form.off( 'submit' );
-                    $doc.off( 'keyup' );
                     prompt.$input.val( '' );
                 } );
             }
@@ -177,20 +171,8 @@ var LevelCounter = (function ($) {
             return;
         }
 
-        // remove event handlers from prompt, add ESC handler for dialog
+        // remove event handler from prompt
         prompt.$form.off( 'submit' );
-        $doc.keyup( function ( ev ) {
-            // if ESC was hit, end the combat
-            if ( ev.which == 27 ) {
-                // if prompt is visible then ESC should hide prompt, not combat dialog
-                if ( prompt.$dialog.is( ':visible' ) ) {
-                    return;
-                }
-                combat.resetDialog();
-                // event handler, remove thyself
-                $doc.off( 'keyup' );
-            }
-        });
 
         var monsterStrength = prompt.val();
 
@@ -266,6 +248,22 @@ var LevelCounter = (function ($) {
         // scroll to top, combat dialog has chance to be longer than page
         scrollToTop();
     };
+
+    // close open prompt, menu, or combat dialog when ESC is typed
+    var escHandler = function ( ev ) {
+        // keyCode for ESC = 27
+        if ( ev.which == 27 ) {
+            if ( prompt.$dialog.is( ':visible' ) ) {
+                prompt.close();
+            } else if ( $menuItems.is( ':visible' ) ) {
+                toggleMenu();
+            } else if ( combat.$dialog.is( ':visible' ) ) {
+                combat.resetDialog();
+            }
+        }
+    };
+
+    $doc.keyup( escHandler );
 
     // expose restore/clear functionality only if localStorage is available
     if ( Modernizr.localstorage ) {
