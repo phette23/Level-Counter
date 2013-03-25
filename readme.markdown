@@ -14,10 +14,10 @@ In rough order of priority.
 
 ### Development
 
+- Get a working build process with Grunt
 - Use [Bower](http://twitter.github.com/bower/) to manage JS libs, e.g. jQuery, JSON3, Bootstrap Modal
 - Replace call to `alert` inside `restorePlayer` with a native prompt
 - Break main.js into smaller components, e.g. combat, prompt, storage
-- Get a working build process with Grunt
 
 ### Features
 
