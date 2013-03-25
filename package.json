@@ -8,7 +8,7 @@
 		"monsters",
 		"combat"
 	],
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"homepage": "http://phette.net/level-counter/",
 	"repository": {
 		"type": "git",
