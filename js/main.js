@@ -18,6 +18,7 @@ var LevelCounter = (function ($) {
     $menu = $( 'nav .menu-items' ),
     $restoreBtn = $( '#restore' ),
     $clearBtn = $( '#clear' ),
+    $doc = $( document ),
 
     // shorthand for parseInt
     pI = function ( string ) {
@@ -76,12 +77,29 @@ var LevelCounter = (function ($) {
 
     prompt = {
         $dialog : $( '#prompt' ),
-        needInt : 'Please enter an integer.',
+        needInt : 'Please enter an integer. Hit ESC to cancel.',
         open : function ( msg ) {
             this.$header.text( msg );
-            this.$dialog.toggle( 'slow' );
+            this.$dialog.show( 'slow' );
             this.$input.focus();
             scrollToTop();
+            $doc.keyup( function ( ev ) {
+                // ESC pressed
+                if ( ev.which == 27 ) {
+                    prompt.close();
+                }
+            });
+        },
+        close : function () {
+            // use "prompt" instead of this
+            // because it's likely to be called inside an event handler
+            prompt.$dialog.hide( 'slow', function () {
+                scrollToTop();
+                // remove form & keypress event handlers
+                prompt.$form.off( 'submit' );
+                $doc.off( 'keyup' );
+                prompt.$input.val( '' );
+            } );
         }
     };
 
@@ -149,12 +167,27 @@ var LevelCounter = (function ($) {
 
     combat.fillInCombat = function ( event ) {
         event.preventDefault();
+
+        // force integer input
         if ( isNaN( prompt.val() ) ) {
             prompt.$header.text( prompt.needInt );
             return;
         }
-        // remove event handlers
+
+        // remove event handlers from prompt, add ESC handler for dialog
         prompt.$form.off( 'submit' );
+        $doc.keyup( function ( ev ) {
+            // if ESC was hit, end the combat
+            if ( ev.which == 27 ) {
+                // if prompt is visible then ESC should hide prompt, not combat dialog
+                if ( prompt.$dialog.is( ':visible' ) ) {
+                    return;
+                }
+                combat.resetDialog();
+                // event handler, remove thyself
+                $doc.off( 'keyup' );
+            }
+        });
 
         var monsterStrength = prompt.val();
 
