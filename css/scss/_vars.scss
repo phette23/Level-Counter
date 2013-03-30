@@ -1,6 +1,6 @@
 /*
  * _vars.scss
- * major variables shared throughout project, e.g. colors
+ * major variables & mixins shared throughout project
  */
 
 $light-brown: #F6F1DF;
@@ -12,4 +12,23 @@ $roundedness: 4px;
     -moz-box-shadow: inset 0px 1px 0px 0px #8B7553;
     -webkit-box-shadow: inset 0px 1px 0px 0px #8B7553;
   box-shadow: inset 0px 1px 0px 0px #8B7553;
+}
+
+// nav spacing expands with media queries in a formulaic way
+@mixin nav-spacing( $space ) {
+  nav {
+    top: $space; right: $space;
+  }
+
+  nav:active {
+    top: $space + .05; right: $space + .05;
+  }
+
+  nav section {
+    padding: .75 * $space;
+  }
+
+  .menu-items a {
+    margin-bottom: .75 * $space;
+  }
 }

@@ -11,13 +11,10 @@
     background-clip: padding-box;
         -webkit-box-shadow: 6px 6px 15px #4a464a;
     box-shadow: 6px 6px 15px #4a464a;
-    /* start hidden, let script handle revealing */
     display: none;
-    margin-bottom: 1em;
 }
 
 .combat.controls {
-    clear: both;
     margin-bottom: 1em;
     button {
         margin-top: .8em;

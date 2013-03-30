@@ -22,21 +22,7 @@
     display: inherit;
   }
 
-  nav {
-    top: .6em; right: .6em;
-  }
-
-  nav:active {
-    top: .65em; right: .55em;
-  }
-
-  nav section {
-    padding: .5em;
-  }
-
-  .menu-items a {
-    margin-bottom: .5em;
-  }
+  @include nav-spacing( .6em );
 
 }
 
@@ -47,20 +33,6 @@
     font-size: 150%;
   }
 
-  nav {
-    top: 1em; right: 1em;
-  }
-
-  nav:active {
-    top: 1.05em; right: .95em;
-  }
-
-  nav section {
-    padding: .75em;
-  }
-
-  .menu-items a {
-    margin-bottom: .75em;
-  }
+  @include nav-spacing( 1em );
 
 }

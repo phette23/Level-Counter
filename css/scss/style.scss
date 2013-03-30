@@ -13,7 +13,7 @@ body {
   font-size: 1.4em;
 }
 
-/* "Munchkin Counter" */
+/* "Level Counter" */
 header h1 {
   font-size: 55%;
 }
@@ -29,9 +29,11 @@ header h2 {
 }
 
 /* menu styles */
+@include nav-spacing( .4em );
+
 nav {
   /* upper right corner */
-  position: absolute; top: .4em; right: .4em;
+  position: absolute;
   padding: 0 .25em;
   background: $dark-brown; color: $light-brown;
   border: 1px solid #8A6119;
@@ -65,27 +67,12 @@ a.menu-title:focus {
   color: $dark-brown;
 }
 
-nav a {
-  color: $dark-brown;
-  text-decoration: none;
-}
-
-/* button press action */
-nav:active {
-  top: .45em; right: .35em;
-}
-
+nav a,
 nav a:hover,
-nav a:focus {
-  color: $dark-brown;
-}
-
+nav a:focus,
 nav a:visited {
   color: $dark-brown;
-}
-
-.menu-items a:last-child {
-  margin-bottom: .5em;
+  text-decoration: none;
 }
 
 .extra-text {
@@ -93,12 +80,8 @@ nav a:visited {
 }
 
 /* all clickable elements should have pointer */
-.pm-button, nav {
+nav, .pname {
   cursor: pointer;
-}
-
-h2.pname {
-  cursor: text;
 }
 
 section {
@@ -166,8 +149,7 @@ button:active {
 
 /* contenteditable
 stealing this from Remy Sharp
-http://jsbin.com/owavu3
-put h2 in front to avoid implicit universal selector */
+http://jsbin.com/owavu3 */
 
 .pname:hover:after {
   content: ' click to edit';
