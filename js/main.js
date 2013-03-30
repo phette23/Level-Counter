@@ -312,7 +312,7 @@ var LevelCounter = (function ($) {
         $( 'h1[contenteditable]' ).click(
             function () {
                 var oldName = player.name;
-                player.name = prompt.open( 'What\'s your name?' );
+                player.name = window.prompt( 'What\'s your name?' );
                 if ( player.name === null ) {
                     // user entered nothing or hit cancel
                     player.name = oldName;
