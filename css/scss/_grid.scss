@@ -1,0 +1,16 @@
+// default to a single column, if enough space do 2
+@media only screen and (min-width: 35em) {
+    .col1-2 {
+        display: inline-block;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+}
+
+@media only screen and (min-width: 54em) {
+    // moar space!
+    .col1-2 {
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+}

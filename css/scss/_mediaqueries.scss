@@ -1,6 +1,8 @@
 /* ==|== media queries ======================================================
    Overrides the primary ('mobile first') styles
    ========================================================================== */
+// first the grid
+@import '_grid.scss';
 
 @media only screen and (min-width: 35em) {
 
@@ -12,43 +14,15 @@
     font-size: 135%;
   }
 
-  #level {
-    margin-right: 1em;
-  }
-
-  #level, #bonuses {
-    display: inline-block;
-  }
-
   #level, #bonuses, #strength {
     font-size: 175%;
-  }
-
-  #strength:before {
-    clear: both;
-    content: "";
-    display: block;
   }
 
   .extra-text {
     display: inherit;
   }
 
-  nav {
-    top: .6em; right: .6em;
-  }
-
-  nav:active {
-    top: .65em; right: .55em;
-  }
-
-  nav section {
-    padding: .5em;
-  }
-
-  .menu-items a {
-    margin-bottom: .5em;
-  }
+  @include nav-spacing( .6em );
 
 }
 
@@ -59,24 +33,6 @@
     font-size: 150%;
   }
 
-  #level {
-    margin-right: 2em;
-  }
-
-  nav {
-    top: 1em; right: 1em;
-  }
-
-  nav:active {
-    top: 1.05em; right: .95em;
-  }
-
-  nav section {
-    padding: .75em;
-  }
-
-  .menu-items a {
-    margin-bottom: .75em;
-  }
+  @include nav-spacing( 1em );
 
 }

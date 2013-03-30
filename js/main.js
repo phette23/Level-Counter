@@ -107,6 +107,13 @@ var LevelCounter = (function ($) {
         return pI( prompt.$input.val() );
     };
     prompt.$form = prompt.$dialog.find( 'form' );
+    prompt.forceInt = function() {
+        // only called while prompt is open
+        if ( isNaN( prompt.val() ) ) {
+            prompt.$header.text( prompt.needInt );
+            return false;
+        } else return true;
+    };
 
     // combat section
     var combat = {
@@ -124,8 +131,8 @@ var LevelCounter = (function ($) {
     combat.$firstPlayer = combat.$dialog.find( '.player' );
     combat.$firstMonster = combat.$dialog.find( '.monster' );
     // monster HTML, used for adding multiple monsters
-    combat.monsterDOM = combat.$dialog.find( '.monster-col' ).html();
-    combat.playerDOM = combat.$dialog.find( '.player-col' ).html();
+    combat.monsterDOM = combat.$dialog.find( '.col1-2' ).eq(1).html();
+    combat.playerDOM = combat.$dialog.find( '.col1-2' ).eq(0).html();
 
     combat.initialize = function () {
         // set up +/- buttons for monster & player
@@ -165,11 +172,7 @@ var LevelCounter = (function ($) {
     combat.fillInCombat = function ( event ) {
         event.preventDefault();
 
-        // force integer input
-        if ( isNaN( prompt.val() ) ) {
-            prompt.$header.text( prompt.needInt );
-            return;
-        }
+        if ( !prompt.forceInt() ) return;
 
         // remove event handler from prompt
         prompt.$form.off( 'submit' );
@@ -191,10 +194,7 @@ var LevelCounter = (function ($) {
 
     combat.addMonster = function ( event ) {
         event.preventDefault();
-        if ( isNaN( prompt.val() ) ) {
-            prompt.$header.text( prompt.needInt );
-            return;
-        }
+        if ( !prompt.forceInt() ) return;
         prompt.$form.off( 'submit' );
         var newMonsterStrength = prompt.val();
         // fill in new Monster level & apply new +/- handlers
@@ -210,10 +210,7 @@ var LevelCounter = (function ($) {
 
     combat.addPlayer = function ( event ) {
         event.preventDefault();
-        if ( isNaN( prompt.val() ) ) {
-            prompt.$header.text( prompt.needInt );
-            return;
-        }
+        if ( !prompt.forceInt() ) return;
         prompt.$form.off( 'submit' );
         var helperStrength = prompt.val();
         // fill in helper strength & apply new +/- handlers
@@ -315,7 +312,7 @@ var LevelCounter = (function ($) {
         $( 'h1[contenteditable]' ).click(
             function () {
                 var oldName = player.name;
-                player.name = prompt.open( 'What\'s your name?' );
+                player.name = window.prompt( 'What\'s your name?' );
                 if ( player.name === null ) {
                     // user entered nothing or hit cancel
                     player.name = oldName;
