@@ -22,6 +22,10 @@ header h1 {
 header h2 {
   font-size: 100%;
   margin: 0 1.5em;
+  // otherwise yellow highlight spans whole screen
+  display: inline-block;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 /* menu styles */
