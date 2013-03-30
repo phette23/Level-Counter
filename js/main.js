@@ -124,8 +124,8 @@ var LevelCounter = (function ($) {
     combat.$firstPlayer = combat.$dialog.find( '.player' );
     combat.$firstMonster = combat.$dialog.find( '.monster' );
     // monster HTML, used for adding multiple monsters
-    combat.monsterDOM = combat.$dialog.find( '.monster-col' ).html();
-    combat.playerDOM = combat.$dialog.find( '.player-col' ).html();
+    combat.monsterDOM = combat.$dialog.find( '.col1-2' ).eq(1).html();
+    combat.playerDOM = combat.$dialog.find( '.col1-2' ).eq(0).html();
 
     combat.initialize = function () {
         // set up +/- buttons for monster & player
