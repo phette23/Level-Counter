@@ -21,7 +21,7 @@ In rough order of priority.
 
 ### Features
 
-- Implement a basic CSS grid using classes like 1-of-2
 - Better prompt box, move to Bootstrap Modal
+- More spacing on larger screen sizes
 - Keyboard shortcuts for +/- buttons, combat
 - Record game progress, offer to chart later (?)
