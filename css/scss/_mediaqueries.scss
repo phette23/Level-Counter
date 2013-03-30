@@ -1,6 +1,8 @@
 /* ==|== media queries ======================================================
    Overrides the primary ('mobile first') styles
    ========================================================================== */
+// first the grid
+@import '_grid.scss';
 
 @media only screen and (min-width: 35em) {
 
@@ -12,22 +14,8 @@
     font-size: 135%;
   }
 
-  #level {
-    margin-right: 1em;
-  }
-
-  #level, #bonuses {
-    display: inline-block;
-  }
-
   #level, #bonuses, #strength {
     font-size: 175%;
-  }
-
-  #strength:before {
-    clear: both;
-    content: "";
-    display: block;
   }
 
   .extra-text {
@@ -57,10 +45,6 @@
   /* headers are plenty big but increase buttons & #s */
   button, .display {
     font-size: 150%;
-  }
-
-  #level {
-    margin-right: 2em;
   }
 
   nav {

@@ -30,15 +30,3 @@
 #add-player {
     margin-left: 1em;
 }
-
-/* 2 column display when screen is large enough */
-@media only screen and (min-width: 35em) {
-    .player-col {
-        float: left;
-        width: 50%;
-    }
-    .monster-col {
-        float: right;
-        width: 50%;
-    }
-}
