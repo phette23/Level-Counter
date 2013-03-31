@@ -1,11 +1,10 @@
-// file.js
-// usage: node file.js [new version]
-// if no [new version] is passed, prints package.json to stdout
-// otherwise updates version string
+// version.js
+// usage: node version.js $filename $newVersionNumber
+// sets the "version" property found in $filename to $newVersionNumber
+// only works on JSON files
 
 var fs = require( 'fs' ),
     filepath = process.argv[ 2 ],
-    // 3rd word passed on the command line, e.g. node file.js $NEWVER
     newVer = process.argv[ 3 ];
 
 if ( !filepath ) {
@@ -32,7 +31,7 @@ function switchVer( err, data) {
             newFile = JSON.stringify( newFile, null, '\t' );
             fs.writeFile( filepath, newFile, simpleErr );
         } else {
-            console.log( 'Invalid version argument. Must be of form 1.12.3' );
+            console.log( '!ERROR!: invalid version. Must be of form 1.12.3' );
             process.exit();
         }
     }
