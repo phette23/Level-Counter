@@ -22,6 +22,5 @@ In rough order of priority.
 ### Features
 
 - Better prompt box, move to Bootstrap Modal
-- More spacing on larger screen sizes
 - Keyboard shortcuts for +/- buttons, combat
 - Record game progress, offer to chart later (?)

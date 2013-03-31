@@ -231,15 +231,15 @@ var LevelCounter = (function ($) {
         $( '#combat-dialog' ).hide( 'slow',
             // when it's hidden, reset everything to standard
             function () {
-                var numMonsters = $( '.monster' ).length;
                 // remove helper, show +player again
                 $( '#combat-dialog .player' ).eq( 1 ).remove();
                 combat.$addPlayerBtn.show();
                 // remove extra monsters
-                for ( var i = 1; i < numMonsters ; i++ ) {
-                    $( '#combat-dialog .monster' ).eq( i - 1 ).remove();
+                // starting at 1 ensures first monster isn't removed
+                for ( var i = 1; i < combat.numMonsters; i++ ) {
+                    $( '#combat-dialog .monster' ).eq( i ).remove();
                 }
-                numMonsters = 1;
+                combat.numMonsters = 1;
             }
         );
         // scroll to top, combat dialog has chance to be longer than page
