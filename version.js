@@ -1,6 +1,5 @@
 // file.js
 // usage: node file.js [new version]
-// if no [new version] is passed, prints package.json to stdout
 // otherwise updates version string
 
 var fs = require( 'fs' ),
@@ -32,7 +31,7 @@ function switchVer( err, data) {
             newFile = JSON.stringify( newFile, null, '\t' );
             fs.writeFile( filepath, newFile, simpleErr );
         } else {
-            console.log( 'Invalid version argument. Must be of form 1.12.3' );
+            console.log( '!ERROR!: invalid version. Must be of form 1.12.3' );
             process.exit();
         }
     }
