@@ -4,18 +4,12 @@ Basic Level Counter to keep track of your levels, bonuses, and combat scenarios 
 
 There's a [live, usable version](http://phette.net/level-counter/) on my website.
 
-## Build Script
-
-This project used to use [Yeoman](http://yeoman.io/) to build an optimized version (if you have the old Yeoman project, `yeoman build:minify --force` should still work), but that project has gone in a different direction, leaving the build process to [Grunt](http://gruntjs.com/). Currently, `grunt build` is just going to error out if you run it. Eventually, I'll update the Gruntfile and get the project working, but for now it's not possible to optimize the app automatically with any current tools.
-
 ## To Do
 
 In rough order of priority.
 
 ### Development
 
-- Get a working build process with Grunt
-- Use [Bower](http://twitter.github.com/bower/) to manage JS libs, e.g. jQuery, JSON3, Bootstrap Modal
 - Replace call to `alert` inside `restorePlayer` with a native prompt
 - Break main.js into smaller components, e.g. combat, prompt, storage
 
@@ -23,4 +17,29 @@ In rough order of priority.
 
 - Better prompt box, move to Bootstrap Modal
 - Keyboard shortcuts for +/- buttons, combat
+- Make something stupendous happen when you win
 - Record game progress, offer to chart later (?)
+
+## Developer Info
+
+### Yeoman, Bower, Grunt
+
+This project uses [Yeoman](http://yeoman.io/) as a development tool, which in turns relies on [Bower](http://twitter.github.com/bower/) for client-side package management and [Grunt](http://gruntjs.com/) for various tasks like building an optimized version. Most of the documentation at the Yeoman website should provide a fair grasp on how to use it in this project, but the main items are:
+
+- `grunt server` runs a local test server
+- `grunt build` compiles an optimized version in dist/
+- `bower install <library>` installs libraries (e.g. jQuery plugins, polyfills) in app/components/
+
+I haven't ported the main client-side dependencies (jQuery, Modernizr, JSON3) over to Bower yet. I also haven't written unit tests so `grunt test` isn't useful.
+
+### Version Number Management
+
+Because I'm trying to use one code base to write two separate apps (a Mozilla web app, a Chrome Store app), and there are two main branches, and Grunt also needs a package.json, there are seven different version numbers floating around in this project. The `master` branch has three and `chrome-app` branch has the same three plus one for the Chrome Web Store. The files that hold the version numbers are:
+
+- package.json - metadata for developers, and for Yeoman's sake
+- app/package.json - to be perfectly honest, I'm not sure what this one is for. But I must have put it here for a reason! It might be a compliment to Mozilla's manifest.webapp which contains versioning info.
+- app/manifest.json - for the [Chrome Web Store](https://developer.chrome.com/apps/manifest.html), only on the `chrome-app` branch
+
+There is also an app/manifest.webapp file for Mozilla's [Open Web Apps](https://developer.mozilla.org/en-US/docs/Apps/Manifest) but it does not include a version number.
+
+To help version number consistency, I wrote a pair of short scripts to print, validate, and update version numbers. They've only been tested in BASH on Mac OS X and rely on [node](nodejs.org). Simply run the `ver.sh` script and pass it one of three options: p for print, v for validate versions, and u for update which takes an additional argument that becomes the new version, e.g. `./ver.sh -v 1.2.4`.

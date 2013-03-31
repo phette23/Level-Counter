@@ -3,7 +3,7 @@
   "description": "Keep track of your level & bonuses in [NAME REDACTED] card game.",
   "launch_path": "/index.html",
   "icons": {
-    "128": "/img/moz-app-logo.png"
+    "128": "/images/moz-app-logo.png"
   },
   "type": "web",
   "developer": {

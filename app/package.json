@@ -1,0 +1,22 @@
+{
+	"author": "Eric Phetteplace",
+	"name": "Level Counter",
+	"description": "Web app for keeping track of your level & bonuses in [NAME REDACTED] card game.",
+	"keywords": [
+		"Level Counter",
+		"card game",
+		"monsters",
+		"combat"
+	],
+	"version": "1.2.3",
+	"homepage": "http://phette.net/level-counter/",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/phette23/level-counter.git"
+	},
+	"bugs": {
+		"url": "http://github.com/phette23/level-counter/issues"
+	},
+	"dependencies": {},
+	"devDependencies": {}
+}
