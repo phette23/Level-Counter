@@ -3,17 +3,17 @@
 
 /* TEAM */
   Lead Developer: Eric Phetteplace
-  Site: http://phette.net/
+  Site: http://phette.net
   Twitter: @phette23
-  Location: Maryland, USA
+  Location: USA
 
 /* THANKS */
-  Names (& URL): Judith Pond & Brian Duggan, for playing Munchkin with me & beta testing.
+  Names: Judith Pond & Brian Duggan, for playing with me & beta testing.
 
 /* SITE */
   Standards: HTML5, CSS3
-  Components: Modernizr, jQuery
-  Software: Text Wrangler, Chrome (Dev Tools), Komodo Edit, Dropbox, git, Sublime Text 2, Yeoman
+  Components: Modernizr, jQuery, JSON3
+  Software: Apache, Chrome Dev Tools, Git, Grunt, Sublime Text 2, Yeoman
 
 
                                -o/-
