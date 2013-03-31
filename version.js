@@ -1,10 +1,10 @@
-// file.js
-// usage: node file.js [new version]
-// otherwise updates version string
+// version.js
+// usage: node version.js $filename $newVersionNumber
+// sets the "version" property found in $filename to $newVersionNumber
+// only works on JSON files
 
 var fs = require( 'fs' ),
     filepath = process.argv[ 2 ],
-    // 3rd word passed on the command line, e.g. node file.js $NEWVER
     newVer = process.argv[ 3 ];
 
 if ( !filepath ) {
