@@ -37,8 +37,9 @@ I haven't ported the main client-side dependencies (jQuery, Modernizr, JSON3) ov
 Because I'm trying to use one code base to write two separate apps (a Mozilla web app, a Chrome Store app), and there are two main branches, and Grunt also needs a package.json, there are seven different version numbers floating around in this project. The `master` branch has three and `chrome-app` branch has the same three plus one for the Chrome Web Store. The files that hold the version numbers are:
 
 - package.json - metadata for developers, and for Yeoman's sake
-- app/package.json - to be perfectly honest, I'm not sure what this one is for. I think it's some webapp standard, perhaps an outdated version of Chrome apps.
-- app/manifest.webapp - for Mozilla's [Open Web Apps](https://developer.mozilla.org/en-US/docs/Apps/Manifest)
+- app/package.json - to be perfectly honest, I'm not sure what this one is for. But I must have put it here for a reason! It might be a compliment to Mozilla's manifest.webapp which contains versioning info.
 - app/manifest.json - for the [Chrome Web Store](https://developer.chrome.com/apps/manifest.html), only on the `chrome-app` branch
 
-To help with this, I wrote a pair of short scripts to print, validate, and update version numbers. They've only been tested in BASH on Mac OS X and rely on [node](nodejs.org). Simply run the `ver.sh` script and pass it one of three options: p for print, v for validate versions, and u for update which takes an additional argument that becomes the new version, e.g. `./ver.sh -v 1.2.4`.
+There is also an app/manifest.webapp file for Mozilla's [Open Web Apps](https://developer.mozilla.org/en-US/docs/Apps/Manifest) but it does not include a version number.
+
+To help version number consistency, I wrote a pair of short scripts to print, validate, and update version numbers. They've only been tested in BASH on Mac OS X and rely on [node](nodejs.org). Simply run the `ver.sh` script and pass it one of three options: p for print, v for validate versions, and u for update which takes an additional argument that becomes the new version, e.g. `./ver.sh -v 1.2.4`.
