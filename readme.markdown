@@ -14,8 +14,6 @@ In rough order of priority.
 
 ### Development
 
-- Get a working build process with Grunt
-- Use [Bower](http://twitter.github.com/bower/) to manage JS libs, e.g. jQuery, JSON3, Bootstrap Modal
 - Replace call to `alert` inside `restorePlayer` with a native prompt
 - Break main.js into smaller components, e.g. combat, prompt, storage
 
@@ -23,4 +21,5 @@ In rough order of priority.
 
 - Better prompt box, move to Bootstrap Modal
 - Keyboard shortcuts for +/- buttons, combat
+- Make something stupendous happen when you win
 - Record game progress, offer to chart later (?)
