@@ -1,7 +1,7 @@
 {
 	"name": "Level Counter",
 	"description": "Keep track of your level & bonuses in Munchkin.",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"manifest_version": 2,
 	"icons": {
 		"16": "favicon.ico",
