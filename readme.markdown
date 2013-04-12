@@ -12,6 +12,7 @@ In rough order of priority.
 
 - Replace call to `alert` inside `restorePlayer` with a native prompt
 - Break main.js into smaller components, e.g. combat, prompt, storage
+- Use pub-sub instead of DOM events? See [this blog post](http://www.elijahmanor.com/2013/03/angry-birds-of-javascript-blue-bird.html)
 
 ### Features
 
