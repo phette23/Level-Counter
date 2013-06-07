@@ -1,7 +1,7 @@
 #prompt {
     background-color: #fff;
     border-radius: $roundedness;
-    @include inset-box-shadow;
+    border: 2px solid $dark-brown;
     // hide prompt initially, revealed by script
     display: none;
     padding: 1em;
