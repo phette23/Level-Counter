@@ -1,6 +1,6 @@
 {
   "name": "Level Counter",
-  "description": "Keep track of your level & bonuses in [NAME REDACTED] card game.",
+  "description": "Keep track of your level & bonuses in a silly card game.",
   "launch_path": "/index.html",
   "icons": {
     "128": "/images/moz-app-logo.png"
