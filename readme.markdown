@@ -10,6 +10,7 @@ Level Counter used to be more robust but frankly less satisfying. You could rest
 
 - Fix display bugs on mobile
 - Keyboard shortcuts for all buttons
+- Do something stupendous when level = 10
 
 ## Developer Info
 
