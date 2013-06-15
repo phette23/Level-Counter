@@ -1,6 +1,5 @@
 @import '_vars.scss';
 @import '_normalize.scss';
-@import '_chromeframe.scss';
 
 /* ==|== primary styles ===================================================== */
 
@@ -14,11 +13,6 @@ body {
 }
 
 /* "Level Counter" */
-header h1 {
-  font-size: 55%;
-}
-
-/* Player Name */
 header h2 {
   font-size: 100%;
   margin: 0 1.5em;
@@ -28,61 +22,10 @@ header h2 {
   padding-right: 1em;
 }
 
-/* menu styles */
-@include nav-spacing( .4em );
-
-nav {
-  /* upper right corner */
-  position: absolute;
-  padding: 0 .25em;
-  background: $dark-brown; color: $light-brown;
-  border: 1px solid #8A6119;
-    -webkit-border-radius: $roundedness;
-  border-radius: $roundedness;
-  @include inset-box-shadow;
-}
-
-.menu-title {
-  text-align: right; color: $light-brown;
-  display: inline-block;
-  width: 100%;
-}
-
-/* don't match background color on hover/focus */
-a.menu-title:hover,
-a.menu-title:focus {
-  color: $light-brown;
-}
-
-.menu-items a {
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-  font-size: 80%;
-  padding: 0 .2em;
-  border: solid #8B7553;
-    -webkit-border-radius: 4px;
-  border-radius: 4px;
-  background: $light-brown;
-  color: $dark-brown;
-}
-
-nav a,
-nav a:hover,
-nav a:focus,
-nav a:visited {
-  color: $dark-brown;
-  text-decoration: none;
-}
-
-.extra-text {
-  display: none;
-}
-
 /* all clickable elements should have pointer */
-nav, .pname {
-  cursor: pointer;
-}
+// nav, .pname {
+//   cursor: pointer;
+// }
 
 section {
   font-size: 130%;
@@ -122,10 +65,6 @@ button:active {
   position: relative; top: 2px; left: 2px;
 }
 
-.start-hid {
-  display: none;
-}
-
 #dagger {
   /* important to have a serif font for the dagger
   sans-serif will look like a cross
@@ -146,28 +85,27 @@ button:active {
 stealing this from Remy Sharp
 http://jsbin.com/owavu3 */
 
-.pname:hover:after {
-  content: ' click to edit';
-  font-style: italic;
-  font-size: 50%;
-    -webkit-text-stroke: 0;
-  text-stroke: 0;
-}
+// .pname:hover:after {
+//   content: ' click to edit';
+//   font-style: italic;
+//   font-size: 50%;
+//     -webkit-text-stroke: 0;
+//   text-stroke: 0;
+// }
 
-.pname:hover, .pname:focus {
-  background: #E8FA43;
-}
+// .pname:hover, .pname:focus {
+//   background: #E8FA43;
+// }
 
-.pname:focus {
-  padding: 5px;
-}
+// .pname:focus {
+//   padding: 5px;
+// }
 
-.pname:focus:after {
-  content: '';
-}
+// .pname:focus:after {
+//   content: '';
+// }
 
-/* both links in the footer are "help" links
-revisit this rule if that changes later */
+/* only link in the footer is phette23 */
 footer a {
   cursor: help;
 }
@@ -176,4 +114,3 @@ footer a {
 @import '_combat.scss';
 @import '_mediaqueries.scss';
 @import '_utilities.scss';
-@import '_print.scss';
