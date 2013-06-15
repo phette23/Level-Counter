@@ -37,7 +37,10 @@
 	<!-- endbuild -->
 </head>
 
-<body ng-app>
+<!-- run Angular in CSP mode
+	see: stackoverflow.com/questions/11336969/using-angularjs-in-a-google-chrome-extension
+	difference from master branch -->
+<body ng-app ng-csp>
 
 	<header>
 		<h1>Level Counter</h1>
