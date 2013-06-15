@@ -27,9 +27,10 @@
 
 	<link rel="author" href="humans.txt" />
 
-	<!-- Grab Google CDN's Angular, fall back to local if offline -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-	<script>window.angular || document.write('<script src="components/angular/angular.min.js"><\/script>')</script>
+	<!-- use local AngularJS to suit Chrome Extensions' Content Security Policy
+	see: developer.chrome.com/extensions/contentSecurityPolicy.html
+	difference from master branch -->
+	<script src="components/angular/angular.min.js"></script>
 
 	<!-- build:js scripts/main.js -->
 	<script src="scripts/main.js"></script>
