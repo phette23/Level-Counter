@@ -56,7 +56,7 @@
 	<script src="scripts/libs/modernizr-contenteditable-json-localstorage.js"></script>
 </head>
 
-<body>
+<body ng-app>
 	<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 			 chromium.org/developers/how-tos/chrome-frame-getting-started -->
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -76,22 +76,21 @@
 		<h2 contenteditable title="click to edit" class="pname">Player Name</h2>
 	</header>
 
-	<div role="main" id="main">
-
+	<div role="main" id="main" ng-controller="LevelCounter">
 
 		<section id="level" class="col1-2">
 			<h2>Level</h2>
-			<button title="decrease level">-</button>&nbsp;<span class="display">1</span>&nbsp;<button title="increase level">+</button>
+			<button title="decrease level" ng-click="player.dnLvl()">-</button>&nbsp;<span class="display">{{player.level}}</span>&nbsp;<button title="increase level" ng-click="player.upLvl()">+</button>
 		</section>
 
 		<section id="bonuses" class="col1-2">
 			<h2>Bonuses</h2>
-			<button title="decrease bonuses">-</button>&nbsp;<span class="display">0</span>&nbsp;<button title="increase bonuses">+</button>
+			<button title="decrease bonuses" ng-click="player.dnBns()">-</button>&nbsp;<span class="display">{{player.bonus}}</span>&nbsp;<button title="increase bonuses" ng-click="player.upBns()">+</button>
 		</section>
 
 		<section id="strength">
 			<h2>Combat Strength</h2>
-			<span class="display">1</span>&nbsp;
+			<span class="display">{{player.strength()}}</span>&nbsp;
 			<!-- "dagger" entity: http://htmlhelp.com/reference/html40/entities/special.html -->
 			<button id="dagger" title="enter combat">&dagger;</button>
 		</section>
@@ -138,6 +137,10 @@
 	<!-- Grab Google CDN's jQuery, fall back to local if offline -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+	<!-- Grab Google CDN's Angular, fall back to local if offline -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script>window.angular || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
 	<!-- build:js scripts/main.js -->
 	<script src="scripts/main.js"></script>
