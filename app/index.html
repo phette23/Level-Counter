@@ -8,22 +8,11 @@
 
 	<!-- Mobile viewport optimized: h5bp.com/viewport -->
 	<meta name="viewport" content="width=device-width">
-	<!-- Web app capable: developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons#comment-2 -->
+	<!-- remove apple touch icons, other irrelevant head pieces
+	difference from master branch -->
+
 	<link rel="icon" type="image/png" href="images/logo.png">
-	<!-- 320x460 for iPhone 3GS -->
-	<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and not (-webkit-min-device-pixel-ratio: 2)" href="startup-iphone.png">
-	<!-- 640x920 for retina display -->
-	<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="startup-iphone4.png">
-	<!-- iPad Portrait 768x1004 -->
-	<link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: portrait)" href="startup-iPad-portrait.png">
-	<!-- iPad Landscape 1024x748 -->
-	<link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: landscape)" href="startup-iPad-landscape.png">
-	<link rel="stylesheet" href="styles/main.css">
-
-	<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
 	<link rel="author" href="humans.txt" />
 
@@ -32,9 +21,7 @@
 	difference from master branch -->
 	<script src="components/angular/angular.min.js"></script>
 
-	<!-- build:js scripts/main.js -->
 	<script src="scripts/main.js"></script>
-	<!-- endbuild -->
 </head>
 
 <!-- run Angular in CSP mode
