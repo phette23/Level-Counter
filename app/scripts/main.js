@@ -1,5 +1,4 @@
 /*jshint strict:false, white:false */
-/*global jQuery, Modernizr, angular */
 function LevelCounter( $scope ) {
     $scope.player = {
         level : 1,
@@ -21,3 +20,5 @@ function LevelCounter( $scope ) {
         }
     };
 }
+// to prevent minifier from renaming $scope param
+LevelCounter.$inject = [ '$scope' ];
