@@ -12,8 +12,8 @@
 
 /* SITE */
   Standards: HTML5, CSS3
-  Components: Modernizr, jQuery, JSON3
-  Software: Apache, Chrome Dev Tools, Git, Grunt, Sublime Text 2, Yeoman
+  Components: AngularJS
+  Software: Apache, Chrome Dev Tools, Git, Grunt, Sublime Text 2, Yeoman, Bower
 
 
                                -o/-
