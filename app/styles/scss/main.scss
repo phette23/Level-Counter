@@ -13,7 +13,7 @@ body {
 }
 
 /* "Level Counter" */
-header h2 {
+header h1 {
   font-size: 100%;
   margin: 0 1.5em;
   // otherwise yellow highlight spans whole screen
@@ -110,7 +110,5 @@ footer a {
   cursor: help;
 }
 
-@import '_prompt.scss';
-@import '_combat.scss';
 @import '_mediaqueries.scss';
 @import '_utilities.scss';
