@@ -52,28 +52,19 @@
 
 	<link rel="author" href="humans.txt" />
 
-	<!-- All JavaScript at the bottom, except this Modernizr build -->
-	<script src="scripts/libs/modernizr-contenteditable-json-localstorage.js"></script>
+	<!-- Grab Google CDN's Angular, fall back to local if offline -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script>window.angular || document.write('<script src="components/angular/angular.min.js"><\/script>')</script>
+
+	<!-- build:js scripts/main.js -->
+	<script src="scripts/main.js"></script>
+	<!-- endbuild -->
 </head>
 
 <body ng-app>
-	<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-			 chromium.org/developers/how-tos/chrome-frame-getting-started -->
-	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
 	<header>
 		<h1>Level Counter</h1>
-		<nav>
-			<!-- three-line menu icon
-			see codepen.io/chriscoyier/pen/fzsqm for more implementation ideas -->
-			<a class="menu-title">&#9776;<span class="extra-text">&nbsp;Menu</span></a>
-			<section class="start-hid menu-items">
-				<a href="#" title="Restore your saved game" id="restore" class="start-hid">Restore Previous</a>
-				<a href="#" title="clear the saved game" id="clear" class="start-hid">Clear Data</a>
-				<a href="#" title="close this menu" id="close-menu" class="start-hid">Close</a>
-			</section>
-		</nav>
-		<h2 contenteditable title="click to edit" class="pname">Player Name</h2>
 	</header>
 
 	<div role="main" id="main" ng-controller="LevelCounter">
@@ -100,51 +91,6 @@
 	<footer>
 		by <a href="http://twitter.com/phette23">phette23</a>
 	</footer>
-
-	<div id="combat-dialog" role="dialog" tabindex="-1">
-
-		<div class="col1-2">
-			<section class="combat player">
-				<h2>Player</h2>
-				<button title="decrease player's strength">-</button>&nbsp;<span class="display" title="Player's combat strength">X</span>&nbsp;<button title="increase player's strength">+</button>
-			</section>
-		</div>
-
-		<div class="col1-2">
-			<section class="combat monster">
-				<h2>Monster</h2>
-				<button title="decrease monster's level">-</button>&nbsp;<span class="display" title="Monster's level">X</span>&nbsp;<button title="increase monster's level">+</button>
-			</section>
-		</div>
-
-		<div class="combat controls">
-			<button id="add-monster" title="add a wandering monster">+Monster</button>
-			<button id="add-player" title="add a helping player">+Player</button>
-			<br>
-			<button id="combat-done" title="finish combat">Done</button>
-		</div>
-
-	</div>
-
-	<div id="prompt" role="dialog" tabindex="-1" aria-labelledby="prompt-label">
-		<form>
-			<h2><label for="prompt-input" id="prompt-label">Prompt Header</label></h2>
-			<input type="text" name="prompt-input" aria-labelledby="prompt-label" autocomplete="off" />
-			<button type="submit">OK</button>
-		</form>
-	</div>
-
-	<!-- Grab Google CDN's jQuery, fall back to local if offline -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
-	<!-- Grab Google CDN's Angular, fall back to local if offline -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-	<script>window.angular || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
-	<!-- build:js scripts/main.js -->
-	<script src="scripts/main.js"></script>
-	<!-- endbuild -->
 
 </body>
 </html>
