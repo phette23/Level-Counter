@@ -1,7 +1,7 @@
 {
 	"author": "Eric Phetteplace",
 	"name": "level-counter",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"description": "Web app for keeping track of your level & bonuses in a silly card game.",
 	"keywords": [
 		"Level Counter",
