@@ -200,15 +200,16 @@ module.exports = function (grunt) {
         htmlmin: {
             dist: {
                 options: {
-                    /*removeCommentsFromCDATA: true,
+                    removeCommentsFromCDATA: true,
                     // https://github.com/yeoman/grunt-usemin/issues/44
-                    //collapseWhitespace: true,
+                    collapseWhitespace: true,
                     collapseBooleanAttributes: true,
                     removeAttributeQuotes: true,
                     removeRedundantAttributes: true,
                     useShortDoctype: true,
                     removeEmptyAttributes: true,
-                    removeOptionalTags: true*/
+                    removeOptionalTags: true,
+                    removeComments: true
                 },
                 files: [{
                     expand: true,
@@ -271,12 +272,12 @@ module.exports = function (grunt) {
         'compass:dist',
         'useminPrepare',
         'imagemin',
-        'htmlmin',
         'concat',
         'cssmin',
         'uglify',
         'copy',
-        'usemin'
+        'usemin',
+        'htmlmin'
     ]);
 
     grunt.registerTask('default', [
