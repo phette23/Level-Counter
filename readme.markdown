@@ -6,6 +6,11 @@ There's a [live, usable version](http://phette.net/level-counter/) on my website
 
 Level Counter used to be more robust but frankly less satisfying. You could restore a previous level-bonus combo if you accidentally navigated away from the tab, edit a player name, and open a combat dialog where you could add helping players and wandering monsters. The code, however, was jQuery spaghetti and this app is a dozen lines of AngularJS. If there's a lot of demand for those additional features I can re-implement them, but I never found myself using them. I just want to keep track of my levels and bonuses, nothing more.
 
+## To Do
+
+- Fix display bugs on mobile
+- Keyboard shortcuts for all buttons
+
 ## Developer Info
 
 ### Yeoman, Bower, Grunt
