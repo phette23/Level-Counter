@@ -33,28 +33,23 @@ while getopts :pvu:h opt; do
 
         # go to master, store Mozilla version
         git checkout -q master
-        MOZMASTER=$(getver app/package.json)
-        YEOMASTER=$(getver package.json)
+        MASTERPJ=$(getver package.json)
 
         # go to chrome, get both versions
         git checkout -q chrome-app
-        MOZCHROME=$(getver app/package.json)
-        CHRCHROME=$(getver app/manifest.json)
-        YEOCHROME=$(getver package.json)
+        CHROMEMJ=$(getver app/manifest.json)
+        CHROMEPJ=$(getver package.json)
 
         # yes, this is ugly as hell, but i couldn't get a lengthy set of comparisons to work in bash
         # transitive comparisons: don't need to exhaust every combination,
         # since if they're not all equal to $MOZMASTER they're not all equal
-        if [[ $MOZMASTER != $YEOMASTER ]]
+        if [[ $MASTERPJ != $CHROMEMJ ]]
             then err=1
         fi
-        if [[ $MOZMASTER != $MOZCHROME ]]
+        if [[ $MASTERPJ != $CHROMEPJ ]]
             then err=1
         fi
-        if [[ $MOZMASTER != $CHRCHROME ]]
-            then err=1
-        fi
-        if [[ $MOZMASTER != $YEOCHROME ]]
+        if [[ $CHROMEMJ != $CHROMEPJ ]]
             then err=1
         fi
 
@@ -62,13 +57,11 @@ while getopts :pvu:h opt; do
             then echo -e "\033[01;31m¡ERROR!\033[0m Versions are inconsistent.
 
             on \033[01;33mmaster\033[0m:
-            app/package.json is $MOZMASTER
-            package.json is $YEOMASTER
+            package.json is $MASTERPJ
 
             on \033[01;33mchrome-app\033[0m:
-            app/package.json is $MOZCHROME
-            app/manifest.json is $CHRCHROME
-            package.json is $YEOCHROME"
+            app/manifest.json is $CHROMEMJ
+            package.json is $CHROMEPJ"
         else
             echo "Versions are valid across both the master & chrome-app branches."
         fi
@@ -84,13 +77,11 @@ while getopts :pvu:h opt; do
         git stash -q >/dev/null 2>&1
         # go to master, update Mozilla version
         git checkout -q master
-        node version.js app/package.json $OPTARG
         node version.js package.json $OPTARG
         git commit -am "vjs - version bump to $OPTARG"
         git tag v$OPTARG
         # go to chrome-app, update Mozilla & Chrome versions
         git checkout -q chrome-app
-        node version.js app/package.json $OPTARG
         node version.js app/manifest.json $OPTARG
         node version.js package.json $OPTARG
         git commit -am "vjs - version bump to $OPTARG"

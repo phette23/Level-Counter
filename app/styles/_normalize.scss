@@ -14,8 +14,9 @@
    HTML5 display definitions
    ========================================================================== */
 
-article, aside, footer, header, hgroup, nav, section { display: block; }
-[hidden] { display: none; }
+footer, header, section { display: block; }
+// hgroup, nav, aside, article { display: block; }
+// [hidden] { display: none; }
 
 /* =============================================================================
    Base
@@ -59,20 +60,20 @@ a:hover, a:active { outline: 0; }
    Typography
    ========================================================================== */
 
-b, strong { font-weight: bold; }
+// b, strong { font-weight: bold; }
 
-small { font-size: 85%; }
+// small { font-size: 85%; }
 
 /* Position subscript and superscript content without affecting line-height: h5bp.com/k */
-sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
-sup { top: -0.5em; }
-sub { bottom: -0.25em; }
+// sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+// sup { top: -0.5em; }
+// sub { bottom: -0.25em; }
 
 /* =============================================================================
    Lists
    ========================================================================== */
 
-ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+// ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
 
 /* =============================================================================
    Embedded content
@@ -83,7 +84,7 @@ ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
  * 2. Remove the gap between images and borders on image containers: h5bp.com/i/440
  */
 
-img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+// img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
 
 button { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
 
@@ -105,7 +106,7 @@ button { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
  * Re-set default cursor for disabled elements
  */
 
-button[disabled] { cursor: default; }
+// button[disabled] { cursor: default; }
 
 /*
  * Remove inner padding and border in FF3/4: h5bp.com/l

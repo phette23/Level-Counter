@@ -26,6 +26,7 @@ nbproject
 # Yeoman temp & build folders
 temp
 dist
+.tmp
 
 # NPM
 node_modules

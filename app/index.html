@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 
@@ -27,92 +27,45 @@
 
 	<link rel="author" href="humans.txt" />
 
-	<!-- All JavaScript at the bottom, except this Modernizr build -->
-	<script src="scripts/libs/modernizr-contenteditable-json-localstorage.js"></script>
+	<!-- Grab Google CDN's Angular, fall back to local if offline -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script>window.angular || document.write('<script src="components/angular/angular.min.js"><\/script>')</script>
+
+	<!-- build:js scripts/main.js -->
+	<script src="scripts/main.js"></script>
+	<!-- endbuild -->
 </head>
 
-<body>
+<body ng-app>
 
 	<header>
 		<h1>Level Counter</h1>
-		<nav>
-			<!-- three-line menu icon
-			see codepen.io/chriscoyier/pen/fzsqm for more implementation ideas -->
-			<a class="menu-title">&#9776;<span class="extra-text">&nbsp;Menu</span></a>
-			<section class="start-hid menu-items">
-				<a href="#" title="Restore your saved game" id="restore" class="start-hid">Restore Previous</a>
-				<a href="#" title="clear the saved game" id="clear" class="start-hid">Clear Data</a>
-				<a href="#" title="close this menu" id="close-menu" class="start-hid">Close</a>
-			</section>
-		</nav>
-		<h2 contenteditable title="click to edit" class="pname">Player Name</h2>
 	</header>
 
-	<div role="main" id="main">
-
+	<div role="main" id="main" ng-controller="LevelCounter">
 
 		<section id="level" class="col1-2">
 			<h2>Level</h2>
-			<button title="decrease level">-</button>&nbsp;<span class="display">1</span>&nbsp;<button title="increase level">+</button>
+			<button ng-click="player.dnLvl()">-</button>&nbsp;<span class="display">{{player.level}}</span>&nbsp;<button ng-click="player.upLvl()">+</button>
 		</section>
 
 		<section id="bonuses" class="col1-2">
 			<h2>Bonuses</h2>
-			<button title="decrease bonuses">-</button>&nbsp;<span class="display">0</span>&nbsp;<button title="increase bonuses">+</button>
+			<button ng-click="player.dnBns()">-</button>&nbsp;<span class="display">{{player.bonus}}</span>&nbsp;<button ng-click="player.upBns()">+</button>
 		</section>
 
 		<section id="strength">
 			<h2>Combat Strength</h2>
-			<span class="display">1</span>&nbsp;
+			<span class="display">{{player.strength()}}</span>&nbsp;
 			<!-- "dagger" entity: http://htmlhelp.com/reference/html40/entities/special.html -->
-			<button id="dagger" title="enter combat">&dagger;</button>
+			<button id="dagger">&dagger;</button>
 		</section>
 
 	</div>
 
 	<footer>
-		by <a href="http://twitter.com/phette23">phette23</a>
+		by&nbsp;<a href="http://twitter.com/phette23">phette23</a>
 	</footer>
-
-	<div id="combat-dialog" role="dialog" tabindex="-1">
-
-		<div class="col1-2">
-			<section class="combat player">
-				<h2>Player</h2>
-				<button title="decrease player's strength">-</button>&nbsp;<span class="display" title="Player's combat strength">X</span>&nbsp;<button title="increase player's strength">+</button>
-			</section>
-		</div>
-
-		<div class="col1-2">
-			<section class="combat monster">
-				<h2>Monster</h2>
-				<button title="decrease monster's level">-</button>&nbsp;<span class="display" title="Monster's level">X</span>&nbsp;<button title="increase monster's level">+</button>
-			</section>
-		</div>
-
-		<div class="combat controls">
-			<button id="add-monster" title="add a wandering monster">+Monster</button>
-			<button id="add-player" title="add a helping player">+Player</button>
-			<br>
-			<button id="combat-done" title="finish combat">Done</button>
-		</div>
-
-	</div>
-
-	<div id="prompt" role="dialog" tabindex="-1" aria-labelledby="prompt-label">
-		<form>
-			<h2><label for="prompt-input" id="prompt-label">Prompt Header</label></h2>
-			<input type="text" name="prompt-input" aria-labelledby="prompt-label" autocomplete="off" />
-			<button type="submit">OK</button>
-		</form>
-	</div>
-
-	<!-- Grab Google CDN's jQuery, fall back to local if offline -->
-	<script src="js/libs/jquery-1.7.1.min.js"></script>
-
-	<!-- build:js scripts/main.js -->
-	<script src="scripts/main.js"></script>
-	<!-- endbuild -->
 
 </body>
 </html>

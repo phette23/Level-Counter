@@ -26,11 +26,7 @@
     margin-bottom: 1em;
   }
 
-  .extra-text {
-    display: inherit;
-  }
-
-  @include nav-spacing( .6em );
+  // @include nav-spacing( .6em );
 
 }
 
@@ -41,6 +37,6 @@
     font-size: 150%;
   }
 
-  @include nav-spacing( 1em );
+  // @include nav-spacing( 1em );
 
 }
