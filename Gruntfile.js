@@ -134,7 +134,7 @@ module.exports = function (grunt) {
         },
         compass: {
             options: {
-                sassDir: '<%= yeoman.app %>/styles',
+                sassDir: '<%= yeoman.app %>/styles/scss',
                 cssDir: '.tmp/styles',
                 imagesDir: '<%= yeoman.app %>/images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
@@ -154,7 +154,7 @@ module.exports = function (grunt) {
         /*concat: {
             dist: {}
         },*/
-        
+
         uglify: {
             dist: {
                 files: {
