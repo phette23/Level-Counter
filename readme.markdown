@@ -33,3 +33,9 @@ Because I'm trying to use one code base to write two separate apps (a Mozilla we
 There is also an app/manifest.webapp file for Mozilla's [Open Web Apps](https://developer.mozilla.org/en-US/docs/Apps/Manifest) but it does not include a version number.
 
 To help version number consistency, I wrote a pair of short scripts to print, validate, and update version numbers. They've only been tested in <abbr title="Bourne Again Shell">BASH</abbr> on Mac OS X and rely on [node](nodejs.org). Simply run the `ver.sh` script and pass it one of three options: p for print, v for validate versions, and u for update which takes an additional argument that becomes the new version, e.g. `./ver.sh -v 1.2.4`.
+
+## License
+
+[GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
+
+![GPL 3 logo](https://www.gnu.org/graphics/gplv3-127x51.png "GPLv3")
