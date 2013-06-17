@@ -65,21 +65,21 @@
 
 	<div role="main" id="main" ng-controller="LevelCounter">
 
-		<section id="level" class="col1-2">
+		<section class="col1-2">
 			<h2>Level</h2>
 			<button ng-click="player.dnLvl()">-</button>&nbsp;<span class="display">{{player.level}}</span>&nbsp;<button ng-click="player.upLvl()">+</button>
 		</section>
 
-		<section id="bonuses" class="col1-2">
+		<section class="col1-2">
 			<h2>Bonuses</h2>
 			<button ng-click="player.dnBns()">-</button>&nbsp;<span class="display">{{player.bonus}}</span>&nbsp;<button ng-click="player.upBns()">+</button>
 		</section>
 
-		<section id="strength">
+		<section>
 			<h2>Combat Strength</h2>
 			<span class="display">{{player.strength()}}</span>&nbsp;
 			<!-- "dagger" entity: http://htmlhelp.com/reference/html40/entities/special.html -->
-			<button id="dagger">&dagger;</button>
+			<button class="dagger">&dagger;</button>
 		</section>
 
 	</div>
