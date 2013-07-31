@@ -1,11 +1,12 @@
+/*global require */
 // Generated on 2013-03-31 using generator-webapp 0.1.5
-'use strict';
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var mountFolder = function (connect, dir) {
-    return connect.static(require('path').resolve(dir));
+    return connect['static'](require('path').resolve(dir));
 };
 
 module.exports = function (grunt) {
+    'use strict';
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
@@ -18,10 +19,6 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
-            coffee: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
-                tasks: ['coffee:dist']
-            },
             compass: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass']
@@ -82,19 +79,6 @@ module.exports = function (grunt) {
                 '!<%= yeoman.app %>/scripts/vendor/*'
             ]
         },
-        coffee: {
-            dist: {
-                files: [{
-                    // rather than compiling multiple files here you should
-                    // require them into your main .coffee file
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/scripts',
-                    src: '*.coffee',
-                    dest: '.tmp/scripts',
-                    ext: '.js'
-                }]
-            }
-        },
         compass: {
             options: {
                 sassDir: '<%= yeoman.app %>/styles',
@@ -123,7 +107,7 @@ module.exports = function (grunt) {
                 files: {
                     '<%= yeoman.dist %>/scripts/main.js': [
                         '<%= yeoman.app %>/scripts/{,*/}*.js'
-                    ],
+                    ]
                 }
             }
         },
@@ -212,7 +196,6 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
-            'coffee:dist',
             'compass:server',
             'livereload-start',
             'connect:livereload',
@@ -223,7 +206,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'coffee',
         'compass:dist',
         'useminPrepare',
         'imagemin',
