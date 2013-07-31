@@ -8,56 +8,25 @@
 
 	<!-- Mobile viewport optimized: h5bp.com/viewport -->
 	<meta name="viewport" content="width=device-width">
-	<!-- Web app capable: developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons#comment-2 -->
-	<link rel="icon" type="image/png" href="images/logo.png">
-	<!-- 320x460 for iPhone 3GS -->
-	<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and not (-webkit-min-device-pixel-ratio: 2)" href="startup-iphone.png">
-	<!-- 640x920 for retina display -->
-	<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="startup-iphone4.png">
-	<!-- iPad Portrait 768x1004 -->
-	<link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: portrait)" href="startup-iPad-portrait.png">
-	<!-- iPad Landscape 1024x748 -->
-	<link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: landscape)" href="startup-iPad-landscape.png">
-	<link rel="stylesheet" href="styles/main.css">
-
-	<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
-
-	<!-- for IE9 pinned sites
-	html5boilerplate.com/docs/head-Tips/#ie9-pinned-sites -->
-	<meta name="application-name" content="Level Counter" />
-	<meta name="msapplication-tooltip" content="Keep track of your level & bonuses!" />
-	<meta name="msapplication-navbutton-color" content="#F6F1DF" />
-
-	<!-- for Twitter Cards
-	dev.twitter.com/docs/cards -->
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:creator" content="@phette23">
-	<meta name="twitter:url" content="http://phette.net/level-counter/">
-	<meta name="twitter:title" content="Level Counter">
-	<meta name="twitter:description" content="An open source, web-based Level counter. Keep track of your levels & bonuses, plus open a combat dialog to keep track of monsters & modifiers.">
-
-	<!-- for Facebook Open Graph
-	davidwalsh.name/facebook-meta-tags -->
-	<meta property="og:image" content="http://phette.net/level-counter/images/moz-app-logo.png">
-	<meta property="og:title" content="Level Counter | PHETTE.NET">
-	<meta property="og:url" content="http://phette.net/level-counter/">
-	<meta property="og:site_name" content="PHETTE.NET">
+	<!-- remove apple touch icons, other irrelevant head pieces
+	difference from master branch -->
+  <link rel="icon" type="image/png" href="images/logo.png">
 
 	<link rel="author" href="humans.txt" />
 
-	<!-- Grab Google CDN's Angular, fall back to local if offline -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-	<script>window.angular || document.write('<script src="components/angular/angular.min.js"><\/script>')</script>
+	<!-- use local AngularJS to suit Chrome Extensions' Content Security Policy
+	see: developer.chrome.com/extensions/contentSecurityPolicy.html
+	difference from master branch -->
+	<script src="components/angular/angular.min.js"></script>
 
-	<!-- build:js scripts/main.js -->
 	<script src="scripts/main.js"></script>
-	<!-- endbuild -->
 </head>
 
-<body ng-app>
+<!-- run Angular in CSP mode
+see: stackoverflow.com/questions/11336969/using-angularjs-in-a-google-chrome-extension
+difference from master branch -->
+<body ng-app ng-csp>
 
 	<header>
 		<h1>Level Counter</h1>
