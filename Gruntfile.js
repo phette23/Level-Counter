@@ -5,12 +5,6 @@ var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
 
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// use this if you want to match all subfolders:
-// 'test/spec/**/*.js'
-
 module.exports = function (grunt) {
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -27,10 +21,6 @@ module.exports = function (grunt) {
             coffee: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
                 tasks: ['coffee:dist']
-            },
-            coffeeTest: {
-                files: ['test/spec/{,*/}*.coffee'],
-                tasks: ['coffee:test']
             },
             compass: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
@@ -63,16 +53,6 @@ module.exports = function (grunt) {
                     }
                 }
             },
-            test: {
-                options: {
-                    middleware: function (connect) {
-                        return [
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'test')
-                        ];
-                    }
-                }
-            },
             dist: {
                 options: {
                     middleware: function (connect) {
@@ -99,17 +79,8 @@ module.exports = function (grunt) {
             all: [
                 'Gruntfile.js',
                 '<%= yeoman.app %>/scripts/{,*/}*.js',
-                '!<%= yeoman.app %>/scripts/vendor/*',
-                'test/spec/{,*/}*.js'
+                '!<%= yeoman.app %>/scripts/vendor/*'
             ]
-        },
-        mocha: {
-            all: {
-                options: {
-                    run: true,
-                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
-                }
-            }
         },
         coffee: {
             dist: {
@@ -121,14 +92,6 @@ module.exports = function (grunt) {
                     src: '*.coffee',
                     dest: '.tmp/scripts',
                     ext: '.js'
-                }]
-            },
-            test: {
-                files: [{
-                    expand: true,
-                    cwd: '.tmp/spec',
-                    src: '*.coffee',
-                    dest: 'test/spec'
                 }]
             }
         },
@@ -258,14 +221,6 @@ module.exports = function (grunt) {
         ]);
     });
 
-    grunt.registerTask('test', [
-        'clean:server',
-        'coffee',
-        'compass',
-        'connect:test',
-        'mocha'
-    ]);
-
     grunt.registerTask('build', [
         'clean:dist',
         'coffee',
@@ -282,7 +237,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'jshint',
-        'test',
         'build'
     ]);
 };
