@@ -102,14 +102,9 @@ module.exports = function (grunt) {
             dist: {}
         },*/
 
+        // usemin fills in Uglify at run-time
         uglify: {
-            dist: {
-                files: {
-                    '<%= yeoman.dist %>/scripts/main.js': [
-                        '<%= yeoman.app %>/scripts/{,*/}*.js'
-                    ]
-                }
-            }
+            dist: {}
         },
         useminPrepare: {
             html: '<%= yeoman.app %>/index.html',
@@ -160,7 +155,7 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.app %>',
+                    cwd: '<%= yeoman.dist %>',
                     src: '*.html',
                     dest: '<%= yeoman.dist %>'
                 }]
@@ -174,12 +169,28 @@ module.exports = function (grunt) {
                     cwd: '<%= yeoman.app %>',
                     dest: '<%= yeoman.dist %>',
                     src: [
+                        '*.html',
                         '*.{ico,txt}',
                         '.htaccess'
                     ]
                 }]
             }
         },
+        rev: {
+            options: {
+              encoding: 'utf8',
+              algorithm: 'md5',
+              length: 8
+            },
+            assets: {
+              files: [{
+                src: [
+                  '<%= yeoman.dist %>/scripts/main.js',
+                  '<%= yeoman.dist %>/styles/main.css'
+                ]
+              }]
+            }
+          },
         bower: {
             all: {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
@@ -206,13 +217,17 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'compass:dist',
+        // unused for now
+        // 'compass:dist',
         'useminPrepare',
         'imagemin',
         'concat',
         'cssmin',
         'uglify',
+        'rev',
         'copy',
+        // usemin must run before htmlmin
+        // otherwise build blocks are removed
         'usemin',
         'htmlmin'
     ]);
