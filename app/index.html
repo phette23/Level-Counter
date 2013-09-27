@@ -38,17 +38,21 @@ difference from master branch -->
 
 		<section class="col1-2">
 			<h2>Level</h2>
-			<button ng-click="player.dnLvl()">-</button>&nbsp;<span class="display">{{player.level}}</span>&nbsp;<button ng-click="player.upLvl()">+</button>
+			<button ng-click="player.dnLvl()">-</button>&nbsp;
+			<span class="display" ng-bind="player.level">1</span>&nbsp;
+			<button ng-click="player.upLvl()">+</button>
 		</section>
 
 		<section class="col1-2">
 			<h2>Bonuses</h2>
-			<button ng-click="player.dnBns()">-</button>&nbsp;<span class="display">{{player.bonus}}</span>&nbsp;<button ng-click="player.upBns()">+</button>
+			<button ng-click="player.dnBns()">-</button>&nbsp;
+			<span class="display" ng-bind="player.bonus">0</span>&nbsp;
+			<button ng-click="player.upBns()">+</button>
 		</section>
 
 		<section>
 			<h2>Combat Strength</h2>
-			<span class="display">{{player.strength()}}</span>&nbsp;
+			<span class="display" ng-bind="player.strength()">1</span>&nbsp;
 			<!-- "dagger" entity: http://htmlhelp.com/reference/html40/entities/special.html -->
 			<button class="dagger">&dagger;</button>
 		</section>
