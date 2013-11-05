@@ -2,6 +2,7 @@
 // Generated on 2013-03-31 using generator-webapp 0.1.5
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var mountFolder = function (connect, dir) {
+    'use strict';
     return connect['static'](require('path').resolve(dir));
 };
 
@@ -178,19 +179,19 @@ module.exports = function (grunt) {
         },
         rev: {
             options: {
-              encoding: 'utf8',
-              algorithm: 'md5',
-              length: 8
+                encoding: 'utf8',
+                algorithm: 'md5',
+                length: 8
             },
             assets: {
-              files: [{
-                src: [
-                  '<%= yeoman.dist %>/scripts/main.js',
-                  '<%= yeoman.dist %>/styles/main.css'
-                ]
-              }]
+                files: [{
+                    src: [
+                        '<%= yeoman.dist %>/scripts/main.js',
+                        '<%= yeoman.dist %>/styles/main.css'
+                    ]
+                }]
             }
-          },
+        },
         bower: {
             all: {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
