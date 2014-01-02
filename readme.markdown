@@ -40,3 +40,5 @@ To help version number consistency, I wrote a pair of short scripts to print, va
 [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
 
 ![GPL 3 logo](https://www.gnu.org/graphics/gplv3-127x51.png "GPLv3")
+
+[![Analytics](https://ga-beacon.appspot.com/UA-29080462-2/level-counter/readme?pixel)](https://github.com/igrigorik/ga-beacon)
