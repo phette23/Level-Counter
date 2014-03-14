@@ -1,15 +1,16 @@
 /*global cornify_add, cornify_count */
-function unicorns () {
-    /* jshint camelcase: false */
-    cornify_add();
-    if ( cornify_count === 9 ) {
-        clearInterval( intervalID );
-    }
-}
-
 function onWin () {
+    var interval,
+        unicorns = function () {
+            /* jshint camelcase: false */
+            cornify_add();
+            if ( cornify_count === 9 ) {
+                clearInterval( interval );
+            }
+        };
+
     console.log( 'Yay! You win! Here are some unicorns.' );
-    intervalID = setInterval( unicorns, 800 );
+    interval = setInterval( unicorns, 800 );
 }
 
 function checkLevel ( newVal ) {
