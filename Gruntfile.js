@@ -1,7 +1,7 @@
-/*global require */
 // Generated on 2013-03-31 using generator-webapp 0.1.5
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var mountFolder = function (connect, dir) {
+    'use strict';
     return connect['static'](require('path').resolve(dir));
 };
 
@@ -75,8 +75,7 @@ module.exports = function (grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%= yeoman.app %>/scripts/{,*/}*.js',
-                '!<%= yeoman.app %>/scripts/vendor/*'
+                '<%= yeoman.app %>/scripts/main.js'
             ]
         },
         compass: {
@@ -102,14 +101,9 @@ module.exports = function (grunt) {
             dist: {}
         },*/
 
+        // usemin fills in Uglify at run-time
         uglify: {
-            dist: {
-                files: {
-                    '<%= yeoman.dist %>/scripts/main.js': [
-                        '<%= yeoman.app %>/scripts/{,*/}*.js'
-                    ]
-                }
-            }
+            dist: {}
         },
         useminPrepare: {
             html: '<%= yeoman.app %>/index.html',
@@ -160,7 +154,7 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.app %>',
+                    cwd: '<%= yeoman.dist %>',
                     src: '*.html',
                     dest: '<%= yeoman.dist %>'
                 }]
@@ -174,8 +168,24 @@ module.exports = function (grunt) {
                     cwd: '<%= yeoman.app %>',
                     dest: '<%= yeoman.dist %>',
                     src: [
+                        '*.html',
                         '*.{ico,txt}',
                         '.htaccess'
+                    ]
+                }]
+            }
+        },
+        rev: {
+            options: {
+                encoding: 'utf8',
+                algorithm: 'md5',
+                length: 8
+            },
+            assets: {
+                files: [{
+                    src: [
+                        '<%= yeoman.dist %>/scripts/main.js',
+                        '<%= yeoman.dist %>/styles/main.css'
                     ]
                 }]
             }
@@ -206,13 +216,17 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'compass:dist',
+        // unused for now
+        // 'compass:dist',
         'useminPrepare',
         'imagemin',
         'concat',
         'cssmin',
         'uglify',
+        'rev',
         'copy',
+        // usemin must run before htmlmin
+        // otherwise build blocks are removed
         'usemin',
         'htmlmin'
     ]);

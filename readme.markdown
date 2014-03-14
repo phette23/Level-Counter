@@ -10,6 +10,7 @@ Level Counter used to be more robust but frankly less satisfying. You could rest
 
 - Fix display bugs on mobile
 - Keyboard shortcuts for all buttons
+- Generate cache manifest automatically using [grunt-manifest](https://github.com/gunta/grunt-manifest) (looks better) or [grunt-appcache](https://github.com/canvace/grunt-appcache)
 
 ## Developer Info
 
@@ -39,3 +40,5 @@ To help version number consistency, I wrote a pair of short scripts to print, va
 [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
 
 ![GPL 3 logo](https://www.gnu.org/graphics/gplv3-127x51.png "GPLv3")
+
+[![Analytics](https://ga-beacon.appspot.com/UA-29080462-2/level-counter/readme?pixel)](https://github.com/igrigorik/ga-beacon)
