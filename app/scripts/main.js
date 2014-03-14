@@ -9,7 +9,10 @@ function onWin () {
             }
         };
 
-    console.log( 'Yay! You win! Here are some unicorns.' );
+    if ( typeof console.log === 'function' ) {
+        console.log( 'Yay! You win! Here are some unicorns.' );
+    }
+
     interval = setInterval( unicorns, 800 );
 }
 
