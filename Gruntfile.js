@@ -1,4 +1,3 @@
-/*global require */
 // Generated on 2013-03-31 using generator-webapp 0.1.5
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var mountFolder = function (connect, dir) {
@@ -76,8 +75,7 @@ module.exports = function (grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%= yeoman.app %>/scripts/{,*/}*.js',
-                '!<%= yeoman.app %>/scripts/vendor/*'
+                '<%= yeoman.app %>/scripts/main.js'
             ]
         },
         compass: {

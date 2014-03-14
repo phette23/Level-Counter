@@ -1,4 +1,23 @@
-/*jshint strict:false, white:false */
+/*global cornify_add, cornify_count */
+function unicorns () {
+    /* jshint camelcase: false */
+    cornify_add();
+    if ( cornify_count === 9 ) {
+        clearInterval( intervalID );
+    }
+}
+
+function onWin () {
+    console.log( 'Yay! You win! Here are some unicorns.' );
+    intervalID = setInterval( unicorns, 800 );
+}
+
+function checkLevel ( newVal ) {
+    if ( newVal === 10 ) {
+        onWin();
+    }
+}
+
 function LevelCounter( $scope ) {
     $scope.player = {
         level : 1,
@@ -25,21 +44,3 @@ function LevelCounter( $scope ) {
 }
 // to prevent minifier from renaming $scope param
 LevelCounter.$inject = [ '$scope' ];
-
-function checkLevel ( newVal, oldVal ) {
-    if ( newVal === 10 ) {
-        onWin();
-    }
-}
-
-function onWin () {
-    console.log( "Yay! You win! Here are some unicorns." );
-    intervalID = setInterval( unicorns, 800 );
-}
-
-function unicorns () {
-    cornify_add();
-    if ( cornify_count === 9 ) {
-        clearInterval( intervalID );
-    }
-}
