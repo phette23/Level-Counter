@@ -11,6 +11,7 @@ Level Counter used to be more robust but frankly less satisfying. You could rest
 - Fix display bugs on mobile
 - Keyboard shortcuts for all buttons
 - Generate cache manifest automatically using [grunt-manifest](https://github.com/gunta/grunt-manifest) (looks better) or [grunt-appcache](https://github.com/canvace/grunt-appcache)
+- UI tests with Selenium, [gremlins.js](https://github.com/marmelab/gremlins.js)
 
 ## Developer Info
 
