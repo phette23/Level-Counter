@@ -8,7 +8,7 @@ import unittest, time, re
 
 class LevelCounter(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.PhantomJS()
         self.driver.implicitly_wait(30)
         self.base_url = "http://localhost:9000/"
         self.verificationErrors = []
