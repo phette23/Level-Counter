@@ -9,3 +9,8 @@ To get tests up & running, navigate inside this folder & run:
 This is my first time doing testing like this so I'm sure I'm missing something. I'll need to try to get tests running fresh on a clean system to see if these instructions work.
 
 See also: http://code.tutsplus.com/tutorials/headless-functional-testing-with-selenium-and-phantomjs--net-30545 which is a way to do this purely in JavaScript, perhaps better for me.
+
+# To Do
+
+- Working installation steps
+- Make Flake8 Python linter happy
