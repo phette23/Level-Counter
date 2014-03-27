@@ -11,19 +11,17 @@ Level Counter used to be more robust but frankly less satisfying. You could rest
 - Fix display bugs on mobile
 - Keyboard shortcuts for all buttons
 - Generate cache manifest automatically using [grunt-manifest](https://github.com/gunta/grunt-manifest) (looks better) or [grunt-appcache](https://github.com/canvace/grunt-appcache)
-- UI tests with Selenium, [gremlins.js](https://github.com/marmelab/gremlins.js)
 
 ## Developer Info
 
 ### Yeoman, Bower, Grunt
 
-This project uses [Yeoman](http://yeoman.io/) as a development tool, which in turns relies on [Bower](http://twitter.github.com/bower/) for client-side package management and [Grunt](http://gruntjs.com/) for various tasks like building an optimized version. Most of the documentation at the Yeoman website should provide a fair grasp on how to use it in this project, but the main items are:
+This project uses [Yeoman](http://yeoman.io/) as a development tool, which in turns relies on [Bower](http://twitter.github.com/bower/) for client-side package management and [Grunt](http://gruntjs.com/) for various tasks:
 
 - `grunt server` runs a local test server
-- `grunt build` compiles an optimized version in the dist directory
+- `grunt build` compiles an optimized version in the dist/ directory
+- `grunt test` runs JSHint & Selenium UI tests (see test/readme.mdown for details)
 - `bower install <library>` installs libraries in app/components/
-
-I haven't written unit tests so `grunt test` isn't useful.
 
 ### Version Number Management
 
@@ -41,5 +39,3 @@ To help version number consistency, I wrote a pair of short scripts to print, va
 [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
 
 ![GPL 3 logo](https://www.gnu.org/graphics/gplv3-127x51.png "GPLv3")
-
-[![Analytics](https://ga-beacon.appspot.com/UA-29080462-2/level-counter/readme?pixel)](https://github.com/igrigorik/ga-beacon)

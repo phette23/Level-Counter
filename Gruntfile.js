@@ -194,6 +194,10 @@ module.exports = function (grunt) {
             all: {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
+        },
+        exec: {
+            // cwd defaults to Gruntfile's location
+            test: 'python test/tests.py'
         }
     });
 
@@ -214,6 +218,13 @@ module.exports = function (grunt) {
         ]);
     });
 
+    grunt.registerTask('test-server', [
+        'clean:server',
+        'compass:server',
+        'livereload-start',
+        'connect:livereload'
+    ]);
+
     grunt.registerTask('build', [
         'clean:dist',
         // unused for now
@@ -229,6 +240,12 @@ module.exports = function (grunt) {
         // otherwise build blocks are removed
         'usemin',
         'htmlmin'
+    ]);
+
+    grunt.registerTask('test', [
+        'jshint',
+        'test-server',
+        'exec:test'
     ]);
 
     grunt.registerTask('default', [
