@@ -195,6 +195,23 @@ module.exports = function (grunt) {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
         },
+        appcache: {
+            options: {
+                basePath: 'dist'
+            },
+            all: {
+                dest: 'dist/manifest.appcache',
+                cache: [
+                    'dist/scripts/*.js',
+                    'dist/styles/*.css',
+                    // NOTE: this only works because of a patch I put on grunt-appcache
+                    // see https://github.com/canvace/grunt-appcache/pull/3
+                    // when the NPM package is updated, should update package.json
+                    '//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js'
+                ],
+                network: '*'
+            }
+        },
         exec: {
             // cwd defaults to Gruntfile's location
             test: 'python test/tests.py'
@@ -239,7 +256,8 @@ module.exports = function (grunt) {
         // usemin must run before htmlmin
         // otherwise build blocks are removed
         'usemin',
-        'htmlmin'
+        'htmlmin',
+        'appcache'
     ]);
 
     grunt.registerTask('test', [
