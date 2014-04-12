@@ -19,10 +19,6 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
-            compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass']
-            },
             livereload: {
                 files: [
                     '<%= yeoman.app %>/*.html',
@@ -77,23 +73,6 @@ module.exports = function (grunt) {
                 'Gruntfile.js',
                 '<%= yeoman.app %>/scripts/main.js'
             ]
-        },
-        compass: {
-            options: {
-                sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: 'app/components',
-                relativeAssets: true
-            },
-            dist: {},
-            server: {
-                options: {
-                    debugInfo: true
-                }
-            }
         },
         // not used since Uglify task does concat,
         // but still available if needed
@@ -227,7 +206,6 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
-            'compass:server',
             'livereload-start',
             'connect:livereload',
             'open',
@@ -237,15 +215,12 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test-server', [
         'clean:server',
-        'compass:server',
         'livereload-start',
         'connect:livereload'
     ]);
 
     grunt.registerTask('build', [
         'clean:dist',
-        // unused for now
-        // 'compass:dist',
         'useminPrepare',
         'imagemin',
         'concat',
