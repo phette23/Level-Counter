@@ -1,0 +1,39 @@
+/* ==|== media queries ======================================================
+   Overrides the primary ('mobile first') styles
+   ========================================================================== */
+// first the grid
+@import '_grid.scss';
+
+@media only screen and (min-width: 35em) {
+
+  body {
+    line-height: 1.3;
+    font-size: 1.8em;
+  }
+
+  header {
+    margin-bottom: 1em;
+    h2 {
+      font-size: 135%;
+    }
+  }
+
+  #main section {
+    font-size: 175%;
+    margin-bottom: 1em;
+  }
+
+  // @include nav-spacing( .6em );
+
+}
+
+@media only screen and (min-width: 54em) {
+
+  /* headers are plenty big but increase buttons & #s */
+  button, .display {
+    font-size: 150%;
+  }
+
+  // @include nav-spacing( 1em );
+
+}

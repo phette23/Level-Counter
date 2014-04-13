@@ -1,0 +1,28 @@
+/*
+ * _vars.scss
+ * major variables & mixins shared throughout project
+ */
+
+$light-brown: #F6F1DF;
+$dark-brown: #2C1200;
+// for all border-radius values, to keep consistent
+$roundedness: 4px;
+
+// nav spacing expands with media queries in a formulaic way
+// @mixin nav-spacing( $space ) {
+//   nav {
+//     top: $space; right: $space;
+//   }
+
+//   nav:active {
+//     top: $space + .05; right: $space + .05;
+//   }
+
+//   nav section {
+//     padding: .75 * $space;
+//   }
+
+//   .menu-items a {
+//     margin-bottom: .75 * $space;
+//   }
+// }
