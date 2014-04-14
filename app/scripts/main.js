@@ -13,7 +13,11 @@ function onWin () {
         console.log( 'Yay! You win! Here are some unicorns.' );
     }
 
-    interval = setInterval( unicorns, 800 );
+    // cornify loads images over HTTP
+    // so only run if we're connected
+    if ( navigator.onLine ) {
+        interval = setInterval( unicorns, 800 );
+    }
 }
 
 function checkLevel ( newVal ) {
