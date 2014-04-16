@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+# Build & then zip up the Chrome app
+# for upload to the Chrome Web Store
+
+# Check it we're on chrome branch
+# h/t https://stackoverflow.com/questions/6245570/get-current-branch-name
+if [ $(git rev-parse --abbrev-ref HEAD) = 'chrome' ]; then
+    grunt build
+    zip -r lc.zip dist/ --quiet && echo; echo 'Zipped dist directory successfully.'
+else
+    echo 'Must be on "chrome" branch to package the Chrome app.'
+    exit 1
+fi
