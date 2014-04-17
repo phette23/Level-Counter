@@ -19,10 +19,6 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
-            compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass']
-            },
             livereload: {
                 files: [
                     '<%= yeoman.app %>/*.html',
@@ -77,23 +73,6 @@ module.exports = function (grunt) {
                 'Gruntfile.js',
                 '<%= yeoman.app %>/scripts/main.js'
             ]
-        },
-        compass: {
-            options: {
-                sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: 'app/components',
-                relativeAssets: true
-            },
-            dist: {},
-            server: {
-                options: {
-                    debugInfo: true
-                }
-            }
         },
         // not used since Uglify task does concat,
         // but still available if needed
@@ -194,6 +173,27 @@ module.exports = function (grunt) {
             all: {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
+        },
+        appcache: {
+            options: {
+                basePath: 'dist'
+            },
+            all: {
+                dest: 'dist/manifest.appcache',
+                cache: [
+                    'dist/scripts/*.js',
+                    'dist/styles/*.css',
+                    // NOTE: this only works because of a patch I put on grunt-appcache
+                    // see https://github.com/canvace/grunt-appcache/pull/3
+                    // when the NPM package is updated, should update package.json
+                    '//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js'
+                ],
+                network: '*'
+            }
+        },
+        exec: {
+            // cwd defaults to Gruntfile's location
+            test: 'python test/tests.py'
         }
     });
 
@@ -206,7 +206,6 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
-            'compass:server',
             'livereload-start',
             'connect:livereload',
             'open',
@@ -214,10 +213,14 @@ module.exports = function (grunt) {
         ]);
     });
 
+    grunt.registerTask('test-server', [
+        'clean:server',
+        'livereload-start',
+        'connect:livereload'
+    ]);
+
     grunt.registerTask('build', [
         'clean:dist',
-        // unused for now
-        // 'compass:dist',
         'useminPrepare',
         'imagemin',
         'concat',
@@ -228,7 +231,14 @@ module.exports = function (grunt) {
         // usemin must run before htmlmin
         // otherwise build blocks are removed
         'usemin',
-        'htmlmin'
+        'htmlmin',
+        'appcache'
+    ]);
+
+    grunt.registerTask('test', [
+        'jshint',
+        'test-server',
+        'exec:test'
     ]);
 
     grunt.registerTask('default', [

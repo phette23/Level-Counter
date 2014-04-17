@@ -30,3 +30,6 @@ dist
 
 # NPM
 node_modules
+
+# Ignore zipped Chrome apps
+*.zip
