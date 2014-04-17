@@ -4,10 +4,13 @@
 
 # Check it we're on chrome branch
 # h/t https://stackoverflow.com/questions/6245570/get-current-branch-name
-if [ $(git rev-parse --abbrev-ref HEAD) = 'chrome' ]; then
+if [ $(git rev-parse --abbrev-ref HEAD) = 'chrome-app' ]; then
     grunt build
+    cp app/components/angular/angular.min.js dist/components/angular/angular.min.js
+    cp app/manifest.json dist
+    rm dist/index.html
     zip -r lc.zip dist/ --quiet && echo; echo 'Zipped dist directory successfully.'
 else
-    echo 'Must be on "chrome" branch to package the Chrome app.'
+    echo 'Must be on "chrome-app" branch to package the Chrome app.'
     exit 1
 fi
