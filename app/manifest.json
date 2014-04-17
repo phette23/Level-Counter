@@ -1,7 +1,7 @@
 {
 	"name": "Level Counter",
 	"description": "Keep track of your level & bonuses in a silly card game.",
-	"version": "2.1.1",
+	"version": "2.2.1",
 	"manifest_version": 2,
 	"icons": {
 		"16": "favicon.ico",
@@ -10,7 +10,7 @@
 	},
 	"app": {
 		"launch": {
-			"local_path": "index.html"
+			"local_path": "chrome.html"
 		}
 	},
 	"offline_enabled": true

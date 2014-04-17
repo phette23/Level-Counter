@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" manifest="manifest.appcache">
+<head>
+    <meta charset="utf-8">
+
+    <title>Level Counter</title>
+    <meta name="description" content="An open source Level Counter in HTML">
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width">
+
+    <!-- remove apple touch icons, other irrelevant head pieces
+    difference from master branch -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <link rel="author" href="humans.txt">
+
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<!-- run Angular in CSP mode
+see: stackoverflow.com/questions/11336969/using-angularjs-in-a-google-chrome-extension
+difference from master branch -->
+<body ng-app ng-csp>
+
+    <header>
+        <h1>Level Counter</h1>
+    </header>
+
+    <div role="main" id="main" ng-controller="LevelCounter">
+
+        <section class="col1-2">
+            <h2>Level</h2>
+            <button ng-click="player.dnLvl()">-</button>&nbsp;
+            <span class="display" ng-bind="player.level">1</span>&nbsp;
+            <button ng-click="player.upLvl()">+</button>
+        </section>
+
+        <section class="col1-2">
+            <h2>Bonuses</h2>
+            <button ng-click="player.dnBns()">-</button>&nbsp;
+            <span class="display" ng-bind="player.bonus">0</span>&nbsp;
+            <button ng-click="player.upBns()">+</button>
+        </section>
+
+        <section>
+            <h2>Combat Strength</h2>
+            <span class="display" ng-bind="player.strength()">1</span>&nbsp;
+            <!-- "dagger" entity: http://htmlhelp.com/reference/html40/entities/special.html -->
+            <button class="dagger">&dagger;</button>
+        </section>
+
+    </div>
+
+    <footer>
+        by&nbsp;<a href="http://twitter.com/phette23">phette23</a>
+    </footer>
+
+    <!-- use local AngularJS to suit Chrome Extensions' Content Security Policy
+    see: developer.chrome.com/extensions/contentSecurityPolicy.html
+    difference from master branch -->
+    <script src="components/angular/angular.min.js"></script>
+    <script src="scripts/cornify.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+</body>
+</html>
