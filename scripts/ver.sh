@@ -69,6 +69,9 @@ while getopts :pvu:h opt; do
         # return to current branch
         git checkout -q $CURRENTBRANCH
         git stash pop -q >/dev/null 2>&1
+
+        # Exit with error if there's an error
+        [[ $err == 1 ]] && exit 1
         exit;;
     u)
         # update all versions to $OPTARG
