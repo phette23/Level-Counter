@@ -149,7 +149,9 @@ module.exports = function (grunt) {
                     src: [
                         '*.html',
                         '*.{ico,txt}',
-                        '.htaccess'
+                        '.htaccess',
+                        'components/angular/angular.min.js',
+                        'manifest.json'
                     ]
                 }]
             }
