@@ -81,30 +81,6 @@ button:active {
   transform: rotate(180deg);
 }
 
-/* contenteditable
-stealing this from Remy Sharp
-http://jsbin.com/owavu3 */
-
-// .pname:hover:after {
-//   content: ' click to edit';
-//   font-style: italic;
-//   font-size: 50%;
-//     -webkit-text-stroke: 0;
-//   text-stroke: 0;
-// }
-
-// .pname:hover, .pname:focus {
-//   background: #E8FA43;
-// }
-
-// .pname:focus {
-//   padding: 5px;
-// }
-
-// .pname:focus:after {
-//   content: '';
-// }
-
 /* only link in the footer is phette23 */
 footer a {
   cursor: help;
