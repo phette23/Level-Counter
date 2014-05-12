@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * _vars.scss
  * major variables & mixins shared throughout project
@@ -139,8 +140,12 @@ footer {
   margin: .8em;
   font-size: 55%; }
 
+/* only link in the footer is phette23 */
+footer a {
+  cursor: help; }
+
 /* buttons */
-button {
+.btn {
   width: 1.5em;
   background-color: #edb556;
   -moz-border-radius: 8px;
@@ -152,11 +157,13 @@ button {
   font-weight: bold;
   vertical-align: middle; }
 
-button:hover, button:focus {
+.btn:hover, .btn:focus {
   background-color: #9e6100;
-  border-color: #ae8600; }
+  border-color: #ae8600;
+  color: #fff; }
 
-button:active {
+.btn:active {
+  color: #fff;
   position: relative;
   top: 2px;
   left: 2px; }
@@ -175,13 +182,6 @@ button:active {
   oh yeah & 2 = 180º here. But you already knew that because it's so obvious, right? */
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   transform: rotate(180deg); }
-
-/* contenteditable
-stealing this from Remy Sharp
-http://jsbin.com/owavu3 */
-/* only link in the footer is phette23 */
-footer a {
-  cursor: help; }
 
 /* ==|== media queries ======================================================
    Overrides the primary ('mobile first') styles

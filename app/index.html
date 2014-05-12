@@ -59,23 +59,23 @@
 
 		<section class="col1-2">
 			<h2>Level</h2>
-			<button ng-click="player.dnLvl()">-</button>&nbsp;
+			<a class="btn" ng-click="player.dnLvl()">-</a>&nbsp;
 			<span class="display" ng-bind="player.level">1</span>&nbsp;
-			<button ng-click="player.upLvl()">+</button>
+			<a class="btn" ng-click="player.upLvl()">+</a>
 		</section>
 
 		<section class="col1-2">
 			<h2>Bonuses</h2>
-			<button ng-click="player.dnBns()">-</button>&nbsp;
+			<a class="btn" ng-click="player.dnBns()">-</a>&nbsp;
 			<span class="display" ng-bind="player.bonus">0</span>&nbsp;
-			<button ng-click="player.upBns()">+</button>
+			<a class="btn" ng-click="player.upBns()">+</a>
 		</section>
 
 		<section>
 			<h2>Combat Strength</h2>
 			<span class="display" ng-bind="player.strength()">1</span>&nbsp;
 			<!-- "dagger" entity: http://htmlhelp.com/reference/html40/entities/special.html -->
-			<button class="dagger">&dagger;</button>
+			<a class="btn dagger">&dagger;</a>
 		</section>
 
 	</div>

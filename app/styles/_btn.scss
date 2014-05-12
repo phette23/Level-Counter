@@ -1,0 +1,41 @@
+/* buttons */
+
+.btn {
+  width: 1.5em;
+  background-color: #edb556;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border: 1px solid #eeb44f;
+  display: inline-block;
+  color: #fff;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #9e6100;
+  border-color: #ae8600;
+  color: #fff;
+}
+
+.btn:active {
+  color: #fff;
+  position: relative; top: 2px; left: 2px;
+}
+
+.dagger {
+  /* important to have a serif font for the dagger
+  sans-serif will look like a cross
+  en.wikipedia.org/wiki/File:Daggers.svg */
+  font-family: "Old English Text MT", "Times New Roman", Times;
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    /* weird Opera bug: 180deg transform moves character from its usual place & keeps it in 0deg rotation, any quantity other than a multiple of 180 doesn't do this so put in a value arbitrarily close */
+    -o-transform: rotate(179.999deg);
+    -ms-transform: rotate(180deg);
+    /* thank YOU Microsoft for having a totally succinct & rationale syntax
+    oh yeah & 2 = 180º here. But you already knew that because it's so obvious, right? */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  transform: rotate(180deg);
+}
