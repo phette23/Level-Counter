@@ -37,5 +37,6 @@
     /* thank YOU Microsoft for having a totally succinct & rationale syntax
     oh yeah & 2 = 180º here. But you already knew that because it's so obvious, right? */
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    pointer-events: none;
     transform: rotate(180deg);
 }
