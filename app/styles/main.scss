@@ -1,49 +1,44 @@
 @import '_vars.scss';
 @import '_normalize.scss';
 
-/* ==|== primary styles ===================================================== */
-
-/* implicit media query: mobile default */
+// implicit media query: mobile default
 
 body {
-  margin: 2%;
-  background: $light-brown;
-  text-align: center; color: $dark-brown; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1.6em;
+    background: $light-brown;
+    color: $dark-brown;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.6em;
+    margin: 2%;
+    text-align: center;
 }
 
-/* "Level Counter" */
+// "Level Counter"
 header h1 {
-  font-size: 100%;
-  margin: 0 1.5em;
-  // otherwise yellow highlight spans whole screen
-  display: inline-block;
-  padding-left: 1em;
-  padding-right: 1em;
+    // otherwise yellow highlight spans whole screen
+    display: inline-block;
+    font-size: 100%;
+    margin: 0 1.5em;
+    padding-left: 1em;
+    padding-right: 1em;
 }
-
-/* all clickable elements should have pointer */
-// nav, .pname {
-//   cursor: pointer;
-// }
 
 section {
-  font-size: 130%;
-}
+    font-size: 130%;
 
-section h2 {
-  margin: .38em;
-  font-size: 100%;
+    h2 {
+        font-size: 100%;
+        margin: .38em;
+    }
 }
 
 footer {
-  margin: .8em;
-  font-size: 55%;
+    font-size: 55%;
+    margin: .8em;
 }
 
-/* only link in the footer is phette23 */
+// only link in the footer is phette23
 footer a {
-  cursor: help;
+    cursor: help;
 }
 
 @import '_btn.scss';
