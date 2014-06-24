@@ -142,7 +142,8 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'components/angular/angular.min.js',
                         'images/*.png',
-                        'manifest.json'
+                        'manifest.json',
+                        'manifest.webapp'
                     ]
                 }]
             }

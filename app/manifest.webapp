@@ -1,10 +1,11 @@
 {
   "name": "Level Counter",
   "description": "Keep track of your level & bonuses in a silly card game.",
-  "launch_path": "/index.html",
+  "launch_path": "/level-counter/",
   "icons": {
-    "128": "/images/moz-app-logo.png"
+    "128": "/level-counter/images/moz-app-logo.png"
   },
+  "appcache_path": "/level-counter/manifest.appcache",
   "type": "web",
   "developer": {
     "name": "Eric Phetteplace",
