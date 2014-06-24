@@ -33,6 +33,11 @@ There is also an app/manifest.webapp file for Mozilla's [Open Web Apps](https://
 
 To help version number consistency, I wrote a pair of short scripts to print, validate, & update version numbers. They've only been tested in <abbr title="Bourne Again Shell">BASH</abbr> on Mac OS X & rely on [node](nodejs.org). Simply run `ver.sh` in the scripts directory & pass it one of three options: p for print, v for validate versions, & u for update which takes an additional argument that becomes the new version, e.g. `./scripts/ver.sh -u 1.2.4`.
 
+## Elsewhere
+
+- In the [Firefox Marketplace](https://marketplace.firefox.com/app/level-counter/)
+- In the [Chrome Webstore](https://chrome.google.com/webstore/detail/level-counter/omechdmoagbfojanbihfodbcnckcjmkg)
+
 ## License
 
 [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
