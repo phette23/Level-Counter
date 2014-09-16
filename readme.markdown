@@ -2,21 +2,23 @@
 
 Basic Level Counter to keep track of your levels, bonuses, & combat strength because we need a cross-platform, web-based counter that's free.
 
-There's a [live, usable version](//phette23.github.io/Level-Counter/) on GitHub Pages.
+# Installation
 
-Level Counter used to be more robust but frankly less satisfying. You could restore a previous level-bonus combo if you accidentally navigated away from the tab, edit a player name, & open a combat dialog where you could add helping players & wandering monsters. The code, however, was jQuery spaghetti & this app is a dozen lines of AngularJS. If there's a lot of demand for those additional features I can re-implement them, but I never found myself using them. I just want to keep track of my levels & bonuses, nothing more.
+- In the [Firefox Marketplace](https://marketplace.firefox.com/app/level-counter/)
+- In the [Chrome Webstore](https://chrome.google.com/webstore/detail/level-counter/omechdmoagbfojanbihfodbcnckcjmkg)
+- Web version [on my site](http://phette.net/level-counter/) & [GitHub pages](//phette23.github.io/Level-Counter/).
 
 ## To Do
 
-- Fix display bugs on mobile
-- Keyboard shortcuts for all buttons
-- Browser-sync Grunt task
+- [ ] Fix display bugs on mobile
+- [ ] Keyboard shortcuts for all buttons
+- [ ] Browser-sync Grunt task
 
 ## Developer Info
 
-### Yeoman, Bower, Grunt
+### Grunt
 
-This project uses [Yeoman](http://yeoman.io/) as a development scaffolding tool, which in turns relies on [Grunt](http://gruntjs.com/) for various tasks:
+[Grunt](http://gruntjs.com/) provides various tasks:
 
 - `grunt server` runs a local test server
 - `grunt build` compiles an optimized version in the dist/ directory
@@ -24,19 +26,14 @@ This project uses [Yeoman](http://yeoman.io/) as a development scaffolding tool,
 
 ### Version Number Management
 
-Because I'm trying to use one code base to write two separate apps (a Mozilla web app, a Chrome Store app) & there are two main branches, there are a few different version numbers floating around in this project. The files that hold the version numbers are:
+Because I'm trying to use one code base to write two separate apps (a Mozilla web app, a Chrome Store app) & there are two main branches, there are a few different version numbers floating around in this project. Files that hold version numbers are:
 
-- package.json - metadata for Grunt, NPM, developers
-- app/manifest.json - for the [Chrome Web Store](https://developer.chrome.com/apps/manifest.html), only on the `chrome-app` branch
+- "package.json" - metadata for Grunt, NPM, developers
+- "app/manifest.json" - for the [Chrome Web Store](https://developer.chrome.com/apps/manifest.html), only on the `chrome-app` branch
 
-There is also an app/manifest.webapp file for Mozilla's [Open Web Apps](https://developer.mozilla.org/en-US/docs/Apps/Manifest) but it does not include a version number.
+There's also "app/manifest.webapp" for Mozilla's [Open Web Apps](https://developer.mozilla.org/en-US/docs/Apps/Manifest) but it does not include a version number.
 
 To help version number consistency, I wrote a pair of short scripts to print, validate, & update version numbers. They've only been tested in <abbr title="Bourne Again Shell">BASH</abbr> on Mac OS X & rely on [node](nodejs.org). Simply run `ver.sh` in the scripts directory & pass it one of three options: p for print, v for validate versions, & u for update which takes an additional argument that becomes the new version, e.g. `./scripts/ver.sh -u 1.2.4`.
-
-## Elsewhere
-
-- In the [Firefox Marketplace](https://marketplace.firefox.com/app/level-counter/)
-- In the [Chrome Webstore](https://chrome.google.com/webstore/detail/level-counter/omechdmoagbfojanbihfodbcnckcjmkg)
 
 ## License
 
