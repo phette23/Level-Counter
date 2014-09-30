@@ -8,12 +8,6 @@ Basic Level Counter to keep track of your levels, bonuses, & combat strength bec
 - In the [Chrome Webstore](https://chrome.google.com/webstore/detail/level-counter/omechdmoagbfojanbihfodbcnckcjmkg)
 - Web version [on my site](http://phette.net/level-counter/) & [GitHub pages](//phette23.github.io/Level-Counter/).
 
-## To Do
-
-- [ ] Fix display bugs on mobile
-- [ ] Keyboard shortcuts for all buttons
-- [ ] Browser-sync Grunt task
-
 ## Developer Info
 
 ### Grunt
