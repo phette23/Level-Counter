@@ -28,7 +28,7 @@
     /* important to have a serif font for the dagger
     sans-serif will look like a cross
     en.wikipedia.org/wiki/File:Daggers.svg */
-    font-family: "Old English Text MT", "Times New Roman", Times;
+    font-family: "Special Elite", "Times New Roman", Times;
         -moz-transform: rotate(180deg);
         -webkit-transform: rotate(180deg);
         /* weird Opera bug: 180deg transform moves character from its usual place & keeps it in 0deg rotation, any quantity other than a multiple of 180 doesn't do this so put in a value arbitrarily close */
